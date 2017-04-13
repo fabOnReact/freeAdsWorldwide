@@ -10,17 +10,20 @@
             </button>
             <a href="http://www.creative-tim.com">
                 <div class="logo-container">
-                    <div class="logo">
-                        <%= image_tag("new_logo.png") %>
+                    <!--div class="logo">
+                        <%#= image_tag("new_logo.png") %>
                     </div>
                     <div class="brand">
-                        Creative Tim
-                    </div>
+                        FreeAdsWorldwide
+                    </div-->
                 </div>
             </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="example" >
+            <ul class="nav navbar-nav">
+                <li class=""></li>
+            </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <a href="#">
@@ -35,10 +38,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                    <i class="fa fa-pinterest"></i>
-                    Pin
-                    </a>
+                    <%= link_to "Login" do %>
+                    <i class="fa fa-sign-in"></i>
+                    Login
+                    <% end %>
                 </li>
             </ul>
         </div>
@@ -59,9 +62,9 @@
                 </div>
                 <div class="col-md-6 col-md-offset-1">
                     <div class="description">
-                        <h2>Awesome landing page.</h2>
+                        <h2>Global Advertising</h2>
                         <br>
-                        <h5>Be amazed by the best looking bootstrap landing page on the web! Your new app deserves an amazing page to show all of its features. Clear visual, light colours and beautifully aligned elements - they all try to make the users aware of your great app features!</h5>
+                        <h5>Start a Global Advertising Campaign by teaming up ith millions of others and helping each other to get your Ad published in the mayor cities in the World for free</h5>
                     </div>
                     <div class="buttons">
                         <button class="btn btn-fill btn-neutral">
@@ -73,6 +76,7 @@
                         <button class="btn btn-simple btn-neutral">
                         <i class="fa fa-windows"></i>
                         </button>
+                    <%= link_to "Sign Up", "", class: "btn btn-fill btn-neutral" %>                        
                     </div>
                 </div>
             </div>
@@ -80,9 +84,10 @@
     </div>
     <div class="section section-gray section-clients">
         <div class="container text-center">
-            <h4 class="header-text">Friends in high places</h4>
+            <h4 class="header-text">Free Advertising Worldwide</h4>
             <p>
-                Build customer confidence by listing your users! Anyone who has used your service and has been pleased with it should have a place here! From Fortune 500 to start-ups, all your app enthusiasts will be glad to be featured in this section. Moreover, users will feel confident seing someone vouching for your product!<br>
+                Would you like to post your Ads immediatly in the most important cities in the world?
+                Have you Startup, Band or Art advertised in NewYork, LosAngeles, London, Berlin, Madrid, Sydney, Shangai, Tokyo, Rome, Dubai and many other places
             </p>
             <div class="logos">
                 <ul class="list-unstyled">
@@ -141,7 +146,6 @@
                     <p>
                         With all the apps that users love! Make it easy for users to share, like, post and tweet their favourite things from the app. Be sure to let users know they continue to remain connected while using your app!
                     </p>
-                    <a href="http://www.creative-tim.com/product/awesome-landing-page" id="Demo3" class="btn btn-fill btn-info" data-button="info">Get Free Demo</a>
                 </div>
             </div>
         </div>
@@ -274,7 +278,6 @@
                 </a>
             </div>
             <div class="copyright">
-                &copy; 2016 <a href="http://www.creative-tim.com">Creative Tim</a>, made with love
             </div>
         </div>
     </footer>
