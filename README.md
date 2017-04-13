@@ -1,11 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Layout was dowloaded from creative-tim and it is under MIT License. It is hosted on Github and you can find the links in his webpage
 
-Things you may want to cover:
+https://www.creative-tim.com/bootstrap-themes/admin-dashboard?direction=asc&sort=price 
 
-* Ruby version
+
+* Ruby version ruby 2.3.3p222 (2016-11-21 revision 56859) [x86_64-linux]
 
 * System dependencies
 
@@ -20,5 +20,3 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
-
-* ...
