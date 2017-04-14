@@ -1,0 +1,16 @@
+<% if flash[:notice] %>
+    <div class="alert alert-success fade in">
+      <button data-dismiss="alert" class="close close-sm" type="button">
+          <i class="icon-remove"></i>
+      </button>
+      <strong>Well done!</strong> <%= flash[:notice] %>
+    </div>
+<% end %>
+<% if flash[:alert] %>
+    <div class="alert alert-block alert-danger fade in">
+      <button data-dismiss="alert" class="close close-sm" type="button">
+          <i class="icon-remove"></i>
+      </button>
+      <strong>Oh snap!</strong> <%= flash[:alert] %>
+    </div>               
+<% end %>  
