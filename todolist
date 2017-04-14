@@ -1,28 +1,47 @@
----------------- Basic Structure --------------------------------
+---------------- Basic Info --------------------------------
 
-User can have several products
+User can have several companies
 
-products can be:
+companies can be:
 - startups
 - other staff that later you will be implemented
 
-products will have name, title, description translated in different languages, website translated in qr code.
-products can have 
+companies will have type, name, title, description translated in different languages, website translated in qr code.
+companies can have several users, so a join will be used
 
-There will be different marketing Campaign 
+There will be different marketing Campaigns
 - Paper Marketing will be the only one available for free
 - other will be available for preorder
 
-The dashboard will show all the locations available in a map and the Campaings.
-It will show Marketing Campaign Data (secondary, developer later)
+The dashboard will show all the locations available in a map and the Campaigns.
+It will show Marketing Campaign Data (secondary, developer later). If absent it will show some data about the Cities and App Stats
 Hear the user can configure Marketing Campaign Settings and Preferences
 	- which city/countries to target 
 	- run settings, how many ads they want to print in their own city and how many they want to send globally
 	- print run botton, settings will come up and the user need to choose how many ads to print in this run
 
 
+---------------- Technical Info --------------------------------
 
-next
+User model --> Exist
+Company model
+	fields companytype_id, name, title, description, website
+	type belongs_to :companytype
+Companytype model
+	fields name
+	has_many: companies
+
+
+Join between User and Company
+Campaign model
+	fields name, targetcities, targetcountries, adspreferences
+Run model
+	date, runnumber, adsnumber, 
+	
+Perform Rspec test before building
+
+	
+---------------- Next Task --------------------------------
 translation of ads globalize
 creation of the qr code - mozilla session called qr code name
 creation of a printing list with correct format and qr code, number on each page
@@ -32,3 +51,17 @@ reputation points system with merit
 invite facebook friends and get reputation points - fbgraph
 executing the ad run
 geolocation on mobile
+
+
+SHORTCUTS
+heroku run rails console
+heroku pg:psql per accedere al database produzione
+psql -d SocialNetwork_development per accedere al db
+\dt per mostrare tutte le tabelle
+rake assets:precompile
+rm -rf public/assets
+RAILS_ENV=production bundle exec rake assets:precompile
+lsof -wni tcp:3000
+kill -9 59780
+foreman configuration procfile web: bundle exec rails s
+git rm -r vendor/plugins #delete files from git then commit and push
