@@ -1,4 +1,4 @@
----------------- Basic Info --------------------------------
+---------------- Basic Info Done--------------------------------
 
 User can have several companies
 
@@ -6,20 +6,12 @@ companies can be:
 - startups
 - other staff that later you will be implemented
 
-companies will have type, name, title, description translated in different languages, website translated in qr code.
 companies can have several users, so a join will be used
-
-There will be different marketing Campaigns
-- Paper Marketing will be the only one available for free
-- other will be available for preorder
-
-The dashboard will show all the locations available in a map and the Campaigns.
-It will show Marketing Campaign Data (secondary, developer later). If absent it will show some data about the Cities and App Stats
-Hear the user can configure Marketing Campaign Settings and Preferences
-	- which city/countries to target 
-	- run settings, how many ads they want to print in their own city and how many they want to send globally
-	- print run botton, settings will come up and the user need to choose how many ads to print in this run
-
+---------------- Basic Info Not Done----------------------------
+Companies controller
+Read the Controller Documentation Specifics
+Create Specifics for the Controller Documentation
+Write the Controller and Views Code
 
 ---------------- Technical Info --------------------------------
 
@@ -31,8 +23,21 @@ Companytype model
 	fields name
 	has_many: companies
 
-
 Join between User and Company
+
+---------------- Basic Info --------------------------------
+There will be different marketing Campaigns
+- Paper Marketing will be the only one available for free
+- other will be available for preorder
+
+The dashboard will show all the locations available in a map and the Campaigns.
+It will show Marketing Campaign Data (secondary, developer later). If absent it will show some data about the Cities and App Stats
+Hear the user can configure Marketing Campaign Settings and Preferences
+	- which city/countries to target 
+	- run settings, how many ads they want to print in their own city and how many they want to send globally
+	- print run botton, settings will come up and the user need to choose how many ads to print in this run
+
+---------------- Technical Info --------------------------------
 Campaign model
 	fields name, targetcities, targetcountries, adspreferences
 Run model
@@ -42,6 +47,7 @@ Perform Rspec test before building
 
 	
 ---------------- Next Task --------------------------------
+companies will have type, name, title, description translated in different languages, website translated in qr code.
 translation of ads globalize
 creation of the qr code - mozilla session called qr code name
 creation of a printing list with correct format and qr code, number on each page

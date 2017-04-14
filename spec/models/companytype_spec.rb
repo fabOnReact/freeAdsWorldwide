@@ -16,6 +16,10 @@ RSpec.describe Companytype, type: :model do
   it "should save" do
   	subject.name = "startup"
   	subject.save
-  	expect(Companytype.count).to be(2)
+  	expect(Companytype.count).to be(1)
   end
+
+  it { should have_many(:companies)}  
+
+  after(:all) {Companytype.destroy_all}
 end
