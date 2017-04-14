@@ -14,9 +14,10 @@
   </head>
 
   <body>
-  	<%= render partial: "application/navigation" %>
+  	<%= render partial: "application/partials/navbar" %>
+    <%= render partial: "partials/flash" %>
     <%= yield %>
-
+    <%= render partial: "application/partials/footer" %>
     <!--  Google Maps Plugin    -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
   </body>
