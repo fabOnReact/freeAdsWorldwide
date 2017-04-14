@@ -12,7 +12,7 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    Creative Tim
+                    Free Ads Worldwide
                 </a>
             </div>
 
@@ -66,6 +66,11 @@
                                Account
                             </a>
                         </li>
+                        <li>
+                            <%= link_to destroy_user_session_path, method: :delete do %>
+                               Log out
+                            <% end %>
+                        </li>                        
                     </ul>
                 </div>
             </div>

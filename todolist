@@ -1,1 +1,34 @@
-Devise
+---------------- Basic Structure --------------------------------
+
+User can have several products
+
+products can be:
+- startups
+- other staff that later you will be implemented
+
+products will have name, title, description translated in different languages, website translated in qr code.
+products can have 
+
+There will be different marketing Campaign 
+- Paper Marketing will be the only one available for free
+- other will be available for preorder
+
+The dashboard will show all the locations available in a map and the Campaings.
+It will show Marketing Campaign Data (secondary, developer later)
+Hear the user can configure Marketing Campaign Settings and Preferences
+	- which city/countries to target 
+	- run settings, how many ads they want to print in their own city and how many they want to send globally
+	- print run botton, settings will come up and the user need to choose how many ads to print in this run
+
+
+
+next
+translation of ads globalize
+creation of the qr code - mozilla session called qr code name
+creation of a printing list with correct format and qr code, number on each page
+generation of pdf - prawn
+login with facebook
+reputation points system with merit
+invite facebook friends and get reputation points - fbgraph
+executing the ad run
+geolocation on mobile
