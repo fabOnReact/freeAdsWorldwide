@@ -1,3 +1,7 @@
+---------------- Task To Do-------------------------------------
+
+Post questions and answers on stackoverflow
+
 ---------------- Basic Info Done--------------------------------
 
 User can have several companies
@@ -7,12 +11,17 @@ companies can be:
 - other staff that later you will be implemented
 
 companies can have several users, so a join will be used
----------------- Basic Info Not Done----------------------------
-Companies controller
-Read the Controller Documentation Specifics
+---------------- Task Done--------------------------------------
 Create Specifics for the Controller Documentation
+Companies controller
+---------------- Basic Info Not Done----------------------------
 Write the Controller and Views Code
-
+Controller Companytypes actions index create
+Controller Companies actions index new create edit update delete destroy show
+Write views Companies index new edit delete show
+Controller Users controller 
+---------------- Notes------------------------------------------
+---------------- End--------------------------------------------
 ---------------- Technical Info --------------------------------
 
 User model --> Exist

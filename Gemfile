@@ -41,6 +41,15 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
+  gem 'rspec-console'
 end
 
 group :development do
@@ -50,7 +59,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  #gem "better_errors"
+  gem "better_errors"
   gem "binding_of_caller"
   gem "pry-rails"
   gem "pry-byebug"
@@ -65,3 +74,4 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'devise', '~> 4.2', '>= 4.2.1'
 gem 'devise-bootstrapped', '~> 0.1.1'
+gem 'rails-controller-testing', '~> 1.0', '>= 1.0.1'
