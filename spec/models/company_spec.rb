@@ -15,8 +15,9 @@ RSpec.describe Company, type: :model do
   
   fixtures :companytypes
   it "should save" do
-    company = Company.create(:companytype_id => 0)
-  	expect(Company.count).to eq 1
+    expect{
+      Company.create(:companytype_id => 0)
+      }.to change(Company, :count).by(1)
   end
 
   it { should belong_to(:companytype)}  
