@@ -7,4 +7,8 @@ FactoryGirl.define do
 		f.title nil
 		f.description nil
 	end
+
+	factory :invalidcompany, :parent => :companies do |f|
+		f.name nil
+	end
 end

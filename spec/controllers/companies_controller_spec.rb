@@ -69,12 +69,98 @@ RSpec.describe CompaniesController, type: :controller do
 		end
 	end
 
-	describe "GET #edit" 
+	describe "GET #edit" do
+		it "assigns the requested company to @company" do
+			company = FactoryGirl.create(:companies)
+			get :edit, params: { id: company }
+			expect(assigns(:company)).to eq(company)
+		end
 
-	describe "PUT #update"
+		it "renders the #edit view" do
+			get :edit, params: {id: FactoryGirl.create(:companies)}
+			expect(response).to render_template "edit"
+		end
+	end
 
-	describe "GET #delete"
 
-	describe "DELETE #destroy"
+	describe "PUT #update" do 
+		before :each do
+			@company = FactoryGirl.create(:companies, name: "testcompany")
+		end
 
+		context "valid attributes" do
+			it "located the requested @company" do
+				put :update, params: { id: @company, company: FactoryGirl.attributes_for(:companies)}
+				expect(assigns(:company)).to eq(@company)
+			end
+
+			it "changes @contact's attributes" do
+				#binding.pry
+				put :update, params: { id: @company, company: FactoryGirl.attributes_for(:companies, name: "othercompany")}
+				@company.reload
+				expect(@company.name).to eq("othercompany")
+			end
+
+
+			it "redirects to the updated contact" do
+				put :update, params: { id: @company, company: FactoryGirl.attributes_for(:companies)}
+				expect(response).to redirect_to action: "index"
+			end
+		end
+
+		context "invalid attributes" do
+			it "locates the requested @company" do
+				put :update, params: 
+				{ id: @company, company: FactoryGirl.attributes_for(:invalidcompany)}
+				expect(assigns[:company]).to eq(@company)
+			end
+
+			it "does not change @company's attributes" do
+				put :update, params: 
+				{ id: @company, company: {name: nil, description: "testdescription"}}
+				@company.reload
+				expect(@company.description).to_not eq("testdescription")
+				expect(@company.name).to eq("testcompany")
+			end
+
+			it "re-renders the edit method" do
+				put :update, params: 
+				{ id: @company, company: FactoryGirl.attributes_for(:invalidcompany) }
+				expect(response).to render_template "edit"
+			end
+		end
+	end
+
+	describe "GET #delete" do
+		before(:each) do 
+			@company = FactoryGirl.create(:companies)
+		end
+
+		it "renders the delete template" do
+			get :delete, params: {id: @company}
+			expect(response).to render_template "delete"
+		end
+
+		it "assigns the requested company to @company" do
+			get :delete, params: {id: @company}
+			expect(assigns(:company)).to eq(@company)
+		end
+	end
+
+	describe "DELETE #destroy" do 
+		before :each do 
+			@company = FactoryGirl.create(:companies)
+		end
+
+		it "deletes the company" do
+			expect{
+				delete :destroy, params: { id: @company }
+			}.to change(Company, :count).by(-1)
+		end
+
+		it "redirects to companies#index" do
+			delete :destroy, params: { id: @company }
+			expect(response).to redirect_to companies_url
+		end
+	end
 end
