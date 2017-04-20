@@ -108,10 +108,11 @@ RSpec.describe CompanytypesController, type: :controller do
 			it "does not change @companytype's attributes" do
 				put :update, params: { id: @companytype, companytype: FactoryGirl.attributes_for(:invalidcompanytype)}
 				@companytype.reload
+				#expect(@companytype.name).to_not eq("")
 				expect(@companytype.name).to eq("band")
 			end
 
-			it "re-renders the new template" do
+			it "re-renders the edit template" do
 				put :update, params: { id: @companytype, companytype: FactoryGirl.attributes_for(:invalidcompanytype)}
 				expect(response).to render_template :edit
 			end

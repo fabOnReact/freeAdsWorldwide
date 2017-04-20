@@ -20,8 +20,10 @@ class CompanytypesController < ApplicationController
 	def update
 		@companytype = Companytype.find(params[:id])
 		if @companytype.update_attributes(input_params)
+			flash[:notice] = "Your Companytype was saved"
 			redirect_to action: "show", id: @companytype.id
 		else
+			flash[:error] = "An error occurred, the companytype was not saved"
 			render "edit"
 		end
 	end
