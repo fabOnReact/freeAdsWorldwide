@@ -3,31 +3,31 @@
 
 User can have several companies
 
-companies can be:
-- startups
-- other staff that later you will be implemented
-
 companies can have several users, so a join will be used
+
+companies controller
+	index -> query di tutte le company di quello user per la dashboard
+			 dati nella dashboard relativi a quelle company
+			 altri dati
+			 
 ---------------- Task Done--------------------------------------
-Create Specifics for the Controller Documentation
-Companies controller
 ---------------- Basic Info Not Done----------------------------
 Write the Controller and Views Code
-Controller Companytypes actions index create
-Controller Companies actions index new create edit update delete destroy show
-Write views Companies index new edit delete show
 Controller Users controller 
 ---------------- Notes------------------------------------------
 ---------------- End--------------------------------------------
 ---------------- Technical Info --------------------------------
 
 User model --> Exist
+Users controller --> to be generated
 Company model
 	fields companytype_id, name, title, description, website
 	type belongs_to :companytype
+Companies controller
 Companytype model
 	fields name
 	has_many: companies
+Companytypes controller
 
 Join between User and Company
 
