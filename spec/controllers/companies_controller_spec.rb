@@ -12,7 +12,8 @@ RSpec.describe CompaniesController, type: :controller do
 	describe "GET #index" do
 
 		it "assigns all customers to @customers" do
-			@companies = Company.all
+			user = FactoryGirl.create(:user)
+			@companies = user.companies
 			get :index
 			expect(assigns['companies']).to eq(@companies)
 		end

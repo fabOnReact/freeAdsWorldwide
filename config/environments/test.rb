@@ -39,4 +39,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Speeding up test with Devise
+  config.stretches = Rails.env.test? ? 1 : 10
 end

@@ -1,4 +1,4 @@
-require_relative 'helpers/helpers.rb'
+require_relative './support/helpers/other_helpers'
 
 RSpec.configure do |c|
 	c.include Helpers

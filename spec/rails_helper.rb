@@ -7,6 +7,9 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'pry-rails'
+require 'devise'
+require 'support/helpers/session_helpers'
+require 'faker'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -56,6 +59,12 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # For Devise >= 4.1.1
+  config.include Devise::TestHelpers, :type => :controller
+
+  # For Features with Session Helpers
+  config.include Features::SessionHelpers, type: :feature
 end
 
 Shoulda::Matchers.configure do |config|
