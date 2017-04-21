@@ -1,4 +1,11 @@
+---------------- Task Done--------------------------------------
+1 Testing the companies controller spec line 19 with the user
+logged in
 ---------------- Task To Do-------------------------------------
+1 Test the other methods in the companies controller with the user
+logged in if necessary
+2 Run Rspec and solve the other issue connected with devise
+authentication
 ---------------- Basic Info Done--------------------------------
 
 User can have several companies
@@ -9,8 +16,6 @@ companies controller
 	index -> query di tutte le company di quello user per la dashboard
 			 dati nella dashboard relativi a quelle company
 			 altri dati
-			 
----------------- Task Done--------------------------------------
 ---------------- Basic Info Not Done----------------------------
 Write the Controller and Views Code
 Controller Users controller 

@@ -2,20 +2,26 @@ require 'rails_helper'
 require 'include_module_spec'
 
 RSpec.describe CompaniesController, type: :controller do
+	login_user
 
 	describe "testing Helpers methods" do
-		it "has access to the helper methods defined in the module" do
+		it "has access to the help methods defined in the module" do
 			expect(help).to be(:available)
 		end		
+
+		it "should have a current_user" do
+			expect(subject.current_user).to_not eq(nil)
+		end
 	end
 
 	describe "GET #index" do
 
-		it "assigns all customers to @customers" do
-			user = FactoryGirl.create(:user)
-			@companies = user.companies
+		it "assigns all companies to @companies" do
+			#login_user
+			#signin(user.email, user.password)
+			@companies = subject.current_user.companies
 			get :index
-			expect(assigns['companies']).to eq(@companies)
+			expect(assigns[:companies]).to eq(@companies)
 		end
 
 		it "renders the index template" do
@@ -45,12 +51,12 @@ RSpec.describe CompaniesController, type: :controller do
 
 	describe "POST #create" do
 		before(:each) do 
-			@company = FactoryGirl.build(:companies)
+			@company = FactoryGirl.build(:company)
 		end
 
 		describe "responde to" do
 			it "responds to html by default" do
-				post :create, params: { company: build_attributes(:companies) }
+				post :create, params: { company: build_attributes(:company) }
 				expect(response.content_type).to eq "text/html"
 			end
 		end
@@ -64,7 +70,7 @@ RSpec.describe CompaniesController, type: :controller do
 			it "creates a new company" do
 				#company = Company.create(:companytype_id => @companytype.id)
 				expect{ 
-					post :create, params: { company: build_attributes(:companies) }
+					post :create, params: { company: build_attributes(:company) }
 				}.to change(Company, :count).by(1)
 			end 
 		end
@@ -72,13 +78,13 @@ RSpec.describe CompaniesController, type: :controller do
 
 	describe "GET #edit" do
 		it "assigns the requested company to @company" do
-			company = FactoryGirl.create(:companies)
+			company = FactoryGirl.create(:company)
 			get :edit, params: { id: company }
 			expect(assigns(:company)).to eq(company)
 		end
 
 		it "renders the #edit view" do
-			get :edit, params: {id: FactoryGirl.create(:companies)}
+			get :edit, params: {id: FactoryGirl.create(:company)}
 			expect(response).to render_template "edit"
 		end
 	end
@@ -86,25 +92,25 @@ RSpec.describe CompaniesController, type: :controller do
 
 	describe "PUT #update" do 
 		before :each do
-			@company = FactoryGirl.create(:companies, name: "testcompany")
+			@company = FactoryGirl.create(:company, name: "testcompany")
 		end
 
 		context "valid attributes" do
 			it "located the requested @company" do
-				put :update, params: { id: @company, company: FactoryGirl.attributes_for(:companies)}
+				put :update, params: { id: @company, company: FactoryGirl.attributes_for(:company)}
 				expect(assigns(:company)).to eq(@company)
 			end
 
 			it "changes @contact's attributes" do
 				#binding.pry
-				put :update, params: { id: @company, company: FactoryGirl.attributes_for(:companies, name: "othercompany")}
+				put :update, params: { id: @company, company: FactoryGirl.attributes_for(:company, name: "othercompany")}
 				@company.reload
 				expect(@company.name).to eq("othercompany")
 			end
 
 
 			it "redirects to the updated contact" do
-				put :update, params: { id: @company, company: FactoryGirl.attributes_for(:companies)}
+				put :update, params: { id: @company, company: FactoryGirl.attributes_for(:company)}
 				expect(response).to redirect_to action: "index"
 			end
 		end
@@ -134,7 +140,7 @@ RSpec.describe CompaniesController, type: :controller do
 
 	describe "GET #delete" do
 		before(:each) do 
-			@company = FactoryGirl.create(:companies)
+			@company = FactoryGirl.create(:company)
 		end
 
 		it "renders the delete template" do
@@ -150,7 +156,7 @@ RSpec.describe CompaniesController, type: :controller do
 
 	describe "DELETE #destroy" do 
 		before :each do 
-			@company = FactoryGirl.create(:companies)
+			@company = FactoryGirl.create(:company)
 		end
 
 		it "deletes the company" do

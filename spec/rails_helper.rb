@@ -9,6 +9,7 @@ require 'capybara/rspec'
 require 'pry-rails'
 require 'devise'
 require 'support/helpers/session_helpers'
+require 'support/helpers/controller_macros'
 require 'faker'
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -61,7 +62,8 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   # For Devise >= 4.1.1
-  config.include Devise::TestHelpers, :type => :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.extend ControllerMacros, :type => :controller
 
   # For Features with Session Helpers
   config.include Features::SessionHelpers, type: :feature

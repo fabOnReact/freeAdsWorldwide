@@ -1,14 +1,14 @@
 # spec/factories/companies.rb
 
 FactoryGirl.define do
-	factory :companies, :class => Company do |f|
+	factory :company do |f|
 		association :companytype
 		f.name "firstcompany"
 		f.title nil
 		f.description nil
 	end
 
-	factory :invalidcompany, :parent => :companies do |f|
+	factory :invalidcompany, :parent => :company do |f|
 		f.name nil
 	end
 end
