@@ -2,8 +2,8 @@
 
 FactoryGirl.define do 
 	factory :user do |t|
-		t.email "fabrizu@email.com"
-		t.password "fabrizio"
+		t.email { Faker::Internet.email }
+		t.password { Faker::Internet.password(10, 20) }
 
 		factory :user_with_companies do
 			transient do
