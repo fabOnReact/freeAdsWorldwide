@@ -9,6 +9,7 @@ module Helpers
 		end
 	end
 
+=begin
 	module SessionHelpers
 		def sign_up_with(email, password, confirmation)
 			visit new_user_registration_path
@@ -25,4 +26,5 @@ module Helpers
 			click_button 'Log in'
 		end
 	end
+=end	
 end

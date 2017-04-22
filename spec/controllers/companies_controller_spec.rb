@@ -5,10 +5,6 @@ RSpec.describe CompaniesController, type: :controller do
 	login_user
 
 	describe "testing Helpers methods" do
-		it "has access to the help methods defined in the module" do
-			expect(help).to be(:available)
-		end		
-
 		it "should have a current_user" do
 			expect(subject.current_user).to_not eq(nil)
 		end
