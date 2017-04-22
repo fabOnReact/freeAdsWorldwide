@@ -62,11 +62,16 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   # For Devise >= 4.1.1
-  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, :type => :controller
+  config.include Warden::Test::Helpers, :type => :controller
   config.extend ControllerMacros, :type => :controller
+  #config.extend ControllerMacros, :type => :routing
 
   # For Features with Session Helpers
-  config.include Features::SessionHelpers, type: :feature
+  config.include Features::SessionHelpers, :type => :feature
+
+  #Capybara.raise_server_errors = true
+
 end
 
 Shoulda::Matchers.configure do |config|

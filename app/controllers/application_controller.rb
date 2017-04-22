@@ -4,10 +4,8 @@ class ApplicationController < ActionController::Base
 
   protected
 
-=begin
 	def after_sign_in_path_for(resource)
-		users_index_path
+		companies_path
 	end
-=end
 
 end
