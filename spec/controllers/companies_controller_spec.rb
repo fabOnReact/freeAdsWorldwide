@@ -13,8 +13,6 @@ RSpec.describe CompaniesController, type: :controller do
 	describe "GET #index" do
 
 		it "assigns all companies to @companies" do
-			#login_user
-			#signin(user.email, user.password)
 			@companies = subject.current_user.companies
 			get :index
 			expect(assigns[:companies]).to eq(@companies)

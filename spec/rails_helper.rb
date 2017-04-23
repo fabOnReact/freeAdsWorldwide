@@ -62,10 +62,14 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   # For Devise >= 4.1.1
+  # Controller
   config.include Devise::Test::ControllerHelpers, :type => :controller
   config.include Warden::Test::Helpers, :type => :controller
   config.extend ControllerMacros, :type => :controller
-  #config.extend ControllerMacros, :type => :routing
+  # Routing
+  config.include Devise::Test, :type => :routing
+  config.include Warden::Test::Helpers, :type => :routing
+  config.extend ControllerMacros, :type => :routing
 
   # For Features with Session Helpers
   config.include Features::SessionHelpers, :type => :feature
