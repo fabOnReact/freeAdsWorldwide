@@ -1,18 +1,5 @@
 ---------------- Task Done--------------------------------------
 ---------------- Task To Do-------------------------------------
-All test are broken. So you need to open the last browser sess
-and read about the devise authentication with controllers and 
-routers
-issues are :
-1. the routing does not get the error about the dashboard#index
-in the routes.rb
-2. the error undefined method `env' for nil:NilClass
-3. Using the log in the routes
-
-The error is in setup controller for warden. You need to unders
-tand clearly how devise with testing works, how to test routes
-as sometimes you do not get redirected, othertimes you get 
-errors but the test does not find out
 ---------------- Basic Info Done--------------------------------
 
 User can have several companies
@@ -24,7 +11,7 @@ companies controller
 			 dati nella dashboard relativi a quelle company
 			 altri dati
 ---------------- Basic Info Not Done----------------------------
-Write the Controller and Views Code
+Write the Views Code
 Controller Users controller 
 ---------------- Notes------------------------------------------
 ---------------- End--------------------------------------------

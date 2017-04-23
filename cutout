@@ -1,0 +1,7 @@
+login_action
+visit('/')
+expect{
+	visit('/')
+	page.has_text?'RoutingError'
+	}.to raise_error(ActionController::RoutingError)
+expect(page).to have_content(/this is the Dashboard afdsfsda /)
