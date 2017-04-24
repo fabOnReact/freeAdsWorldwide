@@ -18,3 +18,4 @@
 //= require chartist.min
 //= require bootstrap-notify
 //= require light-bootstrap-dashboard
+//= require applicationscript

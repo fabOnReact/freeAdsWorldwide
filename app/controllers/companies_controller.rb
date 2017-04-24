@@ -36,14 +36,19 @@ class CompaniesController < ApplicationController
 		end
 	end
 
+	def show
+		@company = Company.find(params[:id])
+	end
+
 	def delete
 		@company = Company.find(params[:id])
+		@text = "Company"
 	end
 
 	def destroy
 		@company = Company.find(params[:id])
 		if @company.destroy
-			flash[:notice] = "The Company was destroied"
+			flash[:notice] = "The Company was destroyed"
 			redirect_to action: "index"
 		else
 			flash[:error] = "An error occurred, the company was not saved"

@@ -10,12 +10,6 @@ Views
 		Flyers Marketing
 		Hand Out Flyers
 
-	Companies#index -> index.html.erb
-		new.html.erb -> field companytype
-		edit.html.erb
-		delete.html.erb
-
-
 	User add name lastname and location
 
 ---------------- Technical Info Done----------------------------

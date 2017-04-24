@@ -32,13 +32,6 @@ class CompanytypesController < ApplicationController
 		@companytype = Companytype.find(params[:id])
 	end
 
-	def destroy
-		@companytype = Companytype.find(params[:id])
-		if @companytype.destroy
-			redirect_to action: "index"
-		end
-	end
-
 	private
 
 	def input_params

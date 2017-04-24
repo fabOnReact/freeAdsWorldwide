@@ -137,6 +137,20 @@ RSpec.describe CompaniesController, type: :controller do
 		end
 	end
 
+	describe "GET #show" do 
+		before(:each) { @company = FactoryGirl.create(:company) }
+		it "will render the show template" do
+			get :show, params: { id: @company}
+			expect(response.body).to render_template "show"
+		end
+
+		it "will select the company in @company" do
+			get :show, params: { id: @company, company: build_attributes(:company)}
+			expect(assigns(:company)).to eq(@company)
+		end
+
+	end
+
 	describe "GET #delete" do
 		before(:each) do 
 			@company = FactoryGirl.create(:company)
