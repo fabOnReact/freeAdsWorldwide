@@ -1,22 +1,22 @@
----------------- Task Done--------------------------------------
----------------- Task To Do-------------------------------------
----------------- Basic Info Done--------------------------------
-
-User can have several companies
-
-companies can have several users, so a join will be used
-
-companies controller
-	index -> query di tutte le company di quello user per la dashboard
-			 dati nella dashboard relativi a quelle company
-			 altri dati
----------------- Basic Info Not Done----------------------------
-Write the Views Code
-Controller Users controller 
 ---------------- Notes------------------------------------------
 ---------------- End--------------------------------------------
----------------- Technical Info --------------------------------
+---------------- Task Done--------------------------------------
+---------------- Task To Do-------------------------------------
+---------------- Technical Info Not Done------------------------
+Views
+	application.html.erb partial _navigation
+		Dashboard
+		Company link
+		Flyers Marketing
+		Hand Out Flyers
 
+	Companies#index -> index.html.erb
+		new.html.erb -> field companytype
+		edit.html.erb
+		delete.html.erb
+
+
+---------------- Technical Info Done----------------------------
 User model --> Exist
 Users controller --> to be generated
 Company model
@@ -29,8 +29,21 @@ Companytype model
 Companytypes controller
 
 Join between User and Company
+---------------- Basic Info Done--------------------------------
 
----------------- Basic Info --------------------------------
+User can have several companies
+
+companies can have several users, so a join will be used
+
+companies controller
+	index -> query di tutte le company di quello user per la 
+			 dashboard
+			 dati nella dashboard relativi a quelle company
+			 altri dati
+---------------- Basic Info Not Done----------------------------
+Write the Views Code
+Controller Users controller 
+---------------- Basic Info ------------------------------------
 There will be different marketing Campaigns
 - Paper Marketing will be the only one available for free
 - other will be available for preorder
