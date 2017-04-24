@@ -119,23 +119,6 @@ RSpec.describe CompanytypesController, type: :controller do
 		end
 	end
 
-	describe "DELETE #destroy" do
-		before :each do
-			@companytype = FactoryGirl.create(:companytype)
-		end
-
-		it "deletes the companytype" do
-			expect {
-				delete :destroy, params: { id: @companytype }
-			}.to change(Companytype, :count).by(-1)
-		end
-
-		it "redirects to companytype#index" do
-			delete :destroy, params: { id: @companytype }
-			expect(response).to redirect_to companytypes_url
-		end
-	end
-
 	describe "testing the views" do
 		render_views
 
