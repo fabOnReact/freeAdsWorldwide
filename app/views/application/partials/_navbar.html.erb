@@ -24,6 +24,12 @@
                     </a>
                 </li>
                 <li>
+                    <%= link_to companies_path, method: :get, id: "Account" do %>
+                        <i class="pe-7s-culture"></i>
+                        <p>Companies</p>
+                    <% end %>
+                </li>                
+                <li>
                     <a href="dashboard.html">
                         <i class="pe-7s-news-paper"></i>
                         <p>Flyers Marketing</p>
@@ -62,9 +68,9 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                           <a href="">
-                               Account
-                            </a>
+                            <%= link_to edit_user_registration_path, method: :get, id: "Account" do %>
+                                Account
+                            <% end %>
                         </li>
                         <li>
                             <%= link_to destroy_user_session_path, method: :delete do %>
