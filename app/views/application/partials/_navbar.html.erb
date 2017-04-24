@@ -24,9 +24,16 @@
                     </a>
                 </li>
                 <li>
-                    <%= link_to companies_path, method: :get, id: "Account" do %>
-                        <i class="pe-7s-culture"></i>
-                        <p>Companies</p>
+                    <% if current_user.companies.length > 0 %>
+                        <%= link_to companies_path, method: :get, id: "Account" do %>
+                            <i class="pe-7s-culture"></i>
+                            <p>Companies</p>
+                        <% end %>
+                    <% else %>
+                        <%= link_to new_company_path, method: :get, id: "Account" do %>
+                            <i class="pe-7s-culture"></i>
+                            <p>New Company</p>
+                        <% end %>
                     <% end %>
                 </li>                
                 <li>

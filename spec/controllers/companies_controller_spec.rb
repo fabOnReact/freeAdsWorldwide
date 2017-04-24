@@ -86,6 +86,8 @@ RSpec.describe CompaniesController, type: :controller do
 			get :edit, params: {id: FactoryGirl.create(:company)}
 			expect(response).to render_template "edit"
 		end
+
+		it "redirects to the correct path when clicking the back button"
 	end
 
 

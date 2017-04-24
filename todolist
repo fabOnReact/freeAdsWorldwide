@@ -3,15 +3,6 @@
 ---------------- Task Done--------------------------------------
 ---------------- Task To Do-------------------------------------
 ---------------- Technical Info Not Done------------------------
-Views
-	application.html.erb partial _navigation
-		Dashboard
-		Company link
-		Flyers Marketing
-		Hand Out Flyers
-
-	User add name lastname and location
-
 ---------------- Technical Info Done----------------------------
 User model --> Exist
 Users controller --> to be generated
