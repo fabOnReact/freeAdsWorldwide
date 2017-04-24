@@ -300,7 +300,7 @@ DEPENDENCIES
   byebug
   capybara
   coffee-rails (~> 4.2)
-  country_select
+  country_select (~> 3.0)
   database_cleaner
   devise (~> 4.2, >= 4.2.1)
   devise-bootstrapped (~> 0.1.1)

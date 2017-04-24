@@ -1,3 +1,4 @@
+<% if @companies.length > 0 %>
 <%= render "shared/partials/formheader", title: @title %>
 <div class="content table-responsive table-full-width">
     <table class="table table-hover table-striped">
@@ -8,7 +9,6 @@
             <th class="options col-md-1">Options</th>
         </thead>
         <tbody>
-            <%# binding.pry %>
             <% @companies.each do |company| %>
             <tr>
             	<td><%= company.name %></td>
@@ -29,3 +29,4 @@
 </div>
 <%= render partial: "shared/partials/formfooter" %>
 <%= render partial: "shared/links/companies_links" %>
+<% end %>

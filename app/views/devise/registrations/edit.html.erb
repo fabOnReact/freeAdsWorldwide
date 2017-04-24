@@ -10,6 +10,22 @@
         <%= f.email_field :email, class: 'form-control'  %>
       </div>
 
+
+      <div class="form-group ">
+          <%= f.label :firstname %><br />
+          <%= f.text_field :firstname, class: 'form-control'  %>
+      </div>
+
+      <div class="form-group ">
+          <%= f.label :lastname %><br />
+          <%= f.text_field :lastname, class: 'form-control'  %>
+      </div>
+
+      <div class="form-group ">
+          <%= f.label :country %><br />
+          <%= f.country_select(:country, {include_blank: 'Select a country', selected: "Select a country"}, {class: 'form-control', :id => "country_select"}) %>
+      </div>
+
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
