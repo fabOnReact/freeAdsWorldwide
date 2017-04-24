@@ -56,6 +56,7 @@ group :test do
   gem 'guard-rspec'
   gem 'launchy'
   gem 'rspec-console'
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.1'
 end
 
 group :development do
@@ -76,4 +77,5 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'devise', '~> 4.2', '>= 4.2.1'
 gem 'devise-bootstrapped', '~> 0.1.1'
-gem 'rails-controller-testing', '~> 1.0', '>= 1.0.1'
+gem 'simple_form'
+gem 'country_select'
