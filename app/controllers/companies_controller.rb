@@ -1,15 +1,18 @@
 class CompaniesController < ApplicationController
 	def index
 		@companies = current_user.companies
+		#binding.pry
+		@title = "Your Companies"
 	end
 
 	def new
 		@company = Company.new
+		@title = "Create Company"
 	end
 
 	def create
 		@company = Company.new(input_params)
-		if @company.save
+		if @company.save && current_user.companies << @company
 			flash[:notice] = "Your Company was saved"
 			redirect_to action: "index"
 		else

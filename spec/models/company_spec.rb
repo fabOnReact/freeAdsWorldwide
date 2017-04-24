@@ -13,6 +13,13 @@ RSpec.describe Company, type: :model do
   	expect(subject.companytype_id).to be(1)
   end
   
+  it "should save the company with the user that created it" do
+    user = FactoryGirl.create(:user_with_companies, companies_count: 0 )
+    company = FactoryGirl.create(:company)
+    user.companies << company
+    expect(user.companies.length).to be(1)
+  end
+
   fixtures :companytypes
   it "should save" 
 

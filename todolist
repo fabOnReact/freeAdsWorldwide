@@ -16,6 +16,8 @@ Views
 		delete.html.erb
 
 
+	User add name lastname and location
+
 ---------------- Technical Info Done----------------------------
 User model --> Exist
 Users controller --> to be generated
