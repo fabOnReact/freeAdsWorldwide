@@ -42,7 +42,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'factory_girl_rails'
-  
   gem "binding_of_caller"
   gem "pry-rails"
   gem "pry-byebug"
