@@ -5,7 +5,6 @@
 ---------------- Technical Info Not Done------------------------
 ---------------- Technical Info Done----------------------------
 ---------------- Basic Info Done--------------------------------
----------------- Basic Info Not Done----------------------------
 ---------------- Technical Info --------------------------------
 Campaign model
 	name:string
@@ -30,6 +29,15 @@ Run 2
 Run 3
 	
 Perform Rspec test before building
+Add Campaign has_many :companies
+---------------- Basic Info Not Done----------------------------
+To do in Factory Girl
+Campaign belongs_to :campaigntype
+but also 
+Campaigntype has_many :campaigns --> To do in Factory Girl and
+test in Campaigntype model
+
+You create the association but you get error uninitialized constant
 
 ---------------- Basic Info ------------------------------------
 There will be different marketing Campaigns
