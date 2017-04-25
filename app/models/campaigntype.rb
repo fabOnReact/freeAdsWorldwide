@@ -1,3 +1,5 @@
 class Campaigntype < ApplicationRecord
-	has_many :campaigns
+	has_many :promotions
+
+	validates_presence_of :name
 end

@@ -33,5 +33,6 @@ RSpec.describe Company, type: :model do
 
   it { should belong_to(:companytype)}  
   it { should have_and_belong_to_many(:users)}
+  it { should have_many(:promotions) }
   after(:all) {Companytype.destroy_all}
 end
