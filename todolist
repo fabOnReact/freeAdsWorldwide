@@ -3,20 +3,23 @@
 ---------------- Task Done--------------------------------------
 ---------------- Task To Do-------------------------------------
 ---------------- Technical Info Not Done------------------------
+Spec for promotion model
+Spec for campaigns controller
 ---------------- Technical Info Done----------------------------
 ---------------- Basic Info Done--------------------------------
 ---------------- Technical Info --------------------------------
-Campaign model							Company model
-										campaign_id
-	name:string							name:string
-	targetcountries:string				has_many :promotions			belongs_to :campaigntype
+										Company model
+	Campaign model						name:string
+	name:string							has_many :promotions
+	targetcountries:string				
+	belongs_to :campaigntype
 	has_many :promotions                		 				
-	        	 	
+	belongs_to :company	        	 	
 
 					Promotion - validates :campaigntype_id, uniqueness: { scope: {:campaign_id, :company_id}, message: }
-					campaign_company belongs_to :campaigntype
-					campaign_company belongs_to :campaign
-					campaign_company belongs_to :company
+					promotion belongs_to :campaigntype
+					promotion belongs_to :campaign
+					promotion belongs_to :company
 					campaigntype_id Paper Ad
 					campaign_id     My Paper Campaign
 					company_id		My Company
@@ -27,17 +30,13 @@ Campaign model							Company model
 					has_many :promotions
 
 
-
+Campaign remove company_id
 
 Promotion has_many :runs
 Run model
 	belongs_to :promotion
 	runprintnumber:integer
-	ownads:integer
-
-Run 1 
-Run 2
-Run 3
+	ownads:integer 
 	
 Perform Rspec test before building
 Add Campaign has_many :companies
