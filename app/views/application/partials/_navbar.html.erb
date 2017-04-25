@@ -24,7 +24,7 @@
                     </a>
                 </li>
                 <li>
-                    <% if current_user.companies.length > 0 %>
+                    <% if current_user != nil && current_user.companies.length > 0 %>
                         <%= link_to companies_path, method: :get, id: "Account" do %>
                             <i class="pe-7s-culture"></i>
                             <p>Companies</p>

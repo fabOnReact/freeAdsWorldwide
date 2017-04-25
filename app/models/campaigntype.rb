@@ -1,0 +1,2 @@
+class Campaigntype < ApplicationRecord
+end
