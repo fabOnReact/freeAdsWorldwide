@@ -36,5 +36,6 @@ RSpec.describe Companytype, type: :model do
   	expect(Companytype.count).to be(1)
   end
 
+  it { should have_many(:companies) }
   after(:all) {Companytype.destroy_all}
 end
