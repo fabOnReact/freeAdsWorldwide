@@ -6,6 +6,7 @@ FactoryGirl.define do
 		f.name { Faker::Company.name }
 		f.title nil
 		f.description nil
+		campaign
 	end
 
 	factory :invalidcompany, :parent => :company do |f|

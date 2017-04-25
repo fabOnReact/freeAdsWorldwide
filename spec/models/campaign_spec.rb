@@ -4,7 +4,7 @@ RSpec.describe Campaign, type: :model do
 	let(:campaign) { campaign = FactoryGirl.create(:campaign) }
 	let(:invalidcampaign) { invalidcampaign = FactoryGirl.create(:invalidcampaign) }
 	let(:company) { company = FactoryGirl.create(:company)}
-	let(:campaigntype) { campaigntype = }
+	let(:campaigntype) { campaigntype = FactoryGirl.create(:campaigntype)}
 
 	it "has a valid factory" do
 		expect(campaign).to be_valid
@@ -14,9 +14,24 @@ RSpec.describe Campaign, type: :model do
 		expect(invalidcampaign).to_not be_valid
 	end
 
-	it "returns the company name as a string"
+	it "is invalid without a name" do
+		newcampaign = FactoryGirl.create(:campaign, name: nil)
+		expect(newcampaign).to_not be_valid
+	end
+
+	it "is invalid without a name, campaigntype and company" do
+		newcampaign = FactoryGirl.create(:campaign, campaigntype: nil)
+		expect(newcampaign).to_not be_valid
+	end
+
+	it "is invalid without a name, campaigntype and company" do
+		newcampaign = FactoryGirl.create(:campaign, company: nil)
+		expect(newcampaign).to_not be_valid
+	end		
+
+	it "returns the company name as a string" do
 		campaign = FactoryGirl.create(:campaign, name: "FreeAdsWorldwide")
-		expect(campaign.name)to be("FreeAdsWorldwide")
+		expect(campaign.name).to be("FreeAdsWorldwide")
 	end
 
 	it "should be an instance of Campaign" do
@@ -32,20 +47,32 @@ RSpec.describe Campaign, type: :model do
 		expect(campaign.name).to be("FreeAds")
 	end
 
-	it "should update the associations" do 
-		campaign.company = 
+	it "should update the company name association" do 
+		campaign.company = FactoryGirl.create(:company, name: "Advisory")
+		expect(campaign.company.name).to be("Advisory")
+		expect(company.campaigns).to include(campaign)
+	end
 
-	it "should correctly delete"
+	it "should correctly delete" do
+		expect{ campaign.destroy }.to change(Campaign, :count).by(-1)
+	end
 
-	it "should have one company"
+	it "should have one company" do
+		expect(campaign.company).to_not be_nil
+	end
 
 	it "should have one user through company"
 
-	it "should have one campaigntype"
+	it "should have one campaigntype" do
+		expect(campaign.campaigntype).to_not be_nil
+	end
 
-	it "test the associations"
+	it "should store correctly different countries" do
+		newcampaign = FactoryGirl.create(:campaign, targetcountries: "IT")
+		expect(campaign.targetcountries).to be("IT")
+	end
 
-	it "should store correctly different countries"
+	it "should store correctly different countries array"
 
 	it { should belong_to(:company) }
 	it { should belong_to(:campaigntype) }
