@@ -4,65 +4,56 @@
 ---------------- Task To Do-------------------------------------
 ---------------- Technical Info Not Done------------------------
 ---------------- Technical Info Done----------------------------
-User model --> Exist
-Users controller --> to be generated
-Company model
-	fields companytype_id, name, title, description, website
-	type belongs_to :companytype
-Companies controller
-Companytype model
-	fields name
-	has_many: companies
-Companytypes controller
-
-Join between User and Company
 ---------------- Basic Info Done--------------------------------
-
-User can have several companies
-
-companies can have several users, so a join will be used
-
-companies controller
-	index -> query di tutte le company di quello user per la 
-			 dashboard
-			 dati nella dashboard relativi a quelle company
-			 altri dati
 ---------------- Basic Info Not Done----------------------------
-Write the Views Code
-Controller Users controller 
+---------------- Technical Info --------------------------------
+Campaign model
+	name:string
+	targetcountries:string
+	belongs_to :campaigntype
+	belongs_to :company
+
+Campaign has_many :runs
+
+Campaigntype
+	name:string
+
+Campaigntype has_many :campaigns
+
+Run model
+	belongs_to :campaign
+	runprintnumber:integer
+	ownads:integer
+
+Run 1 
+Run 2
+Run 3
+	
+Perform Rspec test before building
+
 ---------------- Basic Info ------------------------------------
 There will be different marketing Campaigns
 - Paper Marketing will be the only one available for free
 - other will be available for preorder
 
-The dashboard will show all the locations available in a map and the Campaigns.
-It will show Marketing Campaign Data (secondary, developer later). If absent it will show some data about the Cities and App Stats
+The dashboard will show all the locations available in a list and the Campaigns.
+It will show Marketing Campaign Data (secondary, develop later). If absent it will show some data about the Cities and App Stats
 Hear the user can configure Marketing Campaign Settings and Preferences
 	- which city/countries to target 
 	- run settings, how many ads they want to print in their own city and how many they want to send globally
 	- print run botton, settings will come up and the user need to choose how many ads to print in this run
-
----------------- Technical Info --------------------------------
-Campaign model
-	fields name, targetcities, targetcountries, adspreferences
-Run model
-	date, runnumber, adsnumber, 
-	
-Perform Rspec test before building
-
 	
 ---------------- Next Task --------------------------------
-companies will have type, name, title, description translated in different languages, website translated in qr code.
+companies fields will be translated in different languages
+		  website translated in qr code.
 translation of ads globalize
 creation of the qr code - mozilla session called qr code name
 creation of a printing list with correct format and qr code, number on each page
 generation of pdf - prawn
 login with facebook
 reputation points system with merit
-invite facebook friends and get reputation points - fbgraph
 executing the ad run
 geolocation on mobile
-
 
 SHORTCUTS
 heroku run rails console
@@ -76,3 +67,4 @@ lsof -wni tcp:3000
 kill -9 59780
 foreman configuration procfile web: bundle exec rails s
 git rm -r vendor/plugins #delete files from git then commit and push
+heroku run rake db:migrate

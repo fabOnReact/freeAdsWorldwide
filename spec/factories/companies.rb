@@ -3,7 +3,7 @@
 FactoryGirl.define do
 	factory :company do |f|
 		association :companytype
-		f.name "firstcompany"
+		f.name { Faker::Company.name }
 		f.title nil
 		f.description nil
 	end
