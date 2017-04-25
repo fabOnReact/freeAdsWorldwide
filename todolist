@@ -6,21 +6,32 @@
 ---------------- Technical Info Done----------------------------
 ---------------- Basic Info Done--------------------------------
 ---------------- Technical Info --------------------------------
-Campaign model
-	name:string
-	targetcountries:string
-	belongs_to :campaigntype
-	belongs_to :company
+Campaign model							Company model
+										campaign_id
+	name:string							name:string
+	targetcountries:string				has_many :promotions			belongs_to :campaigntype
+	has_many :promotions                		 				
+	        	 	
 
-Campaign has_many :runs
+					Promotion - validates :campaigntype_id, uniqueness: { scope: {:campaign_id, :company_id}, message: }
+					campaign_company belongs_to :campaigntype
+					campaign_company belongs_to :campaign
+					campaign_company belongs_to :company
+					campaigntype_id Paper Ad
+					campaign_id     My Paper Campaign
+					company_id		My Company
 
-Campaigntype
-	name:string
 
-Campaigntype has_many :campaigns
+					Campaigntype
+					name:string
+					has_many :promotions
 
+
+
+
+Promotion has_many :runs
 Run model
-	belongs_to :campaign
+	belongs_to :promotion
 	runprintnumber:integer
 	ownads:integer
 
@@ -38,6 +49,9 @@ Campaigntype has_many :campaigns --> To do in Factory Girl and
 test in Campaigntype model
 
 You create the association but you get error uninitialized constant
+
+Campaign has_and_belongs_to_many :companies
+Company has_and_belongs_to_many :campaigns
 
 ---------------- Basic Info ------------------------------------
 There will be different marketing Campaigns

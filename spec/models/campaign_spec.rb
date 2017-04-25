@@ -2,12 +2,14 @@ require 'rails_helper'
 
 RSpec.describe Campaign, type: :model do
 	let(:campaign) { campaign = FactoryGirl.create(:campaign) }
-	let(:invalidcampaign) { invalidcampaign = FactoryGirl.create(:invalidcampaign) }
+	let(:invalidcampaign) { invalidcampaign = FactoryGirl.build(:invalidcampaign) }
 	let(:company) { company = FactoryGirl.create(:company)}
 	let(:campaigntype) { campaigntype = FactoryGirl.create(:campaigntype)}
+	let(:campaigntype_with_campaigns) { campaigntype_with_campaigns = FactoryGirl.create(:campaigntype_with_campaigns)}
 
 	it "has a valid factory" do
 		expect(campaign).to be_valid
+		expect(campaigntype_with_campaigns).to be_valid
 	end
 
 	it "is invalid without a name, campaigntype and company" do
@@ -15,17 +17,17 @@ RSpec.describe Campaign, type: :model do
 	end
 
 	it "is invalid without a name" do
-		newcampaign = FactoryGirl.create(:campaign, name: nil)
+		newcampaign = FactoryGirl.build(:campaign, name: nil)
 		expect(newcampaign).to_not be_valid
 	end
 
-	it "is invalid without a name, campaigntype and company" do
-		newcampaign = FactoryGirl.create(:campaign, campaigntype: nil)
+	it "is invalid without a campaigntype" do
+		newcampaign = FactoryGirl.build(:campaign, campaigntype: nil)
 		expect(newcampaign).to_not be_valid
 	end
 
-	it "is invalid without a name, campaigntype and company" do
-		newcampaign = FactoryGirl.create(:campaign, company: nil)
+	it "is invalid without a company" do
+		newcampaign = FactoryGirl.build(:campaign, company: nil)
 		expect(newcampaign).to_not be_valid
 	end		
 
