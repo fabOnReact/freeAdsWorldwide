@@ -5,6 +5,9 @@
 ---------------- Technical Info Not Done------------------------
 Spec for promotion model
 Spec for campaigns controller
+	started, but you need to add the input_params in the contro
+	ller based on the field of the object and be careful to the
+	associations
 ---------------- Technical Info Done----------------------------
 ---------------- Basic Info Done--------------------------------
 ---------------- Technical Info --------------------------------
