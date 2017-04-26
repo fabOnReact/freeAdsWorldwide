@@ -1,9 +1,10 @@
+<% title "Delete Company" %>
 <%= render "shared/partials/alert", text: @text %>
 <div class="row">
     <div class="col-lg-12">
         <section class="panel">
             <header class="panel-heading">
-               <h2>Company Delete</h2>
+               <h2><%= yield(:title) %></h2>
             </header>
             <div class="panel-body">
             <%= link_to "Delete", {:action => "destroy"}, :method => :delete, :class => "btn btn-warning wideButton btn-fill" %>

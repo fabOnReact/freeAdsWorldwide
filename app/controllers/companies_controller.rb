@@ -1,13 +1,10 @@
 class CompaniesController < ApplicationController
 	def index
 		@companies = current_user.companies
-		#binding.pry
-		@title = "Your Companies"
 	end
 
 	def new
 		@company = Company.new
-		@title = "Create Company"
 	end
 
 	def create
@@ -42,7 +39,6 @@ class CompaniesController < ApplicationController
 
 	def delete
 		@company = Company.find(params[:id])
-		@text = "Company"
 	end
 
 	def destroy
