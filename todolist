@@ -3,49 +3,10 @@
 ---------------- Task Done--------------------------------------
 ---------------- Task To Do-------------------------------------
 ---------------- Technical Info Not Done------------------------
-Spec for promotion model
-Spec for campaigns controller
-	started, but you need to add the input_params in the contro
-	ller based on the field of the object and be careful to the
-	associations
 ---------------- Technical Info Done----------------------------
 ---------------- Basic Info Done--------------------------------
 ---------------- Technical Info --------------------------------
-										Company model
-	Campaign model						name:string
-	name:string							#has_many :promotions
-	targetcountries:string				has_many :campaigns
-	belongs_to :campaigntype
-	#has_many :promotions                		 				
-	belongs_to :company	        	 	
-
-					Promotion - validates :campaigntype_id, uniqueness: { scope: {:campaign_id, :company_id}, message: }
-					#promotion belongs_to :campaigntype
-					#promotion belongs_to :campaign
-					#promotion belongs_to :company
-					campaigntype_id Paper Ad
-					campaign_id     My Paper Campaign
-					company_id		My Company
-
-
-					Campaigntype
-					name:string
-					#has_many :promotions
-
-
-Campaign remove company_id
-
 Fix devise key and env variables for production
-
-Promotion has_many :runs
-Run model
-	belongs_to :promotion
-	runprintnumber:integer
-	ownads:integer 
-	
-Perform Rspec test before building
-Add Campaign has_many :companies
-
 Add Turbolinks 5
 ---------------- Basic Info Not Done----------------------------
 To do in Factory Girl
@@ -83,7 +44,7 @@ reputation points system with merit
 executing the ad run
 geolocation on mobile
 
-SHORTCUTS
+---------------- SHORTCUTS --------------------------------
 heroku run rails console
 heroku pg:psql per accedere al database produzione
 psql -d SocialNetwork_development per accedere al db
@@ -96,3 +57,32 @@ kill -9 59780
 foreman configuration procfile web: bundle exec rails s
 git rm -r vendor/plugins #delete files from git then commit and push
 heroku run rake db:migrate
+
+
+---------------- Technical Info --------------------------------
+
+										Company model
+	Campaign model						name:string
+	name:string							#has_many :promotions
+	targetcountries:string				has_many :campaigns
+	belongs_to :campaigntype
+	#has_many :promotions                		 				
+	belongs_to :company	        	 	
+
+					Promotion - validates :campaigntype_id, uniqueness: { scope: {:campaign_id, :company_id}, message: }
+					#promotion belongs_to :campaigntype
+					#promotion belongs_to :campaign
+					#promotion belongs_to :company
+					campaigntype_id Paper Ad
+					campaign_id     My Paper Campaign
+					company_id		My Company
+
+
+					Campaigntype
+					name:string
+					#has_many :promotions
+
+Run model
+	belongs_to :promotion
+	runprintnumber:integer
+	ownads:integer 

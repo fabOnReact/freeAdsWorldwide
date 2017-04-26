@@ -130,9 +130,9 @@ RSpec.describe CampaignsController, type: :controller do
 
 			it "does not change @campaign's attributes" do
 				put :update, params: 
-				{ id: @campaign, campaign: {name: nil, description: "testdescription"}}
+				{ id: @campaign, campaign: {name: nil, targetcountries: "Italy"}}
 				@campaign.reload
-				expect(@campaign.description).to_not eq("testdescription")
+				expect(@campaign.targetcountries).to_not eq("Italy")
 				expect(@campaign.name).to eq("testcampaign")
 			end
 
@@ -182,12 +182,12 @@ RSpec.describe CampaignsController, type: :controller do
 		it "deletes the campaign" do
 			expect{
 				delete :destroy, params: { id: @campaign }
-			}.to change(campaign, :count).by(-1)
+			}.to change(Campaign, :count).by(-1)
 		end
 
 		it "redirects to companies#index" do
 			delete :destroy, params: { id: @campaign }
-			expect(response).to redirect_to companies_url
+			expect(response).to redirect_to campaigns_url
 		end
 	end
 
