@@ -1,18 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe Campaign, type: :model do
+
+	subject { FactoryGirl.build(:campaign)}
 	let(:campaign) { campaign = FactoryGirl.create(:campaign) }
 	let(:invalidcampaign) { invalidcampaign = FactoryGirl.build(:invalidcampaign) }
 	let(:company) { company = FactoryGirl.create(:company)}
 	let(:campaigntype) { campaigntype = FactoryGirl.create(:campaigntype)}
-	let(:campaign_with_promotions) { campaign_with_promotions = FactoryGirl.create(:campaign_with_promotions)}
+	let(:campaign_with_runs) { campaign_with_runs = FactoryGirl.create(:campaign_with_runs)}
 
 	describe "validations" do
 
 		it "has a valid factory" do
 			expect(campaign).to be_valid
 			expect(company).to be_valid
-			expect(campaign_with_promotions).to be_valid
+			expect(campaign_with_runs).to be_valid
 		end
 
 		it "is invalid without a name, campaigntype" do
@@ -33,6 +35,9 @@ RSpec.describe Campaign, type: :model do
 			newcampaign = FactoryGirl.build(:campaign, company: nil)
 			expect(newcampaign).to_not be_valid
 		end
+
+		it { should validate_uniqueness_of(:company_id).scoped_to(:campaigntype_id)
+			.with_message("you can create only one type of Campaign for each company")}
 
 	end
 
@@ -86,7 +91,6 @@ RSpec.describe Campaign, type: :model do
 
 	it { should have_many(:runs)}
 	it { should belong_to(:campaigntype) }
-	it { should have_many(:promotions) }
 	it { should belong_to(:company) }
 	
 

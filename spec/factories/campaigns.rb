@@ -6,14 +6,13 @@ FactoryGirl.define do
     company
   
 
-    factory :campaign_with_promotions do
+    factory :campaign_with_runs do
 
       transient do 
-        promotions_count 5
+        runs_count 5
       end
-      # campaign is not found
       after(:create) do |campaign, evaluator|
-        create_list(:promotion, evaluator.promotions_count, campaign: campaign )
+        create_list(:run, evaluator.runs_count, campaign: campaign )
       end
     end
 
