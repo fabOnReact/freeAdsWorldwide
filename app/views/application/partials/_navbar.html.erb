@@ -1,8 +1,8 @@
 
 <div class="wrapper">
-    <div class="sidebar" data-color="azure" data-image="https://s3.eu-central-1.amazonaws.com/freeads/sidebar-4.jpg">
+    <div class="sidebar" data-color="azure" data-image="">
 
-    <!--
+    <!--https://s3.eu-central-1.amazonaws.com/freeads/sidebar-4.jpg
 
         Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
         Tip 2: you can also add an image using data-image tag
@@ -11,19 +11,19 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
+                <div class="simple-text">
                     Free Ads Worldwide
-                </a>
+                </div>
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li>
                     <a href="dashboard.html">
                         <i class="pe-7s-home"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li>
+                <li class="" id="company">
                     <% if current_user != nil && current_user.companies.length > 0 %>
                         <%= link_to companies_path, method: :get, id: "Account" do %>
                             <i class="pe-7s-culture"></i>
@@ -36,14 +36,14 @@
                         <% end %>
                     <% end %>
                 </li>                
-                <li>
-                    <a href="dashboard.html">
+                <li class="">
+                    <a href="test">
                         <i class="pe-7s-news-paper"></i>
                         <p>Flyers Marketing</p>
                     </a>
                 </li>
                 <li>
-                    <a href="dashboard.html">
+                    <a href="test">
                         <i class="pe-7s-copy-file"></i>
                         <p>Hand Out Flyers</p>
                     </a>

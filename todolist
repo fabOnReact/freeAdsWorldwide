@@ -6,7 +6,6 @@
 ---------------- Technical Info Done----------------------------
 ---------------- Basic Info Done--------------------------------
 ---------------- Technical Info --------------------------------
-Fix devise key and env variables for production
 Add Turbolinks 5
 ---------------- Basic Info Not Done----------------------------
 To do in Factory Girl
@@ -44,6 +43,12 @@ reputation points system with merit
 executing the ad run
 geolocation on mobile
 
+---------------- Bugs--------------------------------------
+
+The sidebar background image is saved in an attribute 
+data-image which between on line and the other is lost, but
+fixed with the css background image property
+
 ---------------- SHORTCUTS --------------------------------
 heroku run rails console
 heroku pg:psql per accedere al database produzione
@@ -58,31 +63,3 @@ foreman configuration procfile web: bundle exec rails s
 git rm -r vendor/plugins #delete files from git then commit and push
 heroku run rake db:migrate
 
-
----------------- Technical Info --------------------------------
-
-										Company model
-	Campaign model						name:string
-	name:string							#has_many :promotions
-	targetcountries:string				has_many :campaigns
-	belongs_to :campaigntype
-	#has_many :promotions                		 				
-	belongs_to :company	        	 	
-
-					Promotion - validates :campaigntype_id, uniqueness: { scope: {:campaign_id, :company_id}, message: }
-					#promotion belongs_to :campaigntype
-					#promotion belongs_to :campaign
-					#promotion belongs_to :company
-					campaigntype_id Paper Ad
-					campaign_id     My Paper Campaign
-					company_id		My Company
-
-
-					Campaigntype
-					name:string
-					#has_many :promotions
-
-Run model
-	belongs_to :promotion
-	runprintnumber:integer
-	ownads:integer 
