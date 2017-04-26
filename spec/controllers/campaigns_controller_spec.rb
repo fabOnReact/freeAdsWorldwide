@@ -50,11 +50,6 @@ RSpec.describe CampaignsController, type: :controller do
 			@campaign = FactoryGirl.build(:campaign)
 		end
 
-		it "assigns the values to the @campaign variable" do
-			post :create, params: { id: @campaign, campaign: build_attributes(:campaign)}
-			expect(assigns[:campaign]).to eq(@campaign)
-		end
-
 		describe "responde to" do
 			it "responds to html by default" do
 				post :create, params: { campaign: build_attributes(:campaign) }
@@ -64,7 +59,7 @@ RSpec.describe CampaignsController, type: :controller do
 
 		describe "a campaign object" do
 			it "should have a campaigntype" do
-				campaign = campaign.new
+				campaign = Campaign.new
 				expect(campaign).to_not be_valid
 			end
 
@@ -75,8 +70,9 @@ RSpec.describe CampaignsController, type: :controller do
 			end 
 
 			it "saves the campaign and add a promotion" do
-				post :create, params: { campaign: build_attributes(:campaign) }
-				expect { campaign.promotions << @campaign }.to change(campaign.promotions, :length).by(1)
+				expect { 
+					post :create, params: { campaign: build_attributes(:campaign) }
+					}.to change(Promotion, :count).by(1)
 			end					
 
 		end
