@@ -7,6 +7,12 @@ RSpec.describe Company, type: :model do
   
 	subject { Company.new }
 
+  describe "validations" do
+
+    it { should validate_presence_of(:name)}
+
+  end
+
   it "should be an intance of Company" do
   	expect(subject).to be_an_instance_of(Company)
   end
@@ -33,6 +39,6 @@ RSpec.describe Company, type: :model do
 
   it { should belong_to(:companytype)}  
   it { should have_and_belong_to_many(:users)}
-  it { should have_many(:promotions) }
+  it { should have_many(:campaigns) }
   after(:all) {Companytype.destroy_all}
 end

@@ -35,6 +35,8 @@ Spec for campaigns controller
 
 Campaign remove company_id
 
+Fix devise key and env variables for production
+
 Promotion has_many :runs
 Run model
 	belongs_to :promotion

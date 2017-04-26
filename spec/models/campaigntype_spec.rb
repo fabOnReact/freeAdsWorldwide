@@ -10,7 +10,6 @@ RSpec.describe Campaigntype, type: :model do
 
 		it "has a valid factory" do
 			expect(campaigntype).to be_valid
-			expect(campaigntype_with_promotions).to be_valid
 		end
 
 		it "is invalid without a name, campaigntype" do
@@ -51,6 +50,4 @@ RSpec.describe Campaigntype, type: :model do
 	end
 
 	describe "associations"
-
-	it { should have_many(:promotions) }
 end
