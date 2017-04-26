@@ -22,7 +22,7 @@ class CampaignsController < ApplicationController
 	private
 
 	def input_params 
-		params.require(:campaign).permit( :companytype_id, :name, :title, :description, :website)
+		params.require(:campaign).permit(:name, :targetcountries, :campaigntype_id, :company_id)
 	end
 
 end

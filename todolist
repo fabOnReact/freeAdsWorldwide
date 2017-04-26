@@ -13,16 +13,16 @@ Spec for campaigns controller
 ---------------- Technical Info --------------------------------
 										Company model
 	Campaign model						name:string
-	name:string							has_many :promotions
-	targetcountries:string				
+	name:string							#has_many :promotions
+	targetcountries:string				has_many :campaigns
 	belongs_to :campaigntype
-	has_many :promotions                		 				
+	#has_many :promotions                		 				
 	belongs_to :company	        	 	
 
 					Promotion - validates :campaigntype_id, uniqueness: { scope: {:campaign_id, :company_id}, message: }
-					promotion belongs_to :campaigntype
-					promotion belongs_to :campaign
-					promotion belongs_to :company
+					#promotion belongs_to :campaigntype
+					#promotion belongs_to :campaign
+					#promotion belongs_to :company
 					campaigntype_id Paper Ad
 					campaign_id     My Paper Campaign
 					company_id		My Company
@@ -30,7 +30,7 @@ Spec for campaigns controller
 
 					Campaigntype
 					name:string
-					has_many :promotions
+					#has_many :promotions
 
 
 Campaign remove company_id
@@ -43,6 +43,8 @@ Run model
 	
 Perform Rspec test before building
 Add Campaign has_many :companies
+
+Add Turbolinks 5
 ---------------- Basic Info Not Done----------------------------
 To do in Factory Girl
 Campaign belongs_to :campaigntype
