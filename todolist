@@ -2,23 +2,26 @@
 ---------------- End--------------------------------------------
 ---------------- Task Done--------------------------------------
 ---------------- Task To Do-------------------------------------
----------------- Technical Info Not Done------------------------
----------------- Technical Info Done----------------------------
----------------- Basic Info Done--------------------------------
----------------- Technical Info --------------------------------
+test first
+Company needs to have a User
+A campaign needs to have a company
+A run needs to have a campaign
+validations for all this fields
+
+Validations and testing for the companies controller needs to be
+edited because the user need to be included before the saving
+
+When creating user, a company needs to be create with nested attributes
+to do it generate the users controller and enhance the user registration creation or just redirect to another screen and ask for creating a company
+in the end you still need users
+
+when creating a company you can also chose options for the first campaign
+nested fields
+
+Complete the Campaign Views 
+Create the Run controller
+Create the Run views
 Add Turbolinks 5
----------------- Basic Info Not Done----------------------------
-To do in Factory Girl
-Campaign belongs_to :campaigntype
-but also 
-Campaigntype has_many :campaigns --> To do in Factory Girl and
-test in Campaigntype model
-
-You create the association but you get error uninitialized constant
-
-Campaign has_and_belongs_to_many :companies
-Company has_and_belongs_to_many :campaigns
-
 ---------------- Basic Info ------------------------------------
 There will be different marketing Campaigns
 - Paper Marketing will be the only one available for free
