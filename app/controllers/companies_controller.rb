@@ -4,6 +4,7 @@ class CompaniesController < ApplicationController
 	end
 
 	def new
+		flash[:notice] = "Now you can register your company and configure your first Campaign" if current_user.companies.empty?
 		@company = Company.new
 	end
 

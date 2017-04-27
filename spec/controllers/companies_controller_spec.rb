@@ -31,6 +31,13 @@ RSpec.describe CompaniesController, type: :controller do
 	end
 
 	describe "GET #new" do 
+
+		it "gives instructions if this is the first company" do
+			subject.current_user.companies = []
+			get :new 
+			expect(flash[:notice]).to be_present
+		end
+
 		it "render the new template" do
 			get :new
 			expect(response).to render_template("new")

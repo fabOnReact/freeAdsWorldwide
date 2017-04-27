@@ -1,12 +1,13 @@
 module Features
 	module SessionHelpers
 
+=begin
 		def select_by_value(id, value)
   			option_xpath = "//*[@id='#{id}']/option[@value='#{value}']"
   			find(:xpath, option_xpath).click
 		  	#binding.pry
 		end		
-
+=end
 		def sign_up_with(email, password, confirmation, firstname, lastname, country)
 			visit new_user_registration_path
 			fill_in 'Email', with: email

@@ -9,7 +9,6 @@ class CampaignsController < ApplicationController
 	end
 
 	def create 
-		#binding.pry
 		@campaign = Campaign.new(input_params)
 		if @campaign.save
 			flash[:notice] = "Your Campaign was saved"

@@ -9,7 +9,7 @@ feature 'Sign in', :devise do
 	scenario 'user can sign in with valid credentails' do
 		user = FactoryGirl.create(:user)
 		signin(user.email, user.password)
-		expect(page).to have_content(/Signed in successfully/)
+		expect(page).to have_content(/Now you can register your company and configure your first Campaign/)
 	end
 
 	scenario 'user cannot sign in with wrong email' do
