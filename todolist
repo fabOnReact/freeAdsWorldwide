@@ -2,23 +2,17 @@
 ---------------- End--------------------------------------------
 ---------------- Task Done--------------------------------------
 ---------------- Task To Do-------------------------------------
-test first
-Company needs to have a User
-A campaign needs to have a company
-A run needs to have a campaign
-validations for all this fields
 
-Validations and testing for the companies controller needs to be
-edited because the user need to be included before the saving
+debuggare capybara per capire come fare la select
 
-When creating user, a company needs to be create with nested attributes
-to do it generate the users controller and enhance the user registration creation or just redirect to another screen and ask for creating a company
-in the end you still need users
+When creating user, let them have the option of choosing first and 
+lastname, redirect to another screen and ask for creating a company.
 
 when creating a company you can also chose options for the first campaign
 nested fields
 
 Complete the Campaign Views 
+Run specs
 Create the Run controller
 Create the Run views
 Add Turbolinks 5
@@ -47,6 +41,9 @@ executing the ad run
 geolocation on mobile
 
 ---------------- Bugs--------------------------------------
+
+Capybara can not test the selection in the sign up so i disabled 
+the validation on the country select. fix it..
 
 The sidebar background image is saved in an attribute 
 data-image which between on line and the other is lost, but
