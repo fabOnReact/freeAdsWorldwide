@@ -1,10 +1,10 @@
 require 'rails_helper'
-require 'include_module_spec'
+#require 'include_module_spec'
 
 RSpec.describe Company, type: :model do
   #login_user
 
-  let(:user) { user = FactoryGirl.create(:user_with_companies, companies_count: 0 )}
+  let(:user) { user = FactoryGirl.create(:user_with_companies)}
   let(:company) { company = FactoryGirl.build(:company) }
   
 	subject { Company.new }
@@ -13,7 +13,7 @@ RSpec.describe Company, type: :model do
 
     it { should validate_presence_of(:name)}
 
-    it { should validate_presence_of(:users) }
+    #it { should validate_presence_of(:users) }
 
   end
 
@@ -27,16 +27,16 @@ RSpec.describe Company, type: :model do
   end
   
   it "should save the company with the user that created it" do
-    subject.user.companies << company
+    user.companies << company
     company.save
-    expect(user.companies.length).to be(1)
+    expect(user.companies.length).to be(6)
   end
 
   it "deletes the entry in the join table" do
     user.companies << company
     company.destroy
     user.companies.reload
-    expect(user.companies.length).to be(0)
+    expect(user.companies.length).to be(5)
   end
 
   fixtures :companytypes

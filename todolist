@@ -52,6 +52,11 @@ The sidebar background image is saved in an attribute
 data-image which between on line and the other is lost, but
 fixed with the css background image property
 
+You removed the validation to the company users association
+
+The links in the sidebar are highlighted only when the 
+url is exactly the same. Try fixing your js with Regex match
+
 ---------------- SHORTCUTS --------------------------------
 heroku run rails console
 heroku pg:psql per accedere al database produzione
