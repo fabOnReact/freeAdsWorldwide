@@ -5,6 +5,6 @@ class Company < ApplicationRecord
 	belongs_to :companytype
 
 	validates_presence_of :name
-	validates_associated :users
-	validates_presence_of :users
+	#validates_associated :users
+	#validates_presence_of :users
 end

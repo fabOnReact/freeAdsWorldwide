@@ -67,10 +67,16 @@ RSpec.describe CompaniesController, type: :controller do
 				}.to change(Company, :count).by(1)
 			end 
 
-			it "saves the company to the corresponding user" do
+			it "adds an entry to the companies_users association" do
 				post :create, params: { company: build_attributes(:company) }
 				expect { controller.current_user.companies << @company }.to change(controller.current_user.companies, :length).by(1)
-			end					
+			end			
+
+			it "saves the company to the corresponding user" do
+				expect { 
+					post :create, params: { company: build_attributes(:company) }
+					}.to change(controller.current_user.companies, :length).by(1)
+			end
 
 		end
 	end
