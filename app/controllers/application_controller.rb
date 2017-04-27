@@ -6,10 +6,14 @@ class ApplicationController < ActionController::Base
   protected
 
 	def after_sign_in_path_for(resource)
-		companies_path
+		if current_user.companies.empty?
+      new_company_path
+    else
+      companies_path
+    end
 	end
 
-  	def configure_permitted_parameters
-  		devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :firstname, :lastname, :country, :city]) 
+  def configure_permitted_parameters
+  	devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :firstname, :lastname, :country, :city]) 
 	end  		
 end

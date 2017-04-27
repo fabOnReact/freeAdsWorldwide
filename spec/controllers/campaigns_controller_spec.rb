@@ -70,12 +70,16 @@ RSpec.describe CampaignsController, type: :controller do
 				}.to change(Campaign, :count).by(1)
 			end 
 
-			it "saves the campaign and add a promotion" do
+			it "saves the campaign" do
 				expect { 
 					post :create, params: { campaign: build_attributes(:campaign) }
 					}.to change(Campaign, :count).by(1)
 			end					
 
+			it "saves the camapaign and has a company" do 
+				post :create, params: { campaign: build_attributes(:campaign) }
+				expect(Campaign.last.company).to_not be_nil
+			end
 		end
 
 	end

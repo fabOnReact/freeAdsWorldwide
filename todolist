@@ -3,8 +3,6 @@
 ---------------- Task Done--------------------------------------
 ---------------- Task To Do-------------------------------------
 
-debuggare capybara per capire come fare la select
-
 When creating user, let them have the option of choosing first and 
 lastname, redirect to another screen and ask for creating a company.
 

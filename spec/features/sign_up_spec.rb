@@ -14,8 +14,8 @@ feature 'Sign Up', :devise do
     sign_up_with(Faker::Internet.email, 'please123', 'please123', Faker::Name.first_name , Faker::Name.last_name, 'Italy')
     txts = [I18n.t( 'devise.registrations.signed_up'), I18n.t( 'devise.registrations.signed_up_but_unconfirmed')]
     country = User.last.country	
-	expect(country).to eql("IT")    	
-    expect(page).to have_content(/Well done! Welcome! You have signed up successfully/)# have_content(/.*#{txts[0]}.*|.*#{txts[1]}.*/)
+    expect(country).to eql("IT")    	
+    expect(page).to have_content(/Now you can register your company and configure your first Campaign/)
   end
 
   # Scenario: Visitor cannot sign up with invalid email address
