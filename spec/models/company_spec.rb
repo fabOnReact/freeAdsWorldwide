@@ -1,15 +1,19 @@
 require 'rails_helper'
+require 'include_module_spec'
 
 RSpec.describe Company, type: :model do
-  
+  #login_user
+
   let(:user) { user = FactoryGirl.create(:user_with_companies, companies_count: 0 )}
-  let(:company) { company = FactoryGirl.create(:company) }
+  let(:company) { company = FactoryGirl.build(:company) }
   
 	subject { Company.new }
 
   describe "validations" do
 
     it { should validate_presence_of(:name)}
+
+    it { should validate_presence_of(:users) }
 
   end
 
@@ -23,7 +27,8 @@ RSpec.describe Company, type: :model do
   end
   
   it "should save the company with the user that created it" do
-    user.companies << company
+    subject.user.companies << company
+    company.save
     expect(user.companies.length).to be(1)
   end
 
@@ -40,5 +45,7 @@ RSpec.describe Company, type: :model do
   it { should belong_to(:companytype)}  
   it { should have_and_belong_to_many(:users)}
   it { should have_many(:campaigns) }
+  it "should belong to user"
+
   after(:all) {Companytype.destroy_all}
 end
