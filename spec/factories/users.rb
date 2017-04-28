@@ -4,7 +4,7 @@ FactoryGirl.define do
 	factory :user do |t|
 		t.email { Faker::Internet.email }
 		t.password { Faker::Internet.password(10, 20) }
-		t.country { Faker::Address.country }
+		t.country {Faker::Address.country_code}
 
 		factory :user_with_companies do
 			transient do

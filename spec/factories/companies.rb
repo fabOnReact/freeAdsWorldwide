@@ -18,6 +18,16 @@ FactoryGirl.define do
 			end
 		end
 
+		factory :company_with_campaigns do
+
+			transient do 
+				campaigns_count 5
+			end
+
+			after(:create) do |company, evaluator|
+				create_list(:campaign, evaluator.campaigns_count, company: company)
+			end
+		end
 	end
 
 	factory :invalidcompany, :parent => :company do |f|

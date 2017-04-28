@@ -1,15 +1,22 @@
 /* simple_form */
-
-/* dots below required * */
+	/* dots below required * */
 
 abbr[title] {
 	border: 0px;
 }
 
+	/* Fields Errors from validations */
+
+.field_with_errors:nth-of-type(2) {
+	border: solid red 1px;
+}
+
+label .field_with_errors {
+	border: none;
+}
+
 /* GET companies#index */ 
-
-
-/* Options column style for icons buttons */
+	/* Options column style for icons buttons */
 
  .table .btn {
  	border-radius: 10%;

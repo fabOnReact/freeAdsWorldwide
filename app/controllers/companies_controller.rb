@@ -6,14 +6,23 @@ class CompaniesController < ApplicationController
 	def new
 		flash[:notice] = "Now you can register your company and configure your first Campaign" if current_user.companies.empty?
 		@company = Company.new
+		@campaign = Campaign.new
 	end
 
 	def create
-		@company = Company.new(input_params)
+		@company = Company.new(company_params)
+		#binding.pry
 		if @company.save && current_user.companies << @company
+			if params.has_key?(:campaign) && campaign_params.present? 
+				campaign = Campaign.new(campaign_params)
+				campaign.company_id = @company.id 
+				campaign.save
+			end
 			flash[:notice] = "Your Company was saved"
 			redirect_to action: "index"
+			#binding.pry
 		else
+			#binding.pry
 			flash[:error] = "An error occurred, the company was not saved"
 			render "new"
 		end
@@ -25,7 +34,7 @@ class CompaniesController < ApplicationController
 
 	def update
 		@company = Company.find(params[:id])
-		if @company.update_attributes(input_params)
+		if @company.update_attributes(company_params)
 			flash[:notice] = "Your Company was saved"
 			redirect_to action: "index"
 		else
@@ -55,7 +64,10 @@ class CompaniesController < ApplicationController
 
 	private
 
-	def input_params 
-		params.require(:company).permit( :companytype_id, :name, :title, :description, :website)
+	def company_params 
+		params.require(:company).permit(:companytype_id, :name, :title, :description, :website) 
+	end
+	def campaign_params		
+		params.require(:campaign).permit(:name, :targetcountries, :campaigntype_id, :company_id) 
 	end
 end

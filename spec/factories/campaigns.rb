@@ -21,6 +21,8 @@ FactoryGirl.define do
   factory :invalidcampaign, :parent => :campaign do |f|
     f.name nil
     campaigntype nil
+    company nil
+    f.targetcountries nil
   end
   
 end

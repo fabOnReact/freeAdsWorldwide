@@ -8,6 +8,14 @@
               <%= f.input :description, as: :text %>
               <%= f.input :website, ad: :url %>
 
+
+              <%= f.simple_fields_for @campaign do |c| %>
+                <%= c.input :name %>
+                <%= c.input :targetcountries %>
+                <%= c.association :campaigntype %>
+                <%= c.association :company %>
+              <% end %>
+
               <% if current_user.companies.length > 0 %>
                   <%= link_to "Back", companies_path, class: "btn btn-primary btn-fill pull-left" %>
               <% else %>

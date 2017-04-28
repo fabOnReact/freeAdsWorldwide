@@ -9,6 +9,11 @@ lastname, redirect to another screen and ask for creating a company.
 when creating a company you can also chose options for the first campaign
 nested fields
 
+nested fields, you found a way to test the nested params . now test the creations of the associations
+
+landing page text and maybe a video
+twitter, facebook page etc... email
+
 Complete the Campaign Views 
 Run specs
 Create the Run controller
@@ -51,6 +56,8 @@ You removed the validation to the company users association
 
 The links in the sidebar are highlighted only when the 
 url is exactly the same. Try fixing your js with Regex match
+
+Sometimes you can not click the menu sign
 
 ---------------- SHORTCUTS --------------------------------
 heroku run rails console
