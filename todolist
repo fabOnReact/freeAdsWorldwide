@@ -3,15 +3,8 @@
 ---------------- Task Done--------------------------------------
 ---------------- Task To Do-------------------------------------
 
-When creating user, let them have the option of choosing first and 
-lastname, redirect to another screen and ask for creating a company.
-
-when creating a company you can also chose options for the first campaign
-nested fields
-
-nested fields, you found a way to test the nested params . now test the creations of the associations
-
-landing page text and maybe a video
+landing page text 
+maybe a video
 twitter, facebook page etc... email
 
 Complete the Campaign Views 

@@ -12,6 +12,24 @@
 	top: 90px;
 }
 
+.parallax-background {
+	background-image: url('https://s3.eu-central-1.amazonaws.com/freeads/chicago-690364_1920.jpg');
+	background-size: cover;
+	background-position: center -630px;	
+}
+
+/* Clients */
+
+li img {
+	height: 170px;
+	margin-right: -4px;
+}
+
+.landing-page .logos li {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
 /* Media Queries */
 
 @media (max-width: 622px) {
