@@ -48,16 +48,24 @@ RSpec.describe CompaniesController, type: :controller do
 			get :new
 			expect(assigns(:company)).to be_a_new(Company)
 		end
+
+		it "instanciate a new campaign" do 
+			get :new 
+			expect(assigns[:campaign]).to be_an_instance_of(Campaign)
+		end
+
+		it "saves the new campaign"
 	end
 
 	describe "POST #create" do
 		before(:each) do 
 			@company = FactoryGirl.build(:company)
+			@campaign = { "#{rand(903814893)}"=> FactoryGirl.build(:invalidcampaign).attributes}
 		end
 
 		describe "responde to" do
 			it "responds to html by default" do
-				post :create, params: { company: build_attributes(:company) }
+				post :create, params: { company: build_attributes(:company), campaign: @campaign }
 				expect(response.content_type).to eq "text/html"
 			end
 		end
@@ -84,7 +92,37 @@ RSpec.describe CompaniesController, type: :controller do
 					post :create, params: { company: build_attributes(:company) }
 					}.to change(controller.current_user.companies, :length).by(1)
 			end
+		end
 
+		describe "nested attributes" do
+
+			before do
+				company = FactoryGirl.build(:company).attributes
+				campaigns = { campaigns_attributes: { "#{rand(903814893)}"=> FactoryGirl.build(:campaign).attributes} }
+				@valid_attributes = company.merge(campaigns)
+			end
+
+			context "with valid params" do
+				
+				it "should include the nested attributes" do
+					post :create, params: { company: build_attributes(:company), campaign: build_attributes(:campaign) }
+					expect(assigns[:company].campaigns).to_not be_empty
+				end
+
+				it "should save the campaign" do
+					expect{ 
+						post :create, 
+						params: { company: build_attributes(:company), campaign: build_attributes(:campaign) }
+						}.to change(Campaign, :count).by(1)
+				end
+
+				it "should save the company" do
+					expect{
+						post :create, 
+						params: { company: build_attributes(:company), campaign: build_attributes(:campaign) }
+						}.to change(Company, :count).by(2)
+				end				
+			end
 		end
 	end
 

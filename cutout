@@ -1,3 +1,5 @@
+
+ class: field_class(resource, :current_password)
 from chartist.min.js.map
 //# sourceMappingURL=chartist.min.js.map
 
