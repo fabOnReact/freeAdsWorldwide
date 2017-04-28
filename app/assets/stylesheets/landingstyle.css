@@ -30,6 +30,27 @@ li img {
 	margin-right: 0px;
 }
 
+/* Presentation */ 
+
+.landing-page .section-presentation img {
+	height: 560px;
+	border-radius: 30px;
+}
+
+
+/* Demo */
+
+#carouselContainer {
+	max-height: 350px;
+	max-width: 650px;
+}
+
+#qrScan {
+	position: relative;
+	top: -25px;
+}
+
+
 /* Media Queries */
 
 @media (max-width: 622px) {
