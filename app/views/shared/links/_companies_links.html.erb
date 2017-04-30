@@ -1,9 +1,20 @@
 <div class="content">
     <div class="container-fluid">
 
-	<%- if controller_name == 'companies' && action_name == 'index' %>
-	  <%= link_to "New Company", new_company_path, class: "btn btn-primary btn-fill" %><br />
-	<% end -%>
-
+		<div class="row">
+			<div class="col-xs-6 col-sm-3 col-md-3 col-lg-2">
+				<%- if controller_name == 'companies' && action_name == 'index' %>
+				  <%= link_to "New Company", new_company_path, class: "btn btn-primary btn-fill" %><br />
+				<% end -%>
+				<%- if controller_name == 'companies' && action_name == 'show' %>
+				  <%= link_to "New Campaign", new_campaign_path(@company), class: "btn btn-primary btn-fill" %><br />
+				<% end -%>				
+			</div>
+			<div class="col-xs-6 col-sm-3 col-md-3 col-lg-2">
+				<%- if controller_name == 'companies' && action_name == 'index' %>
+				  <%= link_to "New Campaign", new_campaign_path, class: "btn btn-success btn-fill" %><br />
+				<% end -%>
+			</div>		
+		</div>
     </div>
 </div>                    
