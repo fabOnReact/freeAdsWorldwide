@@ -3,15 +3,12 @@
 ---------------- Task Done--------------------------------------
 ---------------- Task To Do-------------------------------------
 
-landing page text 
-maybe a video
-twitter, facebook page etc... email
-
 Complete the Campaign Views 
 Run specs
 Create the Run controller
 Create the Run views
 Add Turbolinks 5
+
 ---------------- Basic Info ------------------------------------
 There will be different marketing Campaigns
 - Paper Marketing will be the only one available for free
@@ -36,6 +33,14 @@ reputation points system with merit
 executing the ad run
 geolocation on mobile
 
+
+---------------- Later-------------------------------------
+
+maybe a video
+twitter, facebook page etc... email
+
+landing page
+fix the parallax on mobile 
 ---------------- Bugs--------------------------------------
 
 Capybara can not test the selection in the sign up so i disabled 
