@@ -6,9 +6,11 @@ class CampaignsController < ApplicationController
 
 	def new
 		@campaign = Campaign.new
+		@company = Company.find(params[:format])
 	end
 
 	def create 
+		#@company = Company.find(params[:format])
 		@campaign = Campaign.new(input_params)
 		if @campaign.save
 			flash[:notice] = "Your Campaign was saved"

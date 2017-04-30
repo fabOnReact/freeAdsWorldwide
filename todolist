@@ -4,6 +4,11 @@
 ---------------- Task To Do-------------------------------------
 
 Complete the Campaign Views 
+	problem. campaigns#new field target countries you either use json
+	in the database or a has_many contry_select or has_many countries
+
+	solution just use checkbox or button for worldwide europe asia australia america...
+
 Run specs
 Create the Run controller
 Create the Run views
