@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170426105022) do
+ActiveRecord::Schema.define(version: 20170501114621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,11 @@ ActiveRecord::Schema.define(version: 20170426105022) do
     t.datetime "updated_at",      null: false
     t.integer  "campaigntype_id"
     t.integer  "company_id"
+    t.boolean  "worldwide"
+    t.boolean  "america"
+    t.boolean  "europe"
+    t.boolean  "asia"
+    t.boolean  "oceania"
     t.index ["campaigntype_id"], name: "index_campaigns_on_campaigntype_id", using: :btree
   end
 
