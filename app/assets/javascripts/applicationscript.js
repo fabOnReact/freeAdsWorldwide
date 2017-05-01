@@ -11,6 +11,22 @@ ready = function() {
                 $(this).parents('li').addClass('active');
             }
         });
+
+    /*$(".first-icon").click(function () {
+    		$('').hide()
+    });*/
+
+    $('.checkboxes').hide();
+
+    $("label[for=campaign_worldwide_true] span.second-icon").click(function () {
+    		$('.checkboxes').hide();
+    		/*toggle("fold", 1000);*/
+    });
+
+    $("label[for=campaign_worldwide_false] span.second-icon").click(function () {
+    		$('.checkboxes').show();
+    		/*toggle("fold", 1000);*/
+    });
 }
 
 $(document).ready(ready);
