@@ -6,11 +6,10 @@ class CampaignsController < ApplicationController
 
 	def new
 		@campaign = Campaign.new
-		@company = Company.find(params[:format])
+		@company = Company.find(params[:format]) if params[:format].present?
 	end
 
 	def create 
-		#@company = Company.find(params[:format])
 		@campaign = Campaign.new(input_params)
 		if @campaign.save
 			flash[:notice] = "Your Campaign was saved"
@@ -59,7 +58,7 @@ class CampaignsController < ApplicationController
 	private
 
 	def input_params 
-		params.require(:campaign).permit(:name, :targetcountries, :campaigntype_id, :company_id)
+		params.require(:campaign).permit(:name,:campaigntype_id, :company_id, :worldwide, :america, :europe, :asia, :oceania)
 	end
 
 end

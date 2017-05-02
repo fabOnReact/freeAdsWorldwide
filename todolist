@@ -2,13 +2,6 @@
 ---------------- End--------------------------------------------
 ---------------- Task Done--------------------------------------
 ---------------- Task To Do-------------------------------------
-
-Complete the Campaign Views 
-	problem. campaigns#new field target countries you either use json
-	in the database or a has_many contry_select or has_many countries
-
-	solution just use checkbox or button for worldwide europe asia australia america...
-
 Run specs
 Create the Run controller
 Create the Run views
@@ -37,17 +30,13 @@ login with facebook
 reputation points system with merit
 executing the ad run
 geolocation on mobile
-
-
 ---------------- Later-------------------------------------
-
 maybe a video
 twitter, facebook page etc... email
 
 landing page
 fix the parallax on mobile 
 ---------------- Bugs--------------------------------------
-
 Capybara can not test the selection in the sign up so i disabled 
 the validation on the country select. fix it..
 

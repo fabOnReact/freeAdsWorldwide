@@ -25,7 +25,7 @@
                 </li>
                 <li class="" id="company">
                     <% if current_user != nil && current_user.companies.length > 0 %>
-                        <%= link_to companies_path, method: :get, id: "Account" do %>
+                        <%= link_to companies_path, method: :get, id: "Companies" do %>
                             <i class="pe-7s-culture"></i>
                             <p>Companies</p>
                         <% end %>
@@ -37,7 +37,7 @@
                     <% end %>
                 </li>                
                 <li class="">
-                    <%= link_to campaigns_path do %>
+                    <%= link_to campaigns_path, method: :get do %>
                         <i class="pe-7s-news-paper"></i>
                         <p>Campaigns</p>
                     <% end %>

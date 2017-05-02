@@ -11,12 +11,13 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery-ui
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require bootstrap-checkbox-radio-switch
 //= require chartist.min
 //= require bootstrap-notify
 //= require light-bootstrap-dashboard
 //= require applicationscript
+//= require turbolinks
