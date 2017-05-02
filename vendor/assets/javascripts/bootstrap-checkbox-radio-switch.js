@@ -18,8 +18,7 @@
     $el.before(this.options.template);    
     this.setState(); 
   }  
-   
-  , setState: function () {    
+     , setState: function () {    
       var $el = this.$element
         , $parent = $el.closest('.checkbox');
         
@@ -498,5 +497,3 @@
       $.error('Method ' + method + ' does not exist!');
   };
 }(jQuery);
-
-

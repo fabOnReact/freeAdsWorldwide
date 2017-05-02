@@ -23,9 +23,9 @@
                 <td><%= campaign.campaigntype.name %></td>
                 <td class="options col-sm-2 col-md-2">
                     <div class="btn-group">
-                     <%= link_to campaign_path(campaign.id), class: "btn btn-primary" do %><i class="fa fa-arrow-right" aria-hidden="true"></i><% end %>
-                     <%= link_to edit_campaign_path(campaign.id), class: "btn btn-success" do %><i class="fa fa-pencil" aria-hidden="true"></i><% end %>
-                     <%= link_to delete_campaign_path(campaign.id), class: "btn btn-danger" do %><i class="fa fa-trash-o" aria-hidden="true"></i><% end %>
+                     <%= link_to campaign_path(campaign.id), class: "btn btn-primary", method: :get do %><i class="fa fa-arrow-right" aria-hidden="true"></i><% end %>
+                     <%= link_to edit_campaign_path(campaign.id), class: "btn btn-success", method: :get do %><i class="fa fa-pencil" aria-hidden="true"></i><% end %>
+                     <%= link_to delete_campaign_path(campaign.id), class: "btn btn-danger", method: :get do %><i class="fa fa-trash-o" aria-hidden="true"></i><% end %>
                     </div>
                 </td>
             </tr>
