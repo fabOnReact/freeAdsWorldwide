@@ -1,4 +1,4 @@
-<% title "Create Company" %>
+<% title "Create Company" %> 
 <%= render "shared/partials/formheader" %>
         <div class="content">
             <%= simple_form_for @company do |f| %>
@@ -8,13 +8,38 @@
               <%= f.input :description, as: :text %>
               <%= f.input :website, ad: :url %>
 
-
+              <legend>Advertising Campaign</legend>
               <%= f.simple_fields_for @campaign do |c| %>
                 <%= c.input :name %>
-                <%= c.input :targetcountries %>
-                <%= c.association :campaigntype %>
-                <%= c.association :company %>
-              <% end %>
+                <%= c.input :worldwide, as: :radio_buttons,:input_html => { 'data-toggle' => "radio" }, wrapper_html: {id: 'worldwide'} %>
+                <div class="checkboxes">
+                  <div class="checkbox">
+                    <%= c.label :america %> 
+                    <%= c.check_box :america, { value: "0", 'data-toggle' => "checkbox"} %>
+                  </div> 
+                  <div class="checkbox">
+                    <%= c.label :europe %> 
+                    <%= c.check_box :europe, { value: "0", 'data-toggle' => "checkbox"} %>
+                  </div> 
+                  <div class="checkbox">
+                    <%= c.label :asia %> 
+                    <%= c.check_box :asia, { value: "0", 'data-toggle' => "checkbox"} %>
+                  </div> 
+                  <div class="checkbox">
+                    <%= c.label :oceania %> 
+                    <%= c.check_box :oceania, { value: "0", 'data-toggle' => "checkbox"} %>
+                  </div>                                                                  
+                </div>
+                <%= c.association :campaigntype, prompt: "Choose a Campaign type", class: "form-control" %>
+                <div class="form-group select required">
+                  <%= c.label :company_id %>
+                  <% if @company.present? %>
+                    <%= c.select(:company_id, current_user.companies.collect {|p| [ p.name, p.id ]}, {:selected => @company.id }, {:class => "form-control"}) %> 
+                  <% else %>
+                    <%= c.select(:company_id, current_user.companies.collect {|p| [ p.name, p.id ]}, {}, {:class => "form-control"}) %> 
+                  <% end %>                
+                </div> 
+              <% end %> <!-- end of simple fields for -->
 
               <% if current_user.companies.length > 0 %>
                   <%= link_to "Back", companies_path, class: "btn btn-primary btn-fill pull-left" %>
