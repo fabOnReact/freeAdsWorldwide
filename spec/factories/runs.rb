@@ -1,7 +1,13 @@
 FactoryGirl.define do
   factory :run do
-    campaign nil
-    runprintnumber 1
-    ownads 1
+	campaign
+	runprintnumber { Faker::Number.number(2) }
+	ownads { Faker::Number.number(2) }
+  end
+
+  factory :invalidrun, :parent => :run do
+  	campaign nil
+  	runprintnumber nil
+  	ownads nil
   end
 end
