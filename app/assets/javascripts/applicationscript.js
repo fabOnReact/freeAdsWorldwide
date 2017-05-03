@@ -30,6 +30,17 @@ var ready = function() {
     		$('.checkboxes').show();
     });
 
+    /* GET companies#new Managing Checkboxes Effects*/
+    
+    $("label[for=company_campaign_worldwide_true] span.second-icon").click(function () {
+            $('.checkboxes').hide();
+    });
+
+    $("label[for=company_campaign_worldwide_false] span.second-icon").click(function () {
+            $('.checkboxes').show();
+    });
+
+
     /* GET campaigns#index mobile 360px changing the buttons and removing group div*/
 
     if ($(window).width() < 390) { $("#btn-group").removeClass("btn-group"); }
