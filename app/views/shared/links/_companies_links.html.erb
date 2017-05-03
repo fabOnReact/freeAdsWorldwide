@@ -7,7 +7,7 @@
 				  <%= link_to "New Company", new_company_path, class: "btn btn-primary btn-fill" %><br />
 				<% end -%>
 				<%- if controller_name == 'companies' && action_name == 'show' %>
-				  <%= link_to "New Campaign", new_campaign_path(@company), method: :get %><br />
+				  <%= link_to "New Campaign", new_campaign_path(@company),class: "btn btn-primary btn-fill", method: :get %><br />
 				<% end -%>				
 			</div>
 			<div class="col-xs-6 col-sm-3 col-md-3 col-lg-2">

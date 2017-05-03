@@ -64,7 +64,6 @@ RSpec.describe CampaignsController, type: :controller do
 			end
 
 			it "creates a new campaign" do
-				#binding.pry
 				expect{ 
 					post :create, params: { campaign: build_attributes(:campaign) }
 				}.to change(Campaign, :count).by(1)
@@ -112,7 +111,6 @@ RSpec.describe CampaignsController, type: :controller do
 			end
 
 			it "changes @contact's attributes" do
-				#binding.pry
 				put :update, params: { id: @campaign, campaign: FactoryGirl.attributes_for(:campaign, name: "othercampaign")}
 				@campaign.reload
 				expect(@campaign.name).to eq("othercampaign")

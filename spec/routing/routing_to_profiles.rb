@@ -12,7 +12,8 @@ RSpec.describe "routing to profiles", :type => :routing do
 	context "logged in users" do
 		
 
-		it "verifying that request does not resolve in routing error" do 			expect(:get => "/").to_not raise_error(ActionController::RoutingError)
+		it "verifying that request does not resolve in routing error" do 			
+			expect(:get => "/").to_not raise_error(ActionController::RoutingError)
 		end
 
 	end

@@ -6,7 +6,7 @@ FactoryGirl.define do
   end
 
   factory :invalidrun, :parent => :run do
-  	campaign nil
+  	campaign
   	runprintnumber nil
   	ownads nil
   end

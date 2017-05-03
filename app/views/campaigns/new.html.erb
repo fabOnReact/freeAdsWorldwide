@@ -31,7 +31,7 @@
                   <%= f.select(:company_id, current_user.companies.collect {|p| [ p.name, p.id ]}, {}, {:class => "form-control"}) %> 
                 <% end %>                
               </div>
-              <%= link_to "Back", campaigns_path, class: "btn btn-primary btn-fill pull-left" %>
+              <%= link_to "Back", campaigns_path, class: "btn btn-primary btn-fill pull-left", method: :get %>
               <%= f.button :submit, class: "btn btn-info btn-fill pull-right" %>
               <div class="clearfix"></div>
             <% end %>

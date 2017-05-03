@@ -11,7 +11,7 @@ RSpec.describe Run, type: :model do
 			expect(run).to be_valid
 		end
 
-		it "is invalid without a name, runtype" do
+		it "is invalid without a runprintnumber, runtype" do
 			expect(invalidrun).to_not be_valid
 		end
 
@@ -35,8 +35,8 @@ RSpec.describe Run, type: :model do
 	describe "saving, updating and deleting" do
 
 		it "returns the run name as a string" do
-			run = FactoryGirl.create(:run, name: "FreeAdsWorldwide")
-			expect(run.name).to eql("FreeAdsWorldwide")
+			run = FactoryGirl.create(:run, runprintnumber: 10)
+			expect(run.runprintnumber).to eql(10)
 		end
 
 		it "should be an instance of Run" do
@@ -48,8 +48,8 @@ RSpec.describe Run, type: :model do
 		end
 
 		it "should correcly update" do
-			run.update_attributes(:name => "FreeAds")
-			expect(run.name).to eq("FreeAds")
+			run.update_attributes(:runprintnumber => 11)
+			expect(run.runprintnumber).to eq(11)
 		end
 
 		it "should correctly delete" do
@@ -61,25 +61,12 @@ RSpec.describe Run, type: :model do
 
 	describe "associations" do
 
-		it "should have one company" do
-			expect(run.company).to_not be_nil
+		it "should have one campaign" do
+			expect(run.campaign).to_not be_nil
 		end
-
-		it "should have one user through company"
-
-		it "should have one runtype" do
-			expect(run.runtype).to_not be_nil
-		end
-
-		it "should store correctly different countries" do
-			newrun = FactoryGirl.create(:run, targetcountries: "Italy")
-			expect(newrun.targetcountries).to eq("Italy")
-		end
-
-		it "should store correctly different countries array"
 
 	end
 
-	it { should belong_to(:run) }
+	it { should belong_to(:campaign) }
 
 end
