@@ -10,6 +10,7 @@ require 'pry-rails'
 require 'devise'
 require 'support/helpers/session_helpers'
 require 'support/helpers/controller_macros'
+require 'support/devise_support.rb'
 require 'faker'
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -66,11 +67,18 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, :type => :controller
   config.include Warden::Test::Helpers, :type => :controller
   config.extend ControllerMacros, :type => :controller
+  
   # Routing
   config.include Devise::Test, :type => :routing
   config.include Warden::Test::Helpers, :type => :routing
   config.extend ControllerMacros, :type => :routing
 
+  # Request
+  config.include ValidUserRequestHelper, :type => :request
+  #config.include Devise::Test, :type => :request
+  #config.include Warden::Test::Helpers, :type => :request
+  #config.extend ControllerMacros, :type => :request
+  
   # For Features with Session Helpers
   config.include Features::SessionHelpers, :type => :feature
 
