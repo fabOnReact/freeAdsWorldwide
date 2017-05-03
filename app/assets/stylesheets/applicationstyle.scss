@@ -38,8 +38,57 @@ label .field_with_errors {
 	background-image: url("https://s3.eu-central-1.amazonaws.com/freeads/sidebar-4.jpg")
 }
 
+/* GET campaigns#index */
+
+.flag {
+	height: 24px;
+}
+
+.flagsmall {
+	height: 31px;
+}
+
 /* GET campaigns#new */
 
 .new_campaign .checkbox {
 	color: #cccccc;
+}
+
+/* Media queries */ 
+
+@media (max-width: 940px) {
+	.flag {
+		height: 10px;
+	}
+
+	.flagsmall {
+		height: 14px;
+	}
+}
+
+@media (max-width: 767px) {
+	.table-responsive > .table > tbody > tr > td {
+		/* before no-wrap */
+		white-space: initial;
+	}
+
+	.table .btn {
+		padding: 11px 12px;
+		margin: 5px 5px;
+		float: right;
+	}
+}
+
+@media (max-width: 360px) {
+	.table-responsive > .table > tbody > tr > td {
+		white-space: initial;
+	}
+
+	.table .btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+	border-radius: 5px;
+	}
+
+	#display {
+		display: none;
+	}
 }

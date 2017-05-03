@@ -1,5 +1,6 @@
 var ready = function() {
 
+    /* Highlighting Navbar link as active */
     var url = window.location.pathname, // in real app this would have to be replaced with window.location.pathname 
         urlRegExp = new RegExp(url.replace(/\/$/,'')); // create regexp to match current url pathname and remove trailing slash if present as it could collide with the link in navigation in case trailing slash wasn't present there
     
@@ -10,6 +11,8 @@ var ready = function() {
                 $(this).parents('li').addClass('active');
             }
         });
+
+    /* GET campaigns#new Managing Checkboxes Effects*/
 
     $('.checkboxes').hide();
 
@@ -26,6 +29,10 @@ var ready = function() {
     $("label[for=campaign_worldwide_false] span.second-icon").click(function () {
     		$('.checkboxes').show();
     });
+
+    /* GET campaigns#index mobile 360px changing the buttons and removing group div*/
+
+    if ($(window).width() < 390) { $("#btn-group").removeClass("btn-group"); }
 
 }
 
