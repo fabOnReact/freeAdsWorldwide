@@ -1684,8 +1684,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de8e0009', e
   .landing-page .carousel{
     min-height: 210px;
   }
+
+  /* Editing - Remove float none !important */
+
   .footer nav.pull-left, .footer:not(.footer-big) nav > ul li, .pull-right {
-    float: none !important;
+    float: none;
   }
 }
 

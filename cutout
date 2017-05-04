@@ -1,1 +1,153 @@
-{ class: "btn btn-primary btn-fill",
+@media (max-width: 768px) {
+	
+	/* All */
+
+	.section {
+		padding-top: 0px;
+		padding-bottom: 0px;		
+	}
+
+
+	/* Presentation flexbox */
+
+	.landing-page .section-presentation .description {
+		margin-top: 0px;
+		padding-top: 0px;
+	}
+
+	.section-presentation .row .col-md-5 {
+		display: none;
+	}
+
+	/* Generic Flexbox*/ 
+
+	.section, .section .container, .section .container .row, .section .flexbox {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		justify-content: center;	
+		margin-bottom: 0px;	
+		text-align: center;
+	}
+	
+	/* Demo */
+
+	.section-demo {
+		background-color: #EEEEEE;
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
+
+	.demofeatures {
+		display: none;
+	}
+
+	.landing-page .section-demo .row:first-child {
+		margin-bottom: 0px;
+	}
+
+	.landing-page .section-demo {
+		margin-top: 0px;
+	}
+
+	.landing-page .section-demo h4, .landing-page .section-demo p {
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+
+
+	/* Features */ 
+
+	.landing-page .section-features .card {
+		min-height: initial;
+	}
+
+	/* no-padding but also the others */
+
+	.header-text {
+		line-height: 42px;
+	}
+	
+
+	/* Footer */
+	.footer nav.pull-left, .footer:not(.footer-big) nav > ul li, .pull-right {
+		float: right;
+	}
+}
+
+
+@media (max-width: 680px) {
+	/* Parallax */ 
+	
+	.parallax {
+		margin-top: 64px;
+	}
+
+	/* Presentation flexbox */
+
+	.landing-page .parallax .description {
+		margin-top: 0px;
+		padding-top: 0px;
+	}
+
+	/* Generic Flexbox*/ 
+
+	.parallax .flexbox, .parallax .container {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		justify-content: center;	
+		margin-bottom: 0px;	
+	}
+	
+}
+
+
+@media (max-width: 412px) {
+	/* Parallax for Nexus 5X */
+	
+	.landing-page .parallax {
+		height: 732px;
+	}
+
+	.parallax-background {
+		background-position: initial;
+	}
+
+	/* Clients for Nexus 5X */
+
+	.section.section-clients {
+		height: 732px;
+		padding-top: 0px;
+	}
+
+	/* Demo for Nexus 5X */
+
+	.section.section-no-padding {
+		display: none;
+	}
+
+	/* Demo for Nexus 5X */
+
+	#landingfooter {
+		display: none;
+	}
+	
+	/* Flexbox for Nexus 5X */
+
+	.section .flexbox {
+		display: flex;
+		flex-direction: column;
+		height: 732px;
+		justify-content: center;
+	}
+
+	/* Hiding text in Icons for Nexus 5X */
+	.mobile {
+		display: initial;
+	}
+
+	.desktop {
+		display: none;
+	}
+}
