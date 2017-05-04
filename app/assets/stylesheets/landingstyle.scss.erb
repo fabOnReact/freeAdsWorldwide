@@ -57,16 +57,169 @@ li img {
 
 /* Media Queries */
 
-@media (max-width: 622px) {
-	.wrapper .container .row {
-		display: flex;
-		flex-direction: column;
+/* Responsive Queries */
+
+@media (max-width: 1440px) {
+	/* Parallax */
+	.parallax-background {
+		background-position: initial;
 	}
 }
+
+@media (max-width: 768px) {
+	
+	/* All */
+
+	.section {
+		padding-top: 0px;
+		padding-bottom: 0px;		
+	}
+
+
+	/* Presentation flexbox */
+
+	.landing-page .section-presentation .description {
+		margin-top: 0px;
+		padding-top: 0px;
+	}
+
+	.section-presentation .row .col-md-5 {
+		display: none;
+	}
+
+	/* Generic Flexbox*/ 
+
+	.section, .section .container, .section .container .row, .section .flexbox {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		justify-content: center;	
+		margin-bottom: 0px;	
+		text-align: center;
+	}
+	
+	/* Demo */
+
+	.section-demo {
+		background-color: #EEEEEE;
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
+
+	.demofeatures {
+		display: none;
+	}
+
+	.landing-page .section-demo .row:first-child {
+		margin-bottom: 0px;
+	}
+
+	.landing-page .section-demo {
+		margin-top: 0px;
+	}
+
+	.landing-page .section-demo h4, .landing-page .section-demo p {
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+
+
+	/* Features */ 
+
+	.landing-page .section-features .card {
+		min-height: initial;
+	}
+
+	/* no-padding but also the others */
+
+	.header-text {
+		line-height: 42px;
+	}
+	
+
+	/* Footer */
+	.footer nav.pull-left, .footer:not(.footer-big) nav > ul li, .pull-right {
+		float: right;
+	}
+}
+
+
+@media (max-width: 680px) {
+	/* Parallax */ 
+	
+	.parallax {
+		margin-top: 64px;
+	}
+
+	/* Presentation flexbox */
+	.section {
+		padding-top: 0px;
+		padding-bottom: 0px;		
+	}
+
+	.landing-page .section-presentation .description, .landing-page .parallax .description {
+		margin-top: 0px;
+		padding-top: 0px;
+	}
+
+	/* Generic Flexbox*/ 
+
+	.section, .section .container, .section .container .row, .parallax .flexbox, .parallax .container, .section .flexbox {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		justify-content: center;	
+		margin-bottom: 0px;	
+	}
+	
+	/* Demo */
+
+	.section-demo {
+		background-color: #EEEEEE;
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
+
+	.demofeatures {
+		display: none;
+	}
+
+	.landing-page .section-demo .row:first-child {
+		margin-bottom: 0px;
+	}
+
+	.landing-page .section-demo {
+		margin-top: 0px;
+	}
+
+	.landing-page .section-demo h4, .landing-page .section-demo p {
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+
+
+	/* Features */ 
+
+	.landing-page .section-features .card {
+		min-height: initial;
+	}
+
+	/* no-padding but also the others */
+
+	.header-text {
+		line-height: 42px;
+	}
+}
+
+
+/* iPhone 6 Plus */
+
+/* iPad */
 
 /* iPhone 6 Plus */
 
 /* Nexus 5X */
+
 
 @media (max-width: 412px) {
 	/* Parallax for Nexus 5X */
@@ -75,21 +228,15 @@ li img {
 		height: 732px;
 	}
 
+	.parallax-background {
+		background-position: initial;
+	}
+
 	/* Clients for Nexus 5X */
 
 	.section.section-clients {
 		height: 732px;
 		padding-top: 0px;
-	}
-
-	.header-text {
-		line-height: 42px;
-	}
-
-	/* Demo for Nexus 5X */
-
-	.demofeatures {
-		display: none;
 	}
 
 	/* Demo for Nexus 5X */
@@ -106,7 +253,7 @@ li img {
 	
 	/* Flexbox for Nexus 5X */
 
-	.parallax .flexbox, .section .flexbox {
+	.section .flexbox {
 		display: flex;
 		flex-direction: column;
 		height: 732px;
@@ -137,46 +284,9 @@ li img {
 
 	.section.section-clients {
 		height: 640px;
-		padding-top: 0px;
 	}
-
-	.header-text {
-		line-height: 42px;
-	}
-
-	/* Demo for Galaxy S III */
-
-	.demofeatures {
-		display: none;
-	}
-
-	/* Demo for Galaxy S III */
-
-	.section.section-no-padding {
-		display: none;
-	}
-
-	/* Demo for Galaxy S III */
-
-	#landingfooter {
-		display: none;
-	}
-	
-	/* Flexbox for Galaxy S III */
 
 	.parallax .flexbox, .section .flexbox {
-		display: flex;
-		flex-direction: column;
 		height: 640px;
-		justify-content: center;
-	}
-
-	/* Hiding text in Icons for Galaxy S III */
-	.mobile {
-		display: initial;
-	}
-
-	.desktop {
-		display: none;
 	}
 }
