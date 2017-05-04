@@ -15,7 +15,7 @@
             	<td><%= company.name %></td>
             	<td class="hidden-xs"><%= company.companytype.name %></td>
             	<td><%= link_to company.website do %><i class="pe-7s-link"></i><% end %></td>
-                <td class="options col-sm-3 col-md-2">
+                <td class="options col-sm-3 col-md-3">
                     <div class="btn-group" id="btn-group">
                      <%= link_to company_path(company.id), class: "btn btn-primary", method: :get  do %>
                      <i class="fa fa-arrow-right" aria-hidden="true"></i>

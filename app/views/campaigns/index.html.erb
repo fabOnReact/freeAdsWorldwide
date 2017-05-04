@@ -19,16 +19,20 @@
                         <i class="fa fa-globe" aria-hidden="true"></i>
                     <% end %> 
                     <% if campaign.america %> 
-                        <img src="https://s3.eu-central-1.amazonaws.com/freeads/american-flag-2144392_640.png" class="flag">
+                        <%= image_tag "american-flag-2144392_640.png", class: "flag" %>
+                        <!--img src="https://s3.eu-central-1.amazonaws.com/freeads/american-flag-2144392_640.png" class="flag"-->
                     <% end %> 
                     <% if campaign.europe %>
-                        <img src="https://s3.eu-central-1.amazonaws.com/freeads/euro-flag-1776253_1920.jpg" class="flag">
+                        <%= image_tag "euro-flag-1776253_1920.jpg", class: "flag" %>
+                        <!--img src="https://s3.eu-central-1.amazonaws.com/freeads/euro-flag-1776253_1920.jpg" class="flag"-->
                     <% end %> 
                     <% if campaign.asia %>
-                        <img src="https://s3.eu-central-1.amazonaws.com/freeads/banner-2024824_640.png" class="flagsmall">
+                        <%= image_tag "banner-2024824_640.png", class: "flagsmall" %>
+                        <!--img src="https://s3.eu-central-1.amazonaws.com/freeads/banner-2024824_640.png" class="flagsmall"-->
                     <% end %>                     
                     <% if campaign.oceania %>
-                        <img src="https://s3.eu-central-1.amazonaws.com/freeads/australia-153732_640.png" class="flag">
+                        <%= image_tag "australia-153732_640.png", class: "flag" %>
+                        <!--img src="https://s3.eu-central-1.amazonaws.com/freeads/australia-153732_640.png" class="flag"-->
                     <% end %>                         
                 </td>
             	<td class="hidden-xs hidden-sm"><%= campaign.company.name %></td>
