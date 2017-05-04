@@ -4,7 +4,7 @@ class User < ApplicationRecord
   	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
  	has_and_belongs_to_many :companies
-
+ 	has_many :campaigns, through: :companies
  	validates_presence_of :country
  	def country_name
     	country = ISO3166::Country[country_code]
