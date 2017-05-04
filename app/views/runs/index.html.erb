@@ -1,73 +1,27 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Runs</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @runs.each do |run| %>
-      <tr>
-        <td><%= link_to 'Show', run %></td>
-        <td><%= link_to 'Edit', edit_run_path(run) %></td>
-        <td><%= link_to 'Destroy', run, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Run', new_run_path %>
-
-<% if @campaigns.length > 0 %>
+<% if @runs.length > 0 %>
 <% title "Your Runs" %>
 <%= render "shared/partials/formheader" %>
 <div class="content table-responsive table-full-width">
     <table class="table table-hover table-striped">
         <thead class="row">
-            <th class="col-xs-4">Name</th>
-          <th class="hidden-xs hidden-sm">Strategy</th>
-          <th class="hidden-xs hidden-sm">Company</th>
-            <th class="hidden-xs hidden-sm">Campaign</th>
-            <th class="options col-xs-8 col-sm-3 col-md-2">Options</th>
+          <th class="col-xs-1 col-md-1">Id</th>
+          <th class="hidden-xs">Campaign</th>
+          <th class="hidden-xs">Number of Ads</th>
+          <th class="hidden-xs hidden-sm">Your Ads</th>
+          <th class="options col-xs-8 col-sm-3 col-md-2">Options</th>
         </thead>
         <tbody class="row">
-            <% @campaigns.each do |campaign| %>
+            <% @runs.each do |run| %>
             <tr>
-              <td class="col-xs-4"><%= campaign.name %></td>
-              <td class="hidden-xs hidden-sm">
-                    <% if campaign.worldwide %>
-                        <i class="fa fa-globe" aria-hidden="true"></i>
-                    <% end %> 
-                    <% if campaign.america %> 
-                        <%= image_tag "american-flag-2144392_640.png", class: "flag" %>
-                        <!--img src="https://s3.eu-central-1.amazonaws.com/freeads/american-flag-2144392_640.png" class="flag"-->
-                    <% end %> 
-                    <% if campaign.europe %>
-                        <%= image_tag "euro-flag-1776253_1920.jpg", class: "flag" %>
-                        <!--img src="https://s3.eu-central-1.amazonaws.com/freeads/euro-flag-1776253_1920.jpg" class="flag"-->
-                    <% end %> 
-                    <% if campaign.asia %>
-                        <%= image_tag "banner-2024824_640.png", class: "flagsmall" %>
-                        <!--img src="https://s3.eu-central-1.amazonaws.com/freeads/banner-2024824_640.png" class="flagsmall"-->
-                    <% end %>                     
-                    <% if campaign.oceania %>
-                        <%= image_tag "australia-153732_640.png", class: "flag" %>
-                        <!--img src="https://s3.eu-central-1.amazonaws.com/freeads/australia-153732_640.png" class="flag"-->
-                    <% end %>                         
-                </td>
-              <td class="hidden-xs hidden-sm"><%= campaign.company.name %></td>
-                <td class="hidden-xs hidden-sm"><%= campaign.campaigntype.name %></td>
+              <td class="col-xs-1 col-md-1"><%= run.id %></td>
+              <td class="hidden-xs"><%= run.campaign.name %></td>
+                <td class="hidden-xs"><%= run.runprintnumber %></td>
+                <td class="hidden-xs hidden-sm"><%= run.ownads %></td>
                 <td class="options col-xs-8 col-sm-3 col-md-2">
                     <div class="btn-group" id="btn-group">
-                     <%= link_to campaign_path(campaign.id), class: "btn btn-primary", method: :get do %><i class="fa fa-arrow-right" aria-hidden="true"></i><% end %>
-                     <%= link_to edit_campaign_path(campaign.id), class: "btn btn-success", id: "display", method: :get do %><i class="fa fa-pencil" aria-hidden="true"></i><% end %>
-                     <%= link_to delete_campaign_path(campaign.id), class: "btn btn-danger", method: :get do %><i class="fa fa-trash-o" aria-hidden="true"></i><% end %>
+                     <%= link_to run_path(run.id), class: "btn btn-primary", method: :get do %><i class="fa fa-arrow-right" aria-hidden="true"></i><% end %>
+                     <%= link_to edit_run_path(run.id), class: "btn btn-success", id: "display", method: :get do %><i class="fa fa-pencil" aria-hidden="true"></i><% end %>
+                     <%= link_to delete_run_path(run.id), class: "btn btn-danger", method: :get do %><i class="fa fa-trash-o" aria-hidden="true"></i><% end %>
                     </div>
                 </td>
             </tr>
@@ -77,7 +31,7 @@
 
 </div>
 <%= render partial: "shared/partials/formfooter" %>
-<%= render partial: "shared/links/campaigns_links" %>
+<%= render partial: "shared/links/runs_links" %>
 <% else %>
-<%= render partial: "shared/links/campaigns_links" %>
+<%= render partial: "shared/links/runs_links" %>
 <% end %>

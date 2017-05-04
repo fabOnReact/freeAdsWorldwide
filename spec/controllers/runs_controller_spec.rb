@@ -77,9 +77,9 @@ RSpec.describe RunsController, type: :controller do
         expect(assigns(:run)).to be_persisted
       end
 
-      it "redirects to the created run" do
+      it "redirects to the index page" do
         post :create, params: {run: build_attributes(:run)}, session: valid_session
-        expect(response).to redirect_to(Run.last)
+        expect(response).to redirect_to(runs_path)
       end
     end
 
