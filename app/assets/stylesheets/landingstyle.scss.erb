@@ -150,21 +150,15 @@ li img {
 	.parallax {
 		margin-top: 64px;
 	}
-
-	/* Presentation flexbox */
-	.section {
-		padding-top: 0px;
-		padding-bottom: 0px;		
-	}
-
-	.landing-page .section-presentation .description, .landing-page .parallax .description {
+	
+	.landing-page .parallax .description {
 		margin-top: 0px;
 		padding-top: 0px;
 	}
 
 	/* Generic Flexbox*/ 
 
-	.section, .section .container, .section .container .row, .parallax .flexbox, .parallax .container, .section .flexbox {
+	 .parallax .flexbox, .parallax .container/*, .section .flexbox*/ {
 		display: flex;
 		flex-direction: column;
 		height: 100%;
@@ -172,60 +166,55 @@ li img {
 		margin-bottom: 0px;	
 	}
 	
-	/* Demo */
-
-	.section-demo {
-		background-color: #EEEEEE;
-		padding-top: 50px;
-		padding-bottom: 50px;
-	}
-
-	.demofeatures {
-		display: none;
-	}
-
-	.landing-page .section-demo .row:first-child {
-		margin-bottom: 0px;
-	}
-
-	.landing-page .section-demo {
-		margin-top: 0px;
-	}
-
-	.landing-page .section-demo h4, .landing-page .section-demo p {
-		margin-top: 0px;
-		margin-bottom: 0px;
-	}
-
-
-	/* Features */ 
-
-	.landing-page .section-features .card {
-		min-height: initial;
-	}
-
-	/* no-padding but also the others */
-
-	.header-text {
-		line-height: 42px;
-	}
 }
 
 
+/* iPhone 6 Plus iPad - OK */ 
+
+
 /* iPhone 6 Plus */
 
-/* iPad */
+@media (max-width: 414px) {
+	
+	/* Parallax */
 
-/* iPhone 6 Plus */
+	.landing-page .parallax {
+		height: 672px;
+	}	
 
-/* Nexus 5X */
+	/* Presentation */
 
+	.section, .landing-page .section-presentation {
+		height: 736px;
+	}	
+
+	/* Features */
+
+	.section-features {
+		height: 100%;
+	}
+	
+	/* No-Padding */
+
+	.landing-page .section-no-padding .parallax {
+		margin-top: 0px;
+		height: 736px;
+	}
+
+	/* Footer */
+	.footer {
+		display: none;
+	}
+
+}
+
+/* Nexus 5X 6P */
 
 @media (max-width: 412px) {
 	/* Parallax for Nexus 5X */
 	
 	.landing-page .parallax {
-		height: 732px;
+		height: 668px;
 	}
 
 	.parallax-background {
@@ -277,7 +266,7 @@ li img {
 	/* Parallax for Galaxy S III */
 	
 	.landing-page .parallax {
-		height: 640px;
+		height: 575px;
 	}
 
 	/* Clients for Galaxy S III */
