@@ -12,6 +12,10 @@
 	top: 90px;
 }
 
+.mobile {
+	display: none;
+}
+
 .parallax-background {
 	background-image: image_url('chicago-690364_1920.jpg');
 	background-size: cover;
@@ -57,5 +61,60 @@ li img {
 	.wrapper .container .row {
 		display: flex;
 		flex-direction: column;
+	}
+}
+
+@media (max-width: 360px) {
+	/* Parallax for Galaxy S III */
+	
+	.landing-page .parallax {
+		height: 640px;
+	}
+
+	/* Clients for Galaxy S III */
+
+	.section.section-clients {
+		height: 640px;
+		padding-top: 0px;
+	}
+
+	.header-text {
+		line-height: 42px;
+	}
+
+	/* Demo for Galaxy S III */
+
+	.demofeatures {
+		display: none;
+	}
+
+	/* Demo for Galaxy S III */
+
+	.secion.section-no-padding {
+		display: none;
+	}
+
+	/* Demo for Galaxy S III */
+
+	#landingfooter.footer {
+		display: none;
+	}
+	
+	/* Flexbox for Galaxy S III */
+
+	.parallax .flexbox, .section .flexbox {
+		display: flex;
+		flex-direction: column;
+		height: 640px;
+		justify-content: center;
+	}
+
+	/* Hiding text in Icons for Galaxy S III */
+	.mobile {
+		display: initial;
+	}
+
+	.desktop {
+		display: none;
 	}
 }
