@@ -1,5 +1,5 @@
 class RunsController < ApplicationController
-  before_action :set_run, only: [:show, :edit, :update, :destroy]
+  before_action :set_run, only: [:show, :edit, :update, :destroy, :delete]
 
   # GET /runs
   # GET /runs.json
@@ -28,8 +28,8 @@ class RunsController < ApplicationController
 
     respond_to do |format|
       if @run.save
-        format.html { redirect_to @run, notice: 'Run was successfully created.' }
-        format.json { render :show, status: :created, location: @run }
+        format.html { redirect_to runs_path, notice: 'Run was successfully created.' }
+        format.json { render :index, status: :created, location: @run }
       else
         format.html { render :new }
         format.json { render json: @run.errors, status: :unprocessable_entity }
@@ -49,6 +49,9 @@ class RunsController < ApplicationController
         format.json { render json: @run.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def delete
   end
 
   # DELETE /runs/1

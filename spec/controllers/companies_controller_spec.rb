@@ -234,7 +234,8 @@ RSpec.describe CompaniesController, type: :controller do
 		it "deletes the company without errors" do
 			expect{
 				delete :destroy, params: { id: @company }
-			}.to 
+			}.to change(Company, :count).by(-1)
+		end
 
 		it "redirects to companies#index" do
 			delete :destroy, params: { id: @company }
