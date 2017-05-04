@@ -2,14 +2,6 @@
 ---------------- End--------------------------------------------
 ---------------- Task Done--------------------------------------
 ---------------- Task To Do-------------------------------------
-
-Create the Run views
-	start with the index and then copy all the other views
-
-fix the title in companies#index
-
-fix bug companies destroy and other bugs
-
 ---------------- Basic Info ------------------------------------
 There will be different marketing Campaigns
 - Paper Marketing will be the only one available for free
@@ -53,6 +45,8 @@ The links in the sidebar are highlighted only when the
 url is exactly the same. Try fixing your js with Regex match
 
 Sometimes you can not click the menu sign
+
+fix bug companies destroy and other bugs
 
 ---------------- SHORTCUTS --------------------------------
 heroku run rails console

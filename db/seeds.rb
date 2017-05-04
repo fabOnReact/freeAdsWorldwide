@@ -8,11 +8,18 @@
 
 #user = User.create(:email => "fabrizio@email.com", :firstname => "Fabrizio", :lastname => "Bertoglio", :country => "IT", :city => "Torino",:password => "fabrizio", :password_confirmation => "fabrizio")
 #companytype = Companytype.create(:name => "startup")
+#campaigntype = Campaigntype.create(:name => "Paper Advertisement")
+
 companytype = Companytype.first
 user = User.last
+campaigntype = Campaigntype.last
+
+=begin
 company = Company.create(:name => "StartupAds", :title => "Free Advertisement Worldwide distribution", :description => "Free Advertisement Worldwide distribution", :website => "https://freeadsworldwide.herokuapp.com/", :companytype_id => companytype.id)
 user.companies << company
-campaigntype = Campaigntype.last
-#campaigntype = Campaigntype.create(:name => "Paper Advertisement")
 campaign = Campaign.create(:name => "Paper Advertisement Campaign", :targetcountries => "Italy", :campaigntype_id => campaigntype.id, :company_id => company.id)
+=end
 
+company = Company.create(:name => "BateringApps", :title => "Free Apps in exchange of accomodation", :description => "Free Apps in exchange of accomodation", :website => "https://barteringapps.herokuapp.com/", :companytype_id => companytype.id)
+user.companies << company
+campaign = Campaign.create(:name => "My test campaign", :campaigntype_id => campaigntype.id, :company_id => company.id, :worldwide => true)

@@ -3,6 +3,7 @@ require 'include_module_spec'
 
 RSpec.describe CompaniesController, type: :controller do
 	login_user
+	let(:companies_with_campaigns) { FactoryGirl.create(:companies_with_campaigns)}
 
 	describe "testing Helpers methods" do
 		it "should have a current_user" do
@@ -17,6 +18,8 @@ RSpec.describe CompaniesController, type: :controller do
 			get :index
 			expect(assigns[:companies]).to eq(@companies)
 		end
+
+		it "assigns all the campaigns to @campaigns" do
 
 		it "renders the index template" do
 			get :index
