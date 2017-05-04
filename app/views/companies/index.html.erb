@@ -5,7 +5,7 @@
     <table class="table table-hover table-striped">
         <thead>
             <th>Name</th>
-        	<th>Type</th>
+        	<th class="hidden-xs">Type</th>
         	<th>Website</th>
             <th class="options col-md-2">Options</th>
         </thead>
@@ -13,12 +13,19 @@
             <% @companies.each do |company| %>
             <tr>
             	<td><%= company.name %></td>
-            	<td><%= company.companytype.name %></td>
+            	<td class="hidden-xs"><%= company.companytype.name %></td>
             	<td><%= link_to company.website do %><i class="pe-7s-link"></i><% end %></td>
-                <td class="options col-sm-2 col-md-2">
-                    <div class="btn-group">
-                     <%= link_to company_path(company.id), class: "btn btn-primary" do %><i class="fa fa-arrow-right" aria-hidden="true"></i><% end %>
-                     <%= link_to edit_company_path(company.id), class: "btn btn-success" do %><i class="fa fa-pencil" aria-hidden="true"></i><% end %><%= link_to delete_company_path(company.id), class: "btn btn-danger" do %><i class="fa fa-trash-o" aria-hidden="true"></i><% end %>
+                <td class="options col-sm-3 col-md-2">
+                    <div class="btn-group" id="btn-group">
+                     <%= link_to company_path(company.id), class: "btn btn-primary", method: :get  do %>
+                     <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                     <% end %>
+                     <%= link_to edit_company_path(company.id), class: "btn btn-success", method: :get  do %>
+                     <i class="fa fa-pencil" aria-hidden="true"></i>
+                     <% end %>
+                     <%= link_to delete_company_path(company.id), class: "btn btn-danger", method: :get  do %>
+                     <i class="fa fa-trash-o" aria-hidden="true"></i>
+                     <% end %>
                     </div>
                 </td>
             </tr>
