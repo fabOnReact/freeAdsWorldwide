@@ -2,6 +2,7 @@ class CompaniesController < ApplicationController
 	def index
 		@companies = current_user.companies
 		@campaigns = current_user.campaigns
+		@runs = current_user.runs
 	end
 
 	def new

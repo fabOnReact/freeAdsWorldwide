@@ -8,12 +8,12 @@
         	<th class="hidden-xs hidden-sm">Strategy</th>
         	<th class="hidden-xs hidden-sm">Company</th>
             <th class="hidden-xs hidden-sm">Campaign</th>
-            <th class="options col-xs-8 col-sm-3 col-md-2">Options</th>
+            <th class="options col-xs-3 col-sm-3 col-md-2">Options</th>
         </thead>
         <tbody class="row">
             <% @campaigns.each do |campaign| %>
             <tr>
-            	<td class="col-xs-4"><%= campaign.name %></td>
+            	<td class="col-xs-9 col-sm-9 col-md-9"><%= campaign.name %></td>
             	<td class="hidden-xs hidden-sm">
                     <% if campaign.worldwide %>
                         <i class="fa fa-globe" aria-hidden="true"></i>
@@ -37,11 +37,12 @@
                 </td>
             	<td class="hidden-xs hidden-sm"><%= campaign.company.name %></td>
                 <td class="hidden-xs hidden-sm"><%= campaign.campaigntype.name %></td>
-                <td class="options col-xs-8 col-sm-3 col-md-2">
+                <td class="options  col-xs-3 col-sm-3 col-md-2">
                     <div class="btn-group" id="btn-group">
                      <%= link_to campaign_path(campaign.id), class: "btn btn-primary", method: :get do %><i class="fa fa-arrow-right" aria-hidden="true"></i><% end %>
                      <%= link_to edit_campaign_path(campaign.id), class: "btn btn-success", id: "display", method: :get do %><i class="fa fa-pencil" aria-hidden="true"></i><% end %>
                      <%= link_to delete_campaign_path(campaign.id), class: "btn btn-danger", method: :get do %><i class="fa fa-trash-o" aria-hidden="true"></i><% end %>
+                     <%= link_to new_run_path(campaign.id), class: "btn btn-primary", method: :get do %><i class="fa fa-print" aria-hidden="true"></i><% end %>                     
                     </div>
                 </td>
             </tr>

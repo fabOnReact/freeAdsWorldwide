@@ -1,8 +1,18 @@
 ---------------- Notes------------------------------------------
 ---------------- End--------------------------------------------
 ---------------- Task Done--------------------------------------
+I just added the campaigns in the company index and also added
+the relationship user :has_many :campaigns, but did not do the
+companies#index controller and model test .. 
 ---------------- Task To Do-------------------------------------
+Ingrandire l'icona worldwide
 ---------------- Basic Info ------------------------------------
+
+	users  
+						runs
+	campaigns 
+
+
 There will be different marketing Campaigns
 - Paper Marketing will be the only one available for free
 - other will be available for preorder

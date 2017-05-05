@@ -1,6 +1,6 @@
 <% if @runs.length > 0 %>
-<% title "Your Runs" %>
-<%= render "shared/partials/formheader" %>
+<% paragraph "Print Orders" if controller_name == "runs" || controller_name == "companies" %>
+<%= render "shared/partials/formparagraph" %>
 <div class="content table-responsive table-full-width">
     <table class="table table-hover table-striped">
         <thead class="row">
