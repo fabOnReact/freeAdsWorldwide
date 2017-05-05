@@ -1,5 +1,8 @@
-<% title "Create Company" %> 
+<% header("companies","Create Company") %>
 <%= render "shared/partials/formheader" %>
+<div class="header">
+    <h4 class="title"><%= yield(:companies) %></h4>
+</div>  
 <div class="content">
     <%= simple_form_for @company do |f| %>
       <%= f.input :name %>

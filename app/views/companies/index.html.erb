@@ -1,6 +1,9 @@
 <% if @companies.length > 0 %>
-<% title "Your Companies" if controller_name == "companies" %>
+<% header("companies","Your Companies") %>
 <%= render "shared/partials/formheader" %>
+<div class="header">
+    <h4 class="title"><%= yield(:companies) %></h4>
+</div>  
 <div class="content table-responsive table-full-width">
     <table class="table table-hover table-striped">
         <thead class="row">
