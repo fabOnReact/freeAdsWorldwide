@@ -3,6 +3,10 @@
 ---------------- Task Done--------------------------------------
 ---------------- Task To Do-------------------------------------
 
+globalize 
+it will show the translated version for their locale and do a fallback
+
+
 Dopo di cui devi gestire il print button e magari segnarti quelle
 che sono state stampate e quelle che sono ancora da stampare
 
