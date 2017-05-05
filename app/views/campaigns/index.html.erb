@@ -1,6 +1,9 @@
 <% if @campaigns.length > 0 %>
-<% subtitle "Your Campaigns" %>
+<% header("campaigns","Your Campaigns") %>
 <%= render "shared/partials/formsubheader" %>
+<div class="header">
+    <h4 class="title"><%= yield(:campaigns) %></h4>
+</div>              
 <div class="content table-responsive table-full-width">
     <table class="table table-hover table-striped">
         <thead class="row">
@@ -16,7 +19,7 @@
             	<td class="col-xs-9 col-sm-9 col-md-3"><%= campaign.name %></td>
             	<td class="hidden-xs hidden-sm col-md-3">
                     <% if campaign.worldwide %>
-                        <i class="fa fa-globe" aria-hidden="true"></i>
+                        <i class="fa fa-globe fa-2x" aria-hidden="true"></i>
                     <% end %> 
                     <% if campaign.america %> 
                         <%= image_tag "american-flag-2144392_640.png", class: "flag" %>

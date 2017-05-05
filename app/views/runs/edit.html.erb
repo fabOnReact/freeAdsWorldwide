@@ -1,13 +1,16 @@
-<% title "Edit Print Settings" %>
+<% header("runs","Edit Print Settings") %>
 <%= render "shared/partials/formheader" %>
-        <div class="content">
-            <%= simple_form_for @run do |f| %>
-              <%= f.association :campaign %>
-              <%= f.input :runprintnumber %>
-              <%= f.input :ownads %>
-              <%= link_to "Back", runs_path, class: "btn btn-primary btn-fill pull-left", method: :get %>
-              <%= f.button :submit, class: "btn btn-info btn-fill pull-right" %>
-              <div class="clearfix"></div>
-            <% end %>
-        </div>
+<div class="header">
+    <h4 class="title"><%= yield(:runs) %></h4>
+</div>            
+<div class="content">
+    <%= simple_form_for @run do |f| %>
+      <%= f.association :campaign %>
+      <%= f.input :runprintnumber %>
+      <%= f.input :ownads %>
+      <%= link_to "Back", runs_path, class: "btn btn-primary btn-fill pull-left", method: :get %>
+      <%= f.button :submit, class: "btn btn-info btn-fill pull-right" %>
+      <div class="clearfix"></div>
+    <% end %>
+</div>
 <%= render partial: "shared/partials/formfooter" %>

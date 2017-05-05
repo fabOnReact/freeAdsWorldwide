@@ -1,29 +1,14 @@
 ---------------- Notes------------------------------------------
 ---------------- End--------------------------------------------
 ---------------- Task Done--------------------------------------
-I just added the campaigns in the company index and also added
-the relationship user :has_many :campaigns, but did not do the
-companies#index controller and model test .. 
 ---------------- Task To Do-------------------------------------
-Ingrandire l'icona worldwide
----------------- Basic Info ------------------------------------
 
-	users  
-						runs
-	campaigns 
+Dopo di cui devi gestire il print button e magari segnarti quelle
+che sono state stampate e quelle che sono ancora da stampare
 
+Solo una run all volta se no la run deve essere cancellata quindi
+validazione di unicita e campo printed/completed
 
-There will be different marketing Campaigns
-- Paper Marketing will be the only one available for free
-- other will be available for preorder
-
-The dashboard will show all the locations available in a list and the Campaigns.
-It will show Marketing Campaign Data (secondary, develop later). If absent it will show some data about the Cities and App Stats
-Hear the user can configure Marketing Campaign Settings and Preferences
-	- which city/countries to target 
-	- run settings, how many ads they want to print in their own city and how many they want to send globally
-	- print run botton, settings will come up and the user need to choose how many ads to print in this run
-	
 ---------------- Next Task --------------------------------
 companies fields will be translated in different languages
 		  website translated in qr code.
@@ -35,6 +20,13 @@ login with facebook
 reputation points system with merit
 executing the ad run
 geolocation on mobile
+---------------- Basic Info ------------------------------------
+The dashboard will show all the locations available in a list and the Campaigns.
+It will show Marketing Campaign Data (secondary, develop later). If absent it will show some data about the Cities and App Stats
+Hear the user can configure Marketing Campaign Settings and Preferences
+	- which city/countries to target 
+	- run settings, how many ads they want to print in their own city and how many they want to send globally
+	- print run botton, settings will come up and the user need to choose how many ads to print in this run
 ---------------- Later-------------------------------------
 maybe a video
 twitter, facebook page etc... email

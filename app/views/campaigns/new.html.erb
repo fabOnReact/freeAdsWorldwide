@@ -1,5 +1,8 @@
-<% title "Create Campaign" %>
+<% header("campaigns","New Campaign") %>
 <%= render "shared/partials/formheader" %>
+<div class="header">
+    <h4 class="title"><%= yield(:campaigns) %></h4>
+</div>              
         <div class="content">
             <%= simple_form_for @campaign do |f| %>
               <%= f.input :name %>
