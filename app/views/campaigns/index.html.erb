@@ -4,17 +4,17 @@
 <div class="content table-responsive table-full-width">
     <table class="table table-hover table-striped">
         <thead class="row">
-            <th class="col-xs-4">Name</th>
-        	<th class="hidden-xs hidden-sm">Strategy</th>
-        	<th class="hidden-xs hidden-sm">Company</th>
-            <th class="hidden-xs hidden-sm">Campaign</th>
+            <th class="col-xs-4 col-md-3">Name</th>
+        	<th class="hidden-xs hidden-sm col-md-3">Strategy</th>
+        	<th class="hidden-xs hidden-sm col-md-2">Company</th>
+            <th class="hidden-xs hidden-sm col-md-2">Campaign</th>
             <th class="options col-xs-3 col-sm-3 col-md-2">Options</th>
         </thead>
         <tbody class="row">
             <% @campaigns.each do |campaign| %>
             <tr>
-            	<td class="col-xs-9 col-sm-9 col-md-9"><%= campaign.name %></td>
-            	<td class="hidden-xs hidden-sm">
+            	<td class="col-xs-9 col-sm-9 col-md-3"><%= campaign.name %></td>
+            	<td class="hidden-xs hidden-sm col-md-3">
                     <% if campaign.worldwide %>
                         <i class="fa fa-globe" aria-hidden="true"></i>
                     <% end %> 
@@ -35,8 +35,8 @@
                         <!--img src="https://s3.eu-central-1.amazonaws.com/freeads/australia-153732_640.png" class="flag"-->
                     <% end %>                         
                 </td>
-            	<td class="hidden-xs hidden-sm"><%= campaign.company.name %></td>
-                <td class="hidden-xs hidden-sm"><%= campaign.campaigntype.name %></td>
+            	<td class="hidden-xs hidden-sm col-md-2"><%= campaign.company.name %></td>
+                <td class="hidden-xs hidden-sm col-md-2"><%= campaign.campaigntype.name %></td>
                 <td class="options  col-xs-3 col-sm-3 col-md-2">
                     <div class="btn-group" id="btn-group">
                      <%= link_to campaign_path(campaign.id), class: "btn btn-primary", method: :get do %><i class="fa fa-arrow-right" aria-hidden="true"></i><% end %>

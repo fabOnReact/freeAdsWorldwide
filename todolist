@@ -58,6 +58,9 @@ Sometimes you can not click the menu sign
 
 fix bug companies destroy and other bugs
 
+improve content_for right now you should find a way to include h4
+in the formheader and pass a variable for the yield()
+
 ---------------- SHORTCUTS --------------------------------
 heroku run rails console
 heroku pg:psql per accedere al database produzione
