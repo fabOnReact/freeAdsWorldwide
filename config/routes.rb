@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :ads
   resources :runs
 	devise_for :users
 	resources :companies, :companytypes, :campaigns
