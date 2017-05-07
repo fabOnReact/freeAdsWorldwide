@@ -41,6 +41,7 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = false
+  host = 'www.growstarups.xyz'
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
@@ -85,5 +86,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Devise
-    config.action_mailer.default_url_options = { host: 'https://growstarups.xyz'}
+    config.action_mailer.default_url_options = { host: 'http://growstarups.xyz'}
 end
