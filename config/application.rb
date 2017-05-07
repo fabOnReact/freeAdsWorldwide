@@ -25,7 +25,7 @@ module FreeAdsWorldwide
     	g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
 
-    config.force_ssl = true
+    #config.force_ssl = true
     
   end
 end
