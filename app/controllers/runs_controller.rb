@@ -29,7 +29,7 @@ class RunsController < ApplicationController
     respond_to do |format|
       if @run.save
         
-        createAds
+        #createAds
 
         end
         format.html { redirect_to runs_path, notice: 'Run was successfully created.' }
@@ -40,7 +40,7 @@ class RunsController < ApplicationController
       end
     end
   end
-
+=begin
   def createAds
     # creating your own ads for that run
     @run.ownads.times
@@ -56,7 +56,7 @@ class RunsController < ApplicationController
       # add field for taking count of this number of adds in the campaing.adsreceived
     end
   end
-
+=end
 
   # PATCH/PUT /runs/1
   # PATCH/PUT /runs/1.json
