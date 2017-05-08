@@ -3,12 +3,23 @@
 ---------------- Task Done--------------------------------------
 ---------------- Task To Do-------------------------------------
 
-Create an Ad(automatic) -> Generate an ad ID -> create a Qr Code with
-url/ads/:id 
-Visit the Ad urs/ads/:id 
-redirect to the website
+Create an Ad(automatic) -> Generate an ad ID -> create a Qr Code
 
-test this feature
+you need to build a mechanism to fill the runs with Ads based on 
+some criteria
+
+run is created and saved
+I need to fill it with n Ads and select the ones from users that 
+have most visits
+
+criterias:
+1. campaigntype_id = @run.campaigntype_id
+2. company_id != @run.company_id
+
+1. Campaign.givenvisits Decreasing order 
+2. Number of Run status printed/completed/archived Decreasing order
+3. Campaigns.adsreceived Increasing order
+
 
 
 Prawn – the user will be able to download it, I will flag it as 

@@ -19,7 +19,7 @@ RSpec.describe CompaniesController, type: :controller do
 			expect(assigns[:companies]).to eq(@companies)
 		end
 
-		it "assigns all the campaigns to @campaigns" do
+		it "assigns all the campaigns to @campaigns"
 
 		it "renders the index template" do
 			get :index
@@ -99,7 +99,7 @@ RSpec.describe CompaniesController, type: :controller do
 
 		describe "nested attributes" do
 
-			before do
+			before(:all) do
 				company = FactoryGirl.build(:company).attributes
 				campaigns = { campaigns_attributes: { "#{rand(903814893)}"=> FactoryGirl.build(:campaign).attributes} }
 				@valid_attributes = company.merge(campaigns)
@@ -113,14 +113,14 @@ RSpec.describe CompaniesController, type: :controller do
 				end
 
 				it "should save the campaign" do
-					expect{ 
+					expect { 
 						post :create, 
 						params: { company: build_attributes(:company), campaign: build_attributes(:campaign) }
 						}.to change(Campaign, :count).by(1)
 				end
 
 				it "should save the company" do
-					expect{
+					expect {
 						post :create, 
 						params: { company: build_attributes(:company), campaign: build_attributes(:campaign) }
 						}.to change(Company, :count).by(2)
@@ -146,7 +146,7 @@ RSpec.describe CompaniesController, type: :controller do
 
 
 	describe "PUT #update" do 
-		before :each do
+		before(:each) do
 			@company = FactoryGirl.create(:company, name: "testcompany")
 		end
 
@@ -194,7 +194,9 @@ RSpec.describe CompaniesController, type: :controller do
 	end
 
 	describe "GET #show" do 
-		before(:each) { @company = FactoryGirl.create(:company) }
+		before(:each) do
+		 @company = FactoryGirl.create(:company) 
+		end
 		it "will render the show template" do
 			get :show, params: { id: @company}
 			expect(response.body).to render_template "show"
