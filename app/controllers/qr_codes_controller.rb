@@ -4,7 +4,7 @@ class QrCodesController < ApplicationController
 
   def create
   	@ad = Ad.last
-  	qrcode = 'http://www.growstartups.com/ads/' + @ad.id.to_s
+  	qrcode = 'http://www.growstartups.xyz/ads/' + @ad.id.to_s
   	@qr = RQRCode::QRCode.new( qrcode, size: 4)
   end
 
