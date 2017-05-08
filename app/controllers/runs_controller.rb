@@ -28,6 +28,19 @@ class RunsController < ApplicationController
 
     respond_to do |format|
       if @run.save
+        
+        # creating your own ads for that run
+        @run.ownads.each do |ownad|
+          Ad.create(:company_id => @run.campaign.company, :run_id => @run.id, :selfpromotion => true)
+        end
+
+        # creating other people ads for that run
+        otherads = @run.runprintnumber - @run.ownads
+        otherads.times do
+          campaigns = Campaign.where.not(:company_id => run_params.company_id).rewhere(:campaigntype_id => @run.campaign.campaigntype_id).order(:created_at)
+          
+          Ad.create(:company_id => , :run_id => @run.id, :selfpromotion => false)
+        end
         format.html { redirect_to runs_path, notice: 'Run was successfully created.' }
         format.json { render :index, status: :created, location: @run }
       else

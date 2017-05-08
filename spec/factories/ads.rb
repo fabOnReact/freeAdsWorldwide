@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :ad do
-    company nil
-    run nil
+  	visits nil
+    company
+    run 
   end
 end

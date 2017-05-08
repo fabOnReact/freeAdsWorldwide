@@ -3,8 +3,7 @@ FactoryGirl.define do
     name { Faker::Company.name }
     targetcountries { Faker::Address.country }
     campaigntype 
-    company
-  
+    company  
 
     factory :campaign_with_runs do
 

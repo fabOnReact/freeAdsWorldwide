@@ -11,14 +11,8 @@ class AdsController < ApplicationController
   # GET /ads/1
   # GET /ads/1.json
   def show
-    #binding.pry
-    if @ad.visits.nil?
-      @ad.visits = 1
-      @ad.save
-    else
-      @ad.visits += 1
-      @ad.save
-    end
+    Ad.visits(@ad)
+    Campaign.visits(@ad)
     redirect_to @ad.company.website
   end
 

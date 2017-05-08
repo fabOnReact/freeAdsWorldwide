@@ -14,6 +14,7 @@ RSpec.describe QrCodesController, type: :controller do
       get :create
       expect(response).to have_http_status(:success)
     end
+
   end
 
 end
