@@ -16,7 +16,7 @@ criterias:
 1. campaigntype_id = @run.campaigntype_id
 2. company_id != @run.company_id
 
-Everybody start with Campaign Ratio = 1
+Everybody start with Campaign Ratio = 1 then they can go over or under 1
 
 1. Campaign.givenvisits/obtained visits Decreasing order if adsreceived is not too high
 2. Number of Run status printed/completed/archived Decreasing order
@@ -30,6 +30,8 @@ printed and if needed he can download it again. Pop up alert saying
 that he should do this run only once, not more.. he will not get 
 more ads distributed worldwide otherwise. 
 Add status to Run and other infos
+
+write proc file to improve performance and workers etc..
 
 ---------------- Next Task --------------------------------
 
