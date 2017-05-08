@@ -4,6 +4,9 @@ FactoryGirl.define do
     targetcountries { Faker::Address.country }
     campaigntype 
     company  
+    givenvisits 1
+    obtainedvisits 1
+    visitratio 1
 
     factory :campaign_with_runs do
 

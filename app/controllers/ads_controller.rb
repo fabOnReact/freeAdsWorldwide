@@ -29,7 +29,7 @@ class AdsController < ApplicationController
   # POST /ads.json
   def create
     @ad = Ad.new(ad_params)
-
+    @ad.visits = 1
     respond_to do |format|
       if @ad.save
         #qrcode = 'http://www.growstartups.com/ads/' + @ad.id
