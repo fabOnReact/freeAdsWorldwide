@@ -54,6 +54,28 @@ label .field_with_errors {
 	color: #cccccc;
 }
 
+/* POST qrcodes#create */
+
+table.qr-code {
+  border-width: 0;
+  border-style: none;
+  border-color: #0000ff;
+  border-collapse: collapse;
+}
+table.qr-code td {
+  border-width: 0;
+  border-style: none;
+  border-color: #0000ff;
+  border-collapse: collapse;
+  padding: 0;
+  margin: 0;
+  width: 15px;
+  height: 15px;
+}
+table.qr-code td.black { background-color: #000; }
+table.qr-code td.white { background-color: #fff; }
+
+
 /* Media queries */ 
 
 @media (max-width: 940px) {

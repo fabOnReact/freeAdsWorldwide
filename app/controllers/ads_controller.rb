@@ -10,6 +10,15 @@ class AdsController < ApplicationController
   # GET /ads/1
   # GET /ads/1.json
   def show
+    #binding.pry
+    if @ad.visits.nil?
+      @ad.visits = 1
+      @ad.save
+    else
+      @ad.visits += 1
+      @ad.save
+    end
+    redirect_to @ad.company.website
   end
 
   # GET /ads/new
@@ -28,8 +37,11 @@ class AdsController < ApplicationController
 
     respond_to do |format|
       if @ad.save
-        format.html { redirect_to @ad, notice: 'Ad was successfully created.' }
-        format.json { render :show, status: :created, location: @ad }
+        #qrcode = 'http://www.growstartups.com/ads/' + @ad.id
+        #if @qr = RQRCode::QRCode.new(qrcode, size: 4)
+          format.html { redirect_to @ad, notice: 'Ad was successfully created.' }
+          format.json { render :show, status: :created, location: @ad }
+        #end
       else
         format.html { render :new }
         format.json { render json: @ad.errors, status: :unprocessable_entity }
