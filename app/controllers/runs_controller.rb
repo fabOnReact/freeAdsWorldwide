@@ -31,7 +31,7 @@ class RunsController < ApplicationController
         
         #createAds
 
-        end
+        #end
         format.html { redirect_to runs_path, notice: 'Run was successfully created.' }
         format.json { render :index, status: :created, location: @run }
       else
