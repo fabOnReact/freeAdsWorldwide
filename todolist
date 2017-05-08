@@ -3,25 +3,19 @@
 ---------------- Task Done--------------------------------------
 ---------------- Task To Do-------------------------------------
 
-qr code printing, the url needs to be my website plus a code. 
-Will be the ad identifier
+Create an Ad(automatic) -> Generate an ad ID -> create a Qr Code with
+url/ads/:id 
+Visit the Ad urs/ads/:id 
+redirect to the website
+
+test this feature
+
+
 Prawn – the user will be able to download it, I will flag it as 
 printed and if needed he can download it again. Pop up alert saying 
 that he should do this run only once, not more.. he will not get 
 more ads distributed worldwide otherwise. 
 Add status to Run and other infos
-
-chiamare godaddy per capire come risolvere il problema di ssl
-
-Milano
-+39 02 9475 6520
-9:00 - 19:00, lun-ven
-Napoli
-+39 08 1189 21267
-9:00 - 19:00, lun-ven
-Roma
-+39 06 9480 6018
-9:00 - 19:00, lun-ven
 
 ---------------- Next Task --------------------------------
 
