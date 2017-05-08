@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :ad do
-  	visits nil
+  	visits 1
     company
     run 
+    selfpromotion false
   end
 end

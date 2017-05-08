@@ -16,6 +16,9 @@ class Campaign < ApplicationRecord
 			campaign.givenvisits += 1
 		end
 		campaign.save
+		campaign.reload
+		campaign.visitratio = campaign.givenvisits / campaign.obtainedvisits 
+		campaign.save
 	end	
 
 end

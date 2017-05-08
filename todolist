@@ -16,9 +16,12 @@ criterias:
 1. campaigntype_id = @run.campaigntype_id
 2. company_id != @run.company_id
 
-1. Campaign.givenvisits Decreasing order 
+Everybody start with Campaign Ratio = 1
+
+1. Campaign.givenvisits/obtained visits Decreasing order if adsreceived is not too high
 2. Number of Run status printed/completed/archived Decreasing order
 3. Campaigns.adsreceived Increasing order
+4. Created at 
 
 
 

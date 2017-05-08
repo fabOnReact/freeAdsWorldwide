@@ -3,11 +3,7 @@ class Ad < ApplicationRecord
   belongs_to :run
 
   def self.visits(ad)
-	if ad.visits.nil?
-      ad.visits = 1
-    else
-      ad.visits += 1
-    end
+	ad.visits += 1
     ad.save
   end
 end

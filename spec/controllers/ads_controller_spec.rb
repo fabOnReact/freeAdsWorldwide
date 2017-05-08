@@ -47,11 +47,25 @@ RSpec.describe AdsController, type: :controller do
       expect(assigns(:ad)).to eq(ad)
     end
 
-    it "increses the @ads.visits" do
+    it "increases the @ads.visits" do
       get :show, params: {id: ad.to_param}, session: valid_session
       ad.reload
-      expect(ad.visits).to eq(1)
+      expect(ad.visits).to eq(2)
     end
+
+    it "increases the @campaign.visits" do
+      get :show, params: {id: ad.to_param}, session: valid_session
+      ad.reload
+      expect(ad.run.campaign.givenvisits).to eq(2)
+    end
+
+    it "changes the visitsratio" do
+      get :show, params: {id: ad.to_param}, session: valid_session
+      ad.reload
+      expect(ad.run.campaign.givenvisits).to eq(2)
+      expect(ad.run.campaign.visitratio).to eq(2)
+    end
+
   end
 
   describe "GET #new" do
