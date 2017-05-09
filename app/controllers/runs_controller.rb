@@ -40,7 +40,7 @@ class RunsController < ApplicationController
       end
     end
   end
-=begin
+
   def createAds
     # creating your own ads for that run
     @run.ownads.times
@@ -48,15 +48,34 @@ class RunsController < ApplicationController
     end
 
     # creating other people ads for that run
-    (@run.runprintnumber - @run.ownads).times do
+    # 70% based on visit ratio -> firstgroup
+    firstgroup = [(@run.runprintnumber - @run.ownads)*0.70].round
+
+    firstgroup.times do
+
+      # I filter out the company of the owner and filter by campaign type
       campaigns = Campaign.where.not(:company_id => run_params.company_id).rewhere(:campaigntype_id => @run.campaign.campaigntype_id).order(:created_at)
-      # you calculated the visitratio, use it to order the campaigns
-      campaigns.order(:visitratio).reverse_order
+      # I filter only campaigns that already have a run with status completed
+      campaigns = campaigns.joins(:runs).where('runs.status' => "completed")
+      # I calculated the visitsratio every time an Ad is visited at ads#show
+      # I order based on the visit ration, created at and also ads received
+      campaigns.order(visitratio: :desc, ads_received: :asc, created_at: :asc)   
+      # I filter the first group from campaigns
+      if firstgroup.odd?
+        campaigns = campaigns.limit(firstgroup)
+      # Now I create 2 ads for everyone of those 
       Ad.create(:company_id => , :run_id => @run.id, :selfpromotion => false)
-      # add field for taking count of this number of adds in the campaing.adsreceived
+
+    end
+
+    # 30% based on the number of Ads received
+    secondgroup.times do
+
+    # add field for taking count of this number of adds in the campaing.adsreceived
+    
     end
   end
-=end
+
 
   # PATCH/PUT /runs/1
   # PATCH/PUT /runs/1.json
