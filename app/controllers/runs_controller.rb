@@ -10,11 +10,13 @@ class RunsController < ApplicationController
   # GET /runs/1
   # GET /runs/1.json
   def show
+    @ads = @run.ads
   end
 
   # GET /runs/new
   def new
     @run = Run.new
+    @campaign = Campaign.find(params[:format]) if params[:format].present?
   end
 
   # GET /runs/1/edit
@@ -25,13 +27,9 @@ class RunsController < ApplicationController
   # POST /runs.json
   def create
     @run = Run.new(run_params)
-
     respond_to do |format|
       if @run.save
-        
-        #createAds
-
-        #end
+        Run.createAds(@run)
         format.html { redirect_to runs_path, notice: 'Run was successfully created.' }
         format.json { render :index, status: :created, location: @run }
       else
@@ -40,42 +38,6 @@ class RunsController < ApplicationController
       end
     end
   end
-
-  def createAds
-    # creating your own ads for that run
-    @run.ownads.times
-      Ad.create(:company_id => @run.campaign.company, :run_id => @run.id, :selfpromotion => true)
-    end
-
-    # creating other people ads for that run
-    # 70% based on visit ratio -> firstgroup
-    firstgroup = [(@run.runprintnumber - @run.ownads)*0.70].round
-
-    firstgroup.times do
-
-      # I filter out the company of the owner and filter by campaign type
-      campaigns = Campaign.where.not(:company_id => run_params.company_id).rewhere(:campaigntype_id => @run.campaign.campaigntype_id).order(:created_at)
-      # I filter only campaigns that already have a run with status completed
-      campaigns = campaigns.joins(:runs).where('runs.status' => "completed")
-      # I calculated the visitsratio every time an Ad is visited at ads#show
-      # I order based on the visit ration, created at and also ads received
-      campaigns.order(visitratio: :desc, ads_received: :asc, created_at: :asc)   
-      # I filter the first group from campaigns
-      if firstgroup.odd?
-        campaigns = campaigns.limit(firstgroup)
-      # Now I create 2 ads for everyone of those 
-      Ad.create(:company_id => , :run_id => @run.id, :selfpromotion => false)
-
-    end
-
-    # 30% based on the number of Ads received
-    secondgroup.times do
-
-    # add field for taking count of this number of adds in the campaing.adsreceived
-    
-    end
-  end
-
 
   # PATCH/PUT /runs/1
   # PATCH/PUT /runs/1.json
@@ -92,7 +54,8 @@ class RunsController < ApplicationController
   end
 
   def delete
-  end
+  end  
+
 
   # DELETE /runs/1
   # DELETE /runs/1.json

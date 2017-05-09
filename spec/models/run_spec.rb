@@ -67,6 +67,19 @@ RSpec.describe Run, type: :model do
 
 	end
 
+	describe "methods" do
+		describe "createAds" do
+			it "creates the correct number of Ads" do
+				newcompany = FactoryGirl.create(:company)
+				newcampaign = FactoryGirl.create(:campaign, :company_id => newcompany.id)
+				newrun = FactoryGirl.create(:run, :campaign_id => newcampaign.id )
+				Run.createAds(run)
+				run.ads.reload
+				expect(run.ads.size).to be(59)
+			end
+		end
+	end
+
 	it { should belong_to(:campaign) }
 
 end

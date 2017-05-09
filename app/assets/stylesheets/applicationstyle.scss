@@ -54,6 +54,13 @@ label .field_with_errors {
 	color: #cccccc;
 }
 
+
+/* GET run#show */
+
+.numeric {
+	text-align: right;
+}
+
 /* POST qrcodes#create */
 
 table.qr-code {

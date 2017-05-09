@@ -11,9 +11,6 @@ class CampaignsController < ApplicationController
 
 	def create 
 		@campaign = Campaign.new(input_params)
-		@campaign.givenvisits = 1
-		@campaign.obtainedvisits = 1
-		@campaign.visitratio = 1
 		if @campaign.save
 			flash[:notice] = "Your Campaign was saved"
 			redirect_to action: "index"

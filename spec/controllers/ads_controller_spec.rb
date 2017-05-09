@@ -34,7 +34,7 @@ RSpec.describe AdsController, type: :controller do
 
   describe "GET #index" do
     it "assigns all ads as @ads" do
-      ad = Ad.create! valid_attributes
+      ad
       get :index, params: {}, session: valid_session
       expect(assigns(:ads)).to eq([ad])
     end
@@ -42,7 +42,7 @@ RSpec.describe AdsController, type: :controller do
 
   describe "GET #show" do
     it "assigns the requested ad as @ad" do
-      ad = Ad.create! valid_attributes
+      ad
       get :show, params: {id: ad.to_param}, session: valid_session
       expect(assigns(:ad)).to eq(ad)
     end
@@ -77,7 +77,7 @@ RSpec.describe AdsController, type: :controller do
 
   describe "GET #edit" do
     it "assigns the requested ad as @ad" do
-      ad = Ad.create! valid_attributes
+      ad
       get :edit, params: {id: ad.to_param}, session: valid_session
       expect(assigns(:ad)).to eq(ad)
     end
@@ -87,30 +87,30 @@ RSpec.describe AdsController, type: :controller do
     context "with valid params" do
       it "creates a new Ad" do
         expect {
-          post :create, params: {ad: valid_attributes}, session: valid_session
+          post :create, params: {ad: build_attributes(:ad)}, session: valid_session
         }.to change(Ad, :count).by(1)
       end
 
       it "assigns a newly created ad as @ad" do
-        post :create, params: {ad: valid_attributes}, session: valid_session
+        post :create, params: {ad: build_attributes(:ad)}, session: valid_session
         expect(assigns(:ad)).to be_a(Ad)
         expect(assigns(:ad)).to be_persisted
       end
 
       it "redirects to the created ad" do
-        post :create, params: {ad: valid_attributes}, session: valid_session
+        post :create, params: {ad: build_attributes(:ad)}, session: valid_session
         expect(response).to redirect_to(Ad.last)
       end
     end
 
     context "with invalid params" do
       it "assigns a newly created but unsaved ad as @ad" do
-        post :create, params: {ad: invalid_attributes}, session: valid_session
+        post :create, params: {ad: build_attributes(:invalidad)}, session: valid_session
         expect(assigns(:ad)).to be_a_new(Ad)
       end
 
       it "re-renders the 'new' template" do
-        post :create, params: {ad: invalid_attributes}, session: valid_session
+        post :create, params: {ad: build_attributes(:invalidad)}, session: valid_session
         expect(response).to render_template("new")
       end
     end
@@ -119,39 +119,39 @@ RSpec.describe AdsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        build_attributes(:ad)
       }
 
       it "updates the requested ad" do
-        ad = Ad.create! valid_attributes
+        ad
         put :update, params: {id: ad.to_param, ad: new_attributes}, session: valid_session
         ad.reload
         skip("Add assertions for updated state")
       end
 
       it "assigns the requested ad as @ad" do
-        ad = Ad.create! valid_attributes
-        put :update, params: {id: ad.to_param, ad: valid_attributes}, session: valid_session
+        ad
+        put :update, params: {id: ad.to_param, ad: build_attributes(:ad)}, session: valid_session
         expect(assigns(:ad)).to eq(ad)
       end
 
       it "redirects to the ad" do
-        ad = Ad.create! valid_attributes
-        put :update, params: {id: ad.to_param, ad: valid_attributes}, session: valid_session
+        ad
+        put :update, params: {id: ad.to_param, ad: build_attributes(:ad)}, session: valid_session
         expect(response).to redirect_to(ad)
       end
     end
 
     context "with invalid params" do
       it "assigns the ad as @ad" do
-        ad = Ad.create! valid_attributes
-        put :update, params: {id: ad.to_param, ad: invalid_attributes}, session: valid_session
+        ad
+        put :update, params: {id: ad.to_param, ad: build_attributes(:invalidad)}, session: valid_session
         expect(assigns(:ad)).to eq(ad)
       end
 
       it "re-renders the 'edit' template" do
-        ad = Ad.create! valid_attributes
-        put :update, params: {id: ad.to_param, ad: invalid_attributes}, session: valid_session
+        ad
+        put :update, params: {id: ad.to_param, ad: build_attributes(:invalidad)}, session: valid_session
         expect(response).to render_template("edit")
       end
     end
@@ -159,14 +159,14 @@ RSpec.describe AdsController, type: :controller do
 
   describe "DELETE #destroy" do
     it "destroys the requested ad" do
-      ad = Ad.create! valid_attributes
+      ad
       expect {
         delete :destroy, params: {id: ad.to_param}, session: valid_session
       }.to change(Ad, :count).by(-1)
     end
 
     it "redirects to the ads list" do
-      ad = Ad.create! valid_attributes
+      ad
       delete :destroy, params: {id: ad.to_param}, session: valid_session
       expect(response).to redirect_to(ads_url)
     end
