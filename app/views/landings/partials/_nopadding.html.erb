@@ -5,7 +5,18 @@
         </div>
         <div class="info">
             <h1>Coming soon Alpha 22 of May 2017!</h1>
-            <p>For info write an email at fabri.ber87@gmail.com</p>
+            <p>Let us email you when it is available</p>
+            <%= form_tag("/landings", method: "post") do %>
+	            <div class="input-group">
+					<span class="input-group-addon">
+					<i class="fa fa-envelope"></i>
+					</span>
+	            	<%= email_field(:subscription, :email, {class: "form-control emailfield", placeholder: "your@email.com"}) %>
+	            </div>
+            	<%= submit_tag("Submit", {class: "btn btn-fill btn-large btn-primary"}) %>
+            <% end %>
+
         </div>
     </div>
 </div>
+
