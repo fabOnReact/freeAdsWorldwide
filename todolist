@@ -3,9 +3,6 @@
 ---------------- Task Done--------------------------------------
 ---------------- Task To Do-------------------------------------
 
-mailing list then enroll to betalist
-https://betalist.com/submissions/new
-
 Create an Ad(automatic) -> Generate an ad ID -> create a Qr Code
 
 you need to build a mechanism to fill the runs with Ads based on 
@@ -23,10 +20,12 @@ Everybody start with Campaign Ratio = 1 then they can go over or under 1
 
 1. Campaign.givenvisits/obtained visits Decreasing order if adsreceived is not too high
 2. Number of Run status printed/completed/archived Decreasing order
-3. Campaigns.adsreceived Increasing order
 4. Created at 
 
+70% based on the ratio
+30% based on total number of ads received (not visits)
 
+The ratio needs to be updates after 
 
 Prawn – the user will be able to download it, I will flag it as 
 printed and if needed he can download it again. Pop up alert saying 
