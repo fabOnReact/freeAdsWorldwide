@@ -1,8 +1,9 @@
 FactoryGirl.define do
   factory :run do
 	campaign
-	runprintnumber { Faker::Number.number(2) }
-	ownads { Faker::Number.number(2) }
+	runprintnumber 60
+	ownads 15
+  status "completed"
   end
 
   factory :invalidrun, :parent => :run do

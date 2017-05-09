@@ -1,5 +1,5 @@
 module ApplicationHelper
-	def title(page_title, variable)
+	def title(page_title)
 		content_for(:title) { page_title }
 	end
 	def subtitle(page_subtitle)
@@ -17,6 +17,8 @@ module ApplicationHelper
 				content_for(:runs) { text }
 			when "campaigns"
 				content_for(:campaigns) { text }
+			when "runs"
+				content_for(:runs) { text }				
 		end
 	end
 end

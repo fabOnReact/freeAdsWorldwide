@@ -5,4 +5,8 @@ FactoryGirl.define do
     run 
     selfpromotion false
   end
+  factory :invalidad, :parent => :ad do
+  	company nil
+    run nil
+  end
 end

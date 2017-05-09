@@ -5,10 +5,10 @@
 </div>            
 <div class="content">
     <%= simple_form_for @run do |f| %>
-      <%= f.association :campaign %>
-      <%= f.input :runprintnumber %>
-      <%= f.input :ownads %>
-      <%= link_to "Back", runs_path, class: "btn btn-primary btn-fill pull-left", method: :get %>
+      <%= f.association :campaign, {:selected => @campaign.id } %>
+      <%= f.input :runprintnumber, label: "Number of Ads to print" %>
+      <%= f.input :ownads, label: "Number of your own ads" %>
+      <%= link_to "Back", companies_path, class: "btn btn-primary btn-fill pull-left", method: :get %>
       <%= f.button :submit, class: "btn btn-info btn-fill pull-right" %>
       <div class="clearfix"></div>
     <% end %>

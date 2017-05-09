@@ -2,11 +2,12 @@ FactoryGirl.define do
   factory :campaign do
     name { Faker::Company.name }
     targetcountries { Faker::Address.country }
-    campaigntype 
+    campaigntype { Campaigntype.first}
     company  
-    givenvisits 1
-    obtainedvisits 1
+    givenvisits { Faker::Number.positive(3)}
+    obtainedvisits { Faker::Number.positive(3)}
     visitratio 1
+    ads_received { Faker::Number.positive(3)}
 
     factory :campaign_with_runs do
 
