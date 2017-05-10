@@ -1,4 +1,6 @@
 class Run < ApplicationRecord
+	require 'prawn'
+
 	belongs_to :campaign
 	has_many :ads
 	
@@ -77,6 +79,12 @@ class Run < ApplicationRecord
 	      campaign.ads_received += 1
 	      campaign.save
 	    end
+ 	end
+
+ 	def self.printRun(run)
+ 		Prawn::Document.generate("hello.pdf") do
+ 			text "Hello World!"
+ 		end
  	end
 
 end
