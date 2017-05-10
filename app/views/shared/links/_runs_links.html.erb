@@ -19,7 +19,7 @@
 		<%= link_to "Back", runs_path, class: "btn btn-primary btn-fill pull-left btn-main", method: :get %>		
 	</div>						
 	<div class="col-xs-12 col-sm-2 col-md-1">
-		<%= link_to "Print Fliers", new_run_path, method: :get, class: "btn btn-success btn-fill btn-main" %><br />		
+		<%= link_to "Print Fliers", run_path(@run, format: "pdf"), method: :get, class: "btn btn-success btn-fill btn-main" %><br />		
 	</div>									
 </div>
 <% end %>
