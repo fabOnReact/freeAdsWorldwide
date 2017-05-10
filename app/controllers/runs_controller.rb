@@ -14,8 +14,8 @@ class RunsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = Prawn::Document.new
-        pdf.text "Hello World"
+        pdf = RunPdf.new(@run)
+        #pdf.text "Hello World"
         send_data pdf.render, filename: "Print Order N.#{@run.id}.pdf",
                               type: "application/pdf",
                               disposition: "inline"
@@ -46,12 +46,6 @@ class RunsController < ApplicationController
         format.html { render :new }
         format.json { render json: @run.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  def printRun(run)
-    Prawn::Document.generate("hello.pdf") do
-      text "Hello World!"
     end
   end
 
