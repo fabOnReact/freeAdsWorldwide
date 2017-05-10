@@ -11,6 +11,16 @@ class RunsController < ApplicationController
   # GET /runs/1.json
   def show
     @ads = @run.ads
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = Prawn::Document.new
+        pdf.text "Hello World"
+        send_data pdf.render, filename: "Print Order N.#{@run.id}.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
+    end
   end
 
   # GET /runs/new
@@ -36,6 +46,12 @@ class RunsController < ApplicationController
         format.html { render :new }
         format.json { render json: @run.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def printRun(run)
+    Prawn::Document.generate("hello.pdf") do
+      text "Hello World!"
     end
   end
 

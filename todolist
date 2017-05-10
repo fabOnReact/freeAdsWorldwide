@@ -78,3 +78,5 @@ foreman configuration procfile web: bundle exec rails s
 git rm -r vendor/plugins #delete files from git then commit and push
 heroku run rake db:migrate
 
+
+

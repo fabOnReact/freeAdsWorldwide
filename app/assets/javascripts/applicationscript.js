@@ -43,7 +43,7 @@ var ready = function() {
 
     /* GET campaigns#index mobile 360px changing the buttons and removing group div*/
 
-    if ($(window).width() < 390) { $("#btn-group").removeClass("btn-group"); }
+    /*if ($(window).width() < 390) { $("#btn-group").removeClass("btn-group"); }*/
 
 }
 

@@ -5,8 +5,7 @@
               <%= f.association :campaign, disabled: true %>
               <%= f.input :runprintnumber, disabled: true %>
               <%= f.input :ownads, disabled: true %>
-              <%= link_to "Back", runs_path, class: "btn btn-primary btn-fill pull-left", method: :get %>
-              <%#= f.button :submit, class: "btn btn-info btn-fill pull-right" %>
+              <%= render partial: "shared/links/runs_links" %>
               <div class="clearfix"></div>
             <% end %>
         </div>
@@ -50,7 +49,6 @@
 
 </div>
 <%= render partial: "shared/partials/formfooter" %>
-<%= render partial: "shared/links/runs_links" %>
 <% else %>
 <%= render partial: "shared/links/runs_links" %>
 <% end %>

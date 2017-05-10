@@ -7,20 +7,20 @@
 <div class="content table-responsive table-full-width">
     <table class="table table-hover table-striped">
         <thead class="row">
-          <th class="col-xs-1 col-md-1">Id</th>
+          <th class="col-xs-3 col-md-1">Id</th>
           <th class="hidden-xs">Campaign</th>
           <th class="hidden-xs">Number of Ads</th>
           <th class="hidden-xs hidden-sm">Your Ads</th>
-          <th class="options col-xs-8 col-sm-3 col-md-2">Options</th>
+          <th class="options col-xs-9 col-sm-3 col-md-2">Options</th>
         </thead>
         <tbody class="row">
             <% @runs.each do |run| %>
             <tr>
-              <td class="col-xs-1 col-md-1"><%= run.id %></td>
+              <td class="col-xs-3 col-md-1"><%= run.id %></td>
               <td class="hidden-xs"><%= run.campaign.name %></td>
               <td class="hidden-xs"><%= run.runprintnumber %></td>
               <td class="hidden-xs hidden-sm"><%= run.ownads %></td>
-              <td class="options col-xs-8 col-sm-3 col-md-2">
+              <td class="options col-xs-9 col-sm-3 col-md-2">
                   <div class="btn-group" id="btn-group">
                    <%= link_to run_path(run.id), class: "btn btn-primary", method: :get do %><i class="fa fa-arrow-right" aria-hidden="true"></i><% end %>
                    <%= link_to edit_run_path(run.id), class: "btn btn-success", id: "display", method: :get do %><i class="fa fa-pencil" aria-hidden="true"></i><% end %>
