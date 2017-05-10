@@ -3,11 +3,18 @@
 ---------------- Task Done--------------------------------------
 ---------------- Task To Do-------------------------------------
 
-Prawn – the user will be able to download it, I will flag it as 
-printed and if needed he can download it again. Pop up alert saying 
-that he should do this run only once, not more.. he will not get 
-more ads distributed worldwide otherwise. 
-Add status to Run and other infos
+The user after clicking on the print bottom should see the 
+settings and then print them. have 2 options, opening the file 
+or just download it for later..
+
+make an effect with js ..
+
+make it clear what should be pressed, do some highlighting and
+messages saying now print this do that 
+
+A status and color of the print should be changed.. it should be 
+clear that some sort of confirmation that the run was completed
+should be made
 
 simplify the interface... the user just need to set
 how many ads he wants to print in the dashboard and 
@@ -45,6 +52,8 @@ twitter, facebook page etc... email
 landing page
 fix the parallax on mobile 
 ---------------- Bugs--------------------------------------
+Tooltip does not work and also the class for the association
+
 Capybara can not test the selection in the sign up so i disabled 
 the validation on the country select. fix it..
 

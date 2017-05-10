@@ -45,7 +45,7 @@
                      <%= link_to campaign_path(campaign.id), class: "btn btn-primary", method: :get do %><i class="fa fa-arrow-right" aria-hidden="true"></i><% end %>
                      <%= link_to edit_campaign_path(campaign.id), class: "btn btn-success", id: "display", method: :get do %><i class="fa fa-pencil" aria-hidden="true"></i><% end %>
                      <%= link_to delete_campaign_path(campaign.id), class: "btn btn-danger", method: :get do %><i class="fa fa-trash-o" aria-hidden="true"></i><% end %>
-                     <%= link_to new_run_path(campaign.id), class: "btn btn-primary", method: :get do %><i class="fa fa-print" aria-hidden="true"></i><% end %>                     
+                     <%= link_to new_run_path(campaign.id), class: "btn btn-primary", data: {toggle: "tooltip", placement: "right"}, method: :get do %><i class="fa fa-print" aria-hidden="true"></i><% end %>                     
                     </div>
                 </td>
             </tr>

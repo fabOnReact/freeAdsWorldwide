@@ -10,7 +10,7 @@ class RunPdf < Prawn::Document
 	def run_title
 		i = 0
 		@ads.each do |ad|
-			start_new_page if i = 0
+			start_new_page if i == 1
 		
 			company = ad.run.campaign.company
 			text_box company.name, :align => :center,
