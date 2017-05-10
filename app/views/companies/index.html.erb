@@ -10,7 +10,7 @@
             <th>Name</th>
         	<th class="hidden-xs">Type</th>
         	<th>Website</th>
-            <th class="options col-xs-3 col-sm-3 col-md-2">Options</th>
+            <th class="options col-xs-5 col-sm-3 col-md-2">Options</th>
         </thead>
         <tbody class="row">
             <% @companies.each do |company| %>
@@ -22,7 +22,7 @@
                     <i class="pe-7s-link"></i>
                     <% end %>
                 </td>
-                <td class="options col-xs-3 col-sm-3 col-md-2">
+                <td class="options col-xs-5 col-sm-3 col-md-2">
                     <div class="btn-group" id="btn-group">
                      <%= link_to company_path(company.id), class: "btn btn-primary", method: :get  do %>
                      <i class="fa fa-arrow-right" aria-hidden="true"></i>

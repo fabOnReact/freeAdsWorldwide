@@ -7,8 +7,8 @@
                <h2><%= yield(:companies) %></h2>
             </header>
             <div class="panel-body">
-            <%= link_to "Delete", {:action => "destroy"}, :method => :delete, :class => "btn btn-warning wideButton btn-fill" %>
-            <%= link_to "Cancel", companies_path(@company.id), :method => :get, :class => "btn btn-primary wideButton btn-fill" %>
+            <%= link_to "Delete", {:action => "destroy"}, :method => :delete, :class => "btn btn-warning wideButton btn-fill btn-main" %>
+            <%= link_to "Cancel", companies_path(@company.id), :method => :get, :class => "btn btn-primary wideButton btn-fill btn-main" %>
             </div>
         </section>   
     </div>

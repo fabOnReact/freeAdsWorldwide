@@ -1,5 +1,5 @@
 class Run < ApplicationRecord
-	#require 'prawn'
+	require 'prawn'
 
 	belongs_to :campaign
 	has_many :ads
@@ -11,11 +11,10 @@ class Run < ApplicationRecord
 	    run.ownads.times do
 	      Ad.create(:company_id => run.campaign.company.id, :run_id => run.id, :selfpromotion => true, :visits => 0)
 	    end
-	    #binding.pry
 
 	    # creating other people ads for that run
 	    # 70% of ads (firstgroup) are given to those with the best ratio, while remainign
-	    # to all the others
+	    # to all the otherads
 
 	    # calculating the number of ads
 	    otherads = run.runprintnumber - run.ownads
@@ -80,11 +79,4 @@ class Run < ApplicationRecord
 	      campaign.save
 	    end
  	end
-=begin
- 	def self.printRun(run)
- 		Prawn::Document.generate("hello.pdf") do
- 			text "Hello World!"
- 		end
- 	end
-=end
 end
