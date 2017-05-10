@@ -14,7 +14,7 @@ class RunsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = RunPdf.new(@run)
+        pdf = RunPdf.new(@run, @ads)
         #pdf.text "Hello World"
         send_data pdf.render, filename: "Print Order N.#{@run.id}.pdf",
                               type: "application/pdf",
