@@ -6,7 +6,7 @@
         <div class="content">
             <%= simple_form_for @company do |f| %>
               <%= f.input :name %>
-              <%= f.association :companytype, prompt: "Choose a type", class: "form-control" %>
+              <%= f.association :companytype, prompt: "Choose a type", class: "form-control btn-group bootstrap-select show-tick" %>
               <%= f.input :title %>
               <%= f.input :description, as: :text %>
               <%= f.input :website, ad: :url %>

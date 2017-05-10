@@ -40,8 +40,8 @@ class RunsController < ApplicationController
     respond_to do |format|
       if @run.save
         Run.createAds(@run)
-        format.html { redirect_to runs_path, notice: 'Run was successfully created.' }
-        format.json { render :index, status: :created, location: @run }
+        format.html { redirect_to run_path(@run), notice: 'Run was successfully created.' }
+        format.json { render :show, status: :created, location: @run }
       else
         format.html { render :new }
         format.json { render json: @run.errors, status: :unprocessable_entity }
