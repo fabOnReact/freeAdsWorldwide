@@ -43,7 +43,9 @@
 </div>
 <%= render partial: "shared/partials/formfooter" %>
 <%= render template: "campaigns/index" %>
-<%= render template: "runs/new" if params[:format].present? %>
+<div id="runForm">
+    <%= render template: "runs/new" if params[:format].present? %>
+</div>
 <%= render template: "runs/index" %>
 <%= render partial: "shared/links/companies_links" %>
 <% else %>

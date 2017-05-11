@@ -40,7 +40,7 @@ class RunsController < ApplicationController
     respond_to do |format|
       if @run.save
         Run.createAds(@run)
-        format.html { redirect_to run_path(@run), notice: 'Run was successfully created.' }
+        format.html { redirect_to companies_path, notice: 'Run was successfully created.' }
         format.json { render :show, status: :created, location: @run }
       else
         format.html { render :new }

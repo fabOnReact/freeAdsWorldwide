@@ -12,6 +12,14 @@ var ready = function() {
             }
         });
 
+    /* GET companies#index show Print Settings */
+    if (urlRegExp.test(/\/companies/)) {
+        $('#runForm').hide();
+    }
+
+    $('#printButton').click(function(){
+        $('#runForm').show("slow");
+    });
     /* GET campaigns#new Managing Checkboxes Effects*/
 
     $('.checkboxes').hide();
