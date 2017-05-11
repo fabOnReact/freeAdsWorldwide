@@ -1,7 +1,7 @@
-<% header("runs","Print Settings") %>
+<% header("runs#new","Print Settings") %>
 <%= render "shared/partials/formheader" %>
 <div class="header">
-    <h4 class="title"><%= yield(:runs) %></h4>
+    <h4 class="title"><%= yield(:runs_new) %></h4>
 </div>            
 <div class="content">
     <%= simple_form_for [@campaign, @run] do |f| %>

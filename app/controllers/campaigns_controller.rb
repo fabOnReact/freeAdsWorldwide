@@ -12,8 +12,8 @@ class CampaignsController < ApplicationController
 	def create 
 		@campaign = Campaign.new(input_params)
 		if @campaign.save
-			flash[:notice] = "Your Campaign was saved"
-			redirect_to action: "index"
+			flash[:notice] = "Your Campaign was saved, now you can print your fliers by selecting the print button"
+			redirect_to companies_path
 		else
 			flash[:error] = "An error occurred, the Campaign was not saved"
 			render "new"
@@ -28,7 +28,7 @@ class CampaignsController < ApplicationController
 		@campaign = Campaign.find(params[:id])
 		if @campaign.update_attributes(input_params)
 			flash[:notice] = "Your Campaign was saved"
-			redirect_to action: "index"
+			redirect_to companies_path
 		else
 			flash[:error] = "An error occurred, the campaign was not saved"
 			render "edit"
@@ -48,10 +48,10 @@ class CampaignsController < ApplicationController
 		@campaign = Campaign.find(params[:id])
 		if @campaign.destroy
 			flash[:notice] = "The Campaign was destroyed"
-			redirect_to action: "index"
+			redirect_to companies_path
 		else
 			flash[:error] = "An error occurred, the campaign was not saved"
-			redirect_to action: "index"
+			render "delete"
 		end
 	end
 
