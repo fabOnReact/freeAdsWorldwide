@@ -26,7 +26,7 @@ class RunsController < ApplicationController
   # GET /runs/new
   def new
     @run = Run.new
-    @campaign = Campaign.find(params[:format]) if params[:format].present?
+    @campaign = Campaign.find(params[:campaign_id]) if params[:campaign_id].present?
   end
 
   # GET /runs/1/edit

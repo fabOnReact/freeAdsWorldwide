@@ -3,6 +3,8 @@ class CompaniesController < ApplicationController
 		@companies = current_user.companies
 		@campaigns = current_user.campaigns
 		@runs = current_user.runs
+		@campaign = Campaign.find(params[:format]) if params[:format].present?
+		@run = Run.new
 	end
 
 	def new
@@ -21,9 +23,7 @@ class CompaniesController < ApplicationController
 			end
 			flash[:notice] = "Your Company was saved"
 			redirect_to action: "index"
-			#binding.pry
 		else
-			#binding.pry
 			flash[:error] = "An error occurred, the company was not saved"
 			render "new"
 		end
