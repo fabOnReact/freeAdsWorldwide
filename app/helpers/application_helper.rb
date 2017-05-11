@@ -17,8 +17,12 @@ module ApplicationHelper
 				content_for(:runs) { text }
 			when "campaigns"
 				content_for(:campaigns) { text }
-			when "runs"
-				content_for(:runs) { text }				
+			when "runs#index"
+				content_for(:runs_index) { text }				
+			when "runs#new"
+				content_for(:runs_new) { text }								
+			when "runs#status"
+				content_for(:runs_status) { text }								
 		end
 	end
 end

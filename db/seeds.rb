@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-=begin
+
 user = User.create(:email => "fabrizio@email.com", :firstname => "Fabrizio", :lastname => "Bertoglio", :country => "IT", :city => "Torino",:password => "fabrizio", :password_confirmation => "fabrizio")
 companytype = Companytype.create(:name => "startup")
 campaigntype = Campaigntype.create(:name => "Paper Advertisement")
@@ -22,7 +22,7 @@ campaign = Campaign.create(:name => "Paper Advertisement Campaign", :targetcount
 company = Company.create(:name => "BateringApps", :title => "Free Apps in exchange of accomodation", :description => "Free Apps in exchange of accomodation", :website => "https://barteringapps.herokuapp.com/", :companytype_id => companytype.id)
 user.companies << company
 campaign = Campaign.create(:name => "My test campaign", :campaigntype_id => campaigntype.id, :company_id => company.id, :worldwide => true)
-=end
+
 company = Company.last
 campaign = Campaign.last
 run =  Run.create(:campaign_id => campaign.id, :runprintnumber => 10, :ownads => 10)

@@ -3,27 +3,12 @@
 ---------------- Task Done--------------------------------------
 ---------------- Task To Do-------------------------------------
 
-The user after clicking on the print bottom should see the 
-settings and then print them. have 2 options, opening the file 
-or just download it for later..
-
-make an effect with js ..
-
-make it clear what should be pressed, do some highlighting and
-messages saying now print this do that 
-
-A status and color of the print should be changed.. it should be 
-clear that some sort of confirmation that the run was completed
-should be made
-
-simplify the interface... the user just need to set
-how many ads he wants to print in the dashboard and 
-then print them. usa a big button
-
-set an alert so the user can not ask more ads of which he want 
-to print
+Feedback o Chat Room
 
 dashboard
+
+Country city devono essere campi obbligatori
+validazione n or ads print deve essere minore di own ads
 
 ---------------- Next Task --------------------------------
 
@@ -43,6 +28,17 @@ login with facebook
 reputation points system with merit
 executing the ad run
 geolocation on mobile
+
+make an effect with js to highlight the different thing that 
+needs to be done..
+
+make it clear what should be pressed, do some highlighting and
+messages saying now print this do that 
+
+A status and color of the print should be changed.. it should be 
+clear that some sort of confirmation that the run was completed
+should be made
+
 ---------------- Basic Info ------------------------------------
 The dashboard will show all the locations available in a list and the Campaigns.
 It will show Marketing Campaign Data (secondary, develop later). If absent it will show some data about the Cities and App Stats
@@ -51,6 +47,7 @@ Hear the user can configure Marketing Campaign Settings and Preferences
 	- run settings, how many ads they want to print in their own city and how many they want to send globally
 	- print run botton, settings will come up and the user need to choose how many ads to print in this run
 ---------------- Later-------------------------------------
+
 maybe a video
 twitter, facebook page etc... email
 

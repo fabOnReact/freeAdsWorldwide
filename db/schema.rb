@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510175943) do
+ActiveRecord::Schema.define(version: 20170511130140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 20170510175943) do
   create_table "campaigns", force: :cascade do |t|
     t.string   "name"
     t.string   "targetcountries"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "campaigntype_id"
     t.integer  "company_id"
     t.boolean  "worldwide"
@@ -38,10 +38,10 @@ ActiveRecord::Schema.define(version: 20170510175943) do
     t.boolean  "europe"
     t.boolean  "asia"
     t.boolean  "oceania"
-    t.integer  "givenvisits"
-    t.integer  "obtainedvisits"
-    t.integer  "visitratio"
-    t.integer  "ads_received"
+    t.integer  "givenvisits",     default: 1
+    t.integer  "obtainedvisits",  default: 1
+    t.integer  "visitratio",      default: 1
+    t.integer  "ads_received",    default: 0
     t.index ["campaigntype_id"], name: "index_campaigns_on_campaigntype_id", using: :btree
     t.index ["company_id"], name: "index_campaigns_on_company_id", using: :btree
   end
@@ -88,12 +88,12 @@ ActiveRecord::Schema.define(version: 20170510175943) do
   end
 
   create_table "runs", force: :cascade do |t|
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "campaign_id"
     t.integer  "runprintnumber"
     t.integer  "ownads"
-    t.string   "status"
+    t.string   "status",         default: "to print"
     t.index ["campaign_id"], name: "index_runs_on_campaign_id", using: :btree
   end
 

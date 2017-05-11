@@ -1,7 +1,7 @@
 <% title "Display Print Order" %>
 <%= render "shared/partials/formheader" %>
         <div class="content">
-            <%= simple_form_for @run do |f| %>
+            <%= simple_form_for [@campaign, @run] do |f| %>
               <%= f.association :campaign, disabled: true %>
               <%= f.input :runprintnumber, disabled: true %>
               <%= f.input :ownads, disabled: true %>
