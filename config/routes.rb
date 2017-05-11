@@ -2,9 +2,6 @@ Rails.application.routes.draw do
   	devise_for :users
 	resources :companies, :companytypes, :ads # :campaigns, :runs
 
-	# companies
-	get "companies/newrun", to: 'companies#newRun', as: 'new_company_run'
-
 	resources :campaigns do 
 		resources :runs
 	end
