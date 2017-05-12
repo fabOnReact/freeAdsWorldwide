@@ -19,8 +19,8 @@ class RunsController < ApplicationController
         pdf = RunPdf.new(@run, @ads)
         #pdf.text "Hello World"
         send_data pdf.render, filename: "Print Order N.#{@run.id}.pdf",
-                              type: "application/pdf"#,
-                              #disposition: "inline"
+                              type: "application/pdf",
+                              disposition: "inline"
       end
     end
     @run.status = "to distribute"

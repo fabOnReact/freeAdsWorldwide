@@ -16,7 +16,6 @@ class CompaniesController < ApplicationController
 	def create
 		@company = Company.new(company_params)
 		if @company.save && current_user.companies << @company
-			binding.pry
 			if params[:company].has_key?(:campaign) &&  campaign_params.present? #campaign_params.present? 
 				campaign = Campaign.new(campaign_params)
 				campaign.company_id = @company.id 
