@@ -1,5 +1,5 @@
 class Campaign < ApplicationRecord
-	has_many :runs
+	has_many :runs, :dependent => :destroy
 	belongs_to :campaigntype
 	belongs_to :company
 

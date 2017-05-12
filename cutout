@@ -1,0 +1,3 @@
+#qr = RQRCode::QRCode.new( address, :level=>:h, size: 10)
+#move_down 100
+#render_qr_code(qr, :dot=> 6, :align => :center, :border => none)

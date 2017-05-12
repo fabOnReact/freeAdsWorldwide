@@ -3,12 +3,26 @@
 ---------------- Task Done--------------------------------------
 ---------------- Task To Do-------------------------------------
 
-Feedback o Chat Room
+Think about the next project. Do some rating and maybe build quickly
+some landing pages.. think about it and work on it.. you have 2 days
+
+Contact those from betalist..
 
 dashboard
+create new branch dashboard
+generate there a devise users controller 
+in the users#index you will show:
+1. that user startups and where they got the maximum number of visits 
+2. The first 3 ads that got the maximum number of visits
+
+3. Other startups ordered by number of visits
+
+4. startups that are giving the maximum number of visits
 
 Country city devono essere campi obbligatori
 validazione n or ads print deve essere minore di own ads
+
+Video Animation - something fast try with some sass easy softare
 
 ---------------- Next Task --------------------------------
 

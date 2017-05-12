@@ -39,13 +39,13 @@
           </div>                                                                  
         </div>
         <%= c.association :campaigntype, prompt: "Choose a Campaign type", class: "form-control" %>
-        <div class="form-group select required">
-          <%= c.label :company_id %>
-          <% if @company.present? %>
-            <%= c.select(:company_id, current_user.companies.collect {|p| [ p.name, p.id ]}, {:selected => @company.id }, {:class => "form-control"}) %> 
-          <% else %>
-            <%= c.select(:company_id, current_user.companies.collect {|p| [ p.name, p.id ]}, {}, {:class => "form-control"}) %> 
-          <% end %>                
+        <!--div class="form-group select required">        
+          <%#= c.label :company_id %>
+          <%# if @company.present? %>
+            <%#= c.select(:company_id, current_user.companies.collect {|p| [ p.name, p.id ]}, {:selected => @company.id }, {:class => "form-control"}) %> 
+          <%# else %>
+            <%#= c.select(:company_id, current_user.companies.collect {|p| [ p.name, p.id ]}, {}, {:class => "form-control"}) %> 
+          <%# end %>                
         </div> 
       <% end %> <!-- end of simple fields for -->
 
