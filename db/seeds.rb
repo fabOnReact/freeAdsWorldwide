@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user = User.create(:email => "fabrizio@email.com", :firstname => "Fabrizio", :lastname => "Bertoglio", :country => "IT", :city => "Torino",:password => "fabrizio", :password_confirmation => "fabrizio")
+#user = User.create(:email => "fabrizio@email.com", :firstname => "Fabrizio", :lastname => "Bertoglio", :country => "IT", :city => "Torino",:password => "fabrizio", :password_confirmation => "fabrizio")
 companytype = Companytype.create(:name => "startup")
 campaigntype = Campaigntype.create(:name => "Paper Advertisement")
-
+=begin
 companytype = Companytype.first
 user = User.last
 campaigntype = Campaigntype.last
@@ -27,3 +27,4 @@ company = Company.last
 campaign = Campaign.last
 run =  Run.create(:campaign_id => campaign.id, :runprintnumber => 10, :ownads => 10)
 ad = Ad.create(:company_id => company.id, :run_id => run.id)
+=end
