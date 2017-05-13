@@ -18,9 +18,9 @@ class Ad < ApplicationRecord
 		elsif website.start_with?("https://www.")
 			return website
 		elsif website.start_with?("www.")
-			return website
+			return website = "https://" + website
 		else 
-			return website = "www." + website
+			return website = "https://www." + website
 		end
 	end  
 end
