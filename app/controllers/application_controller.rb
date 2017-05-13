@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   # GET /ads/1
   # GET /ads/1.json
   def show
-    binding.pry
+    #binding.pry
     @ad = Ad.find(params[:id])
     Ad.visits(@ad)
     Campaign.visits(@ad)
