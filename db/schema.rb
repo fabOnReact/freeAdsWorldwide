@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511130140) do
+ActiveRecord::Schema.define(version: 20170511165833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,12 @@ ActiveRecord::Schema.define(version: 20170511130140) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "companies", force: :cascade do |t|
     t.integer  "companytype_id"
     t.string   "name"
@@ -74,6 +80,16 @@ ActiveRecord::Schema.define(version: 20170511130140) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "text"
+    t.integer  "chatroom_id"
+    t.integer  "visitor_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id", using: :btree
+    t.index ["visitor_id"], name: "index_messages_on_visitor_id", using: :btree
   end
 
   create_table "promotions", force: :cascade do |t|
@@ -124,10 +140,19 @@ ActiveRecord::Schema.define(version: 20170511130140) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "visitors", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "ads", "companies"
   add_foreign_key "ads", "runs"
   add_foreign_key "campaigns", "campaigntypes"
   add_foreign_key "campaigns", "companies"
   add_foreign_key "companies", "companytypes"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "visitors"
   add_foreign_key "runs", "campaigns"
 end
