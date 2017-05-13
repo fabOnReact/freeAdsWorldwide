@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
     Ad.visits(@ad)
     Campaign.visits(@ad)
     redirect_to Ad.website(@ad) # "https://www.facebook.com"
-    binding.pry
   end
 
 
