@@ -9,4 +9,5 @@ class Company < ApplicationRecord
 	#validates_presence_of :users
 
 	accepts_nested_attributes_for :campaigns
+
 end

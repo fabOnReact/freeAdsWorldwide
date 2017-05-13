@@ -1,7 +1,18 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :except => [:show]
+
+  # GET /ads/1
+  # GET /ads/1.json
+  def show
+    binding.pry
+    @ad = Ad.find(params[:id])
+    Ad.visits(@ad)
+    Campaign.visits(@ad)
+    redirect_to "facebook.com" #Ad.website(@ad)
+  end
+
 
   protected
 
