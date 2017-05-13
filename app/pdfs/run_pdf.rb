@@ -38,7 +38,7 @@ class RunPdf < Prawn::Document
 		end
 
 		address << "/" unless address.end_with?("/")
-		address = address + ad.id.to_s
+		address = address + "ads/" + ad.id.to_s
 		#puts address	
 		print_qr_code(address, :extent=>372, :align => :center)
 	end
