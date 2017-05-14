@@ -17,17 +17,18 @@
             </div>
 
             <ul class="nav">
-                <li>
+                <!--li>
                     <a href="dashboard.html">
                         <i class="pe-7s-home"></i>
                         <p>Dashboard</p>
                     </a>
-                </li>
+                </li-->
                 <li class="" id="company">
                     <% if current_user != nil && current_user.companies.length > 0 %>
                         <%= link_to companies_path, method: :get, id: "Companies" do %>
-                            <i class="pe-7s-culture"></i>
-                            <p>Companies</p>
+                            <i class="pe-7s-home"></i>
+                            <!--i class="pe-7s-culture"></i-->
+                            <p>Home</p>
                         <% end %>
                     <% else %>
                         <%= link_to new_company_path, method: :get, id: "Account" do %>
