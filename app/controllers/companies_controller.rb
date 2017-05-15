@@ -15,16 +15,20 @@ class CompaniesController < ApplicationController
 	end
 
 	def create
+		binding.pry
 		@company = Company.new(company_params)
-		if @company.save && current_user.companies << @company
-			if params[:company].has_key?(:campaign) &&  campaign_params.present? #campaign_params.present? 
-				campaign = Campaign.new(campaign_params)
-				campaign.company_id = @company.id 
-				campaign.save
+		@campaign = Campaign.new(campaign_params)
+		if @company.validate(company_params) #&& @campaign.validate(campaign_params)
+			@company.save
+			current_user.companies << @company
+			if params[:company].has_key?(:campaign) &&  campaign_params.present? 
+				@campaign.company_id = @company.id 
+				@campaign.save 
 			end
 			flash[:notice] = "Your Company was saved"
 			redirect_to action: "index"
 		else
+			binding.pry
 			flash[:error] = "An error occurred, the company was not saved"
 			render "new"
 		end
@@ -81,7 +85,7 @@ class CompaniesController < ApplicationController
 	private
 
 	def company_params 
-		params.require(:company).permit(:companytype_id, :name, :title, :description, :website) 
+		params.require(:company).permit(:companytype_id, :name, :title, :description, :url) 
 	end
 	def campaign_params		
 		params.require(:company).require(:campaign).permit(:name, :worldwide, :america, :europe, :asia, :oceania, :campaigntype_id) 

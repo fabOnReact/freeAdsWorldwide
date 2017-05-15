@@ -9,7 +9,7 @@
               <%= f.association :companytype, prompt: "Choose a type", class: "form-control btn-group bootstrap-select show-tick" %>
               <%= f.input :title %>
               <%= f.input :description, as: :text %>
-              <%= f.input :website, ad: :url %>
+              <%= f.input :url, ad: :url %>
               <%= link_to "Back", companies_path, class: "btn btn-primary btn-fill pull-left btn-main" %>
               <%= f.button :submit, class: "btn btn-info btn-fill pull-right btn-main" %>
               <div class="clearfix"></div>

@@ -5,11 +5,14 @@
 </div>  
 <div class="content">
     <%= simple_form_for @company do |f| %>
+      <% if @company.errors['base'].present? %>
+        <span class="help-block error"><%= @company.errors['base'][0] %></span>
+      <% end %>     
       <%= f.input :name %>
       <%= f.association :companytype, prompt: "Choose a type", class: "form-control" %>
       <%= f.input :title %>
       <%= f.input :description, as: :text %>
-      <%= f.input :website, ad: :url %>
+      <%= f.input :url %>
       <div class="clearfix"></div>
 </div>
 <%= render partial: "shared/partials/formfooter" %>
@@ -18,6 +21,9 @@
 <%= render "shared/partials/formsubheader" %>
 <div class="content">
       <%= f.simple_fields_for @campaign do |c| %>
+        <% if @campaign.errors['base'].present? %>
+          <span class="help-block error"><%= @campaign.errors['base'][0] %></span>
+        <% end %>  
         <%= c.input :name %>
         <%= c.input :worldwide, as: :radio_buttons, :input_html => { 'data-toggle' => "radio" }, wrapper_html: {id: 'worldwide'} %>
         <div class="checkboxes">

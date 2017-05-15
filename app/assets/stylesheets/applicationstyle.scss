@@ -1,11 +1,11 @@
 /* simple_form */
-	/* dots below required * */
+/* dots below required * */
 
 abbr[title] {
 	border: 0px;
 }
 
-	/* Fields Errors from validations */
+/* Fields Errors from validations */
 
 .field_with_errors:nth-of-type(2) {
 	border: solid red 1px;
@@ -94,6 +94,14 @@ table.qr-code td.white { background-color: #fff; }
 
 
 /* Media queries */ 
+
+@media (max-width: 982px) {
+	span.titleBar {
+		position: relative;
+		top: 4px;
+	}
+}
+
 
 @media (max-width: 940px) {
 	.flag {

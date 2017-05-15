@@ -8,13 +8,11 @@ class Run < ApplicationRecord
 	validates_presence_of :runprintnumber, :ownads, :campaign_id, :city, :location
 	validates :ownads, numericality: { greater_than: 0}
 	validates :runprintnumber, numericality: { greater_than: 0}
-	validates_with RunValidator, fields: [:current_user, :campaign_id, :status]
+	#validates_with RunValidator, fields: [:current_user, :campaign_id, :status]
 
 	def self.nextStatus(run)
 		case run.status
 		when "to distribute"
-			return "to confirm"
-		when "to confirm"
 			return "finished"
 		end
 	end

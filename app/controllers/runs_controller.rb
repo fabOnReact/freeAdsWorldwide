@@ -23,8 +23,9 @@ class RunsController < ApplicationController
                               disposition: "inline"
       end
     end
-    @run.status = "to distribute"
-    @run.save
+    #binding.pry
+    #@run.status = "to distribute"
+    @run.update(:status => "to distribute")
   end
 
   # GET /runs/new
@@ -45,7 +46,7 @@ class RunsController < ApplicationController
       if @run.save
         Run.createAds(@run)
         format.html { redirect_to companies_path, notice: 'The Print Order was successfully created, you can click on the download icon to open the file or download it.' }
-        format.json { render :index, status: :created, location: @run }
+        format.json { render companies_path, status: :created, location: @run }
       else
         format.html { render :new }
         format.json { render json: @run.errors, status: :unprocessable_entity }
@@ -59,8 +60,9 @@ class RunsController < ApplicationController
     respond_to do |format|
       if @run.update(run_params)
         format.html { redirect_to companies_path, notice: 'Run was successfully updated.' }
-        format.json { render :show, status: :ok, location: @run }
+        format.json { render companies_path, status: :ok, location: @run }
       else
+        #binding.pry
         format.html { render :edit }
         format.json { render json: @run.errors, status: :unprocessable_entity }
       end

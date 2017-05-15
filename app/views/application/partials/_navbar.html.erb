@@ -26,7 +26,7 @@
                 <li class="" id="company">
                     <% if current_user != nil && current_user.companies.length > 0 %>
                         <%= link_to companies_path, method: :get, id: "Companies" do %>
-                            <i class="pe-7s-home"></i>
+                            <i class="fa fa-home"></i>
                             <!--i class="pe-7s-culture"></i-->
                             <p>Home</p>
                         <% end %>
@@ -43,21 +43,36 @@
                         <p>Campaigns</p>
                     <%# end %>
                 </li-->
-                <li class="">
-                    <%= link_to companies_path(Campaign.last), { id: "printButton"},  method: :get do %>
-                        <i class="fa fa-print" aria-hidden="true"></i>
-                        <p>Create Print</p>
+                <% last_campaign = Campaign.last %>
+                <% if last_campaign.runs.where.not(:status => "completed").size == 0 %>
+                    <li class="">
+                        <%= link_to companies_path(last_campaign), { id: "printButton"},  method: :get do %>
+                            <i class="fa fa-print" aria-hidden="true"></i>
+                            <p>Create Print</p>
+                        <% end %>
+                    </li>
+
+                <% end %>
+                <% last_run = Run.last %>
+                <% if last_run.present? %>
+                    <% if last_run != "completed" %>
+                        <li class="">
+                            <%= link_to campaign_run_path(last_run.campaign, last_run, format: "pdf"),  method: :get do %>
+                                <i class="fa fa-download" aria-hidden="true"></i>
+                                <p>Fliers Pdf</p>
+                            <% end %>
+                        </li>
                     <% end %>
-                </li>
 
-
-                <!--li>
-                    <%#= link_to campaign_runs_path, method: :get do %>
-                        <i class="pe-7s-copy-file"></i>
-                        <p>Hand Out Flyers</p>
-                    <%# end %>                
-                </li-->                                
-
+                    <% if Run.last.status == "to distribute" %>
+                        <li class="">
+                            <%= link_to  newstatus_run_path(last_run), method: :get do %>
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                                <p>Fliers Distributed</p>
+                            <% end %>
+                        </li>
+                    <% end %>                                               
+                <% end %>
             </ul>
     	</div>
     </div>
@@ -90,7 +105,7 @@
                         </li>
                         <li>
                             <%= link_to destroy_user_session_path, method: :delete do %>
-                               Log out
+                                Log out
                             <% end %>
                         </li>                        
                     </ul>

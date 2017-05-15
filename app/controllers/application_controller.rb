@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     @ad = Ad.find(params[:id])
     Ad.visits(@ad)
     Campaign.visits(@ad)
-    redirect_to Ad.website(@ad) # "https://www.facebook.com"
+    redirect_to Ad.url(@ad) # "https://www.facebook.com"
   end
 
 

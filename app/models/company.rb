@@ -4,7 +4,7 @@ class Company < ApplicationRecord
 	has_many :ads, :dependent => :destroy
 	belongs_to :companytype
 
-	validates_presence_of :name
+	validates_presence_of :name, :companytype, :title, :description, :url
 	#validates_associated :users
 	#validates_presence_of :users
 	validates :name, length: {minimim: 2, maximum: 24}
