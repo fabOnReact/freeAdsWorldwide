@@ -15,7 +15,6 @@ class CompaniesController < ApplicationController
 	end
 
 	def create
-		binding.pry
 		@company = Company.new(company_params)
 		@campaign = Campaign.new(campaign_params)
 		if @company.validate(company_params) #&& @campaign.validate(campaign_params)
@@ -28,7 +27,6 @@ class CompaniesController < ApplicationController
 			flash[:notice] = "Your Company was saved"
 			redirect_to action: "index"
 		else
-			binding.pry
 			flash[:error] = "An error occurred, the company was not saved"
 			render "new"
 		end
