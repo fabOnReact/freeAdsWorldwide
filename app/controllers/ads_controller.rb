@@ -13,7 +13,7 @@ class AdsController < ApplicationController
   def show
     Ad.visits(@ad)
     Campaign.visits(@ad)
-    redirect_to @ad.company.website
+    redirect_to @ad.company.url
   end
 
   # GET /ads/new

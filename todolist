@@ -95,6 +95,8 @@ and a small qr.. Smaller the qr easier to scan.
 
 ---------------- Bugs--------------------------------------
 
+validations on url
+
 landings#index takes 15 ms just to redirect the user to another page
 
 when you click the print botton set the effect to have jquery

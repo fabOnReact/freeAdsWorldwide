@@ -6,7 +6,7 @@ FactoryGirl.define do
 		f.title nil
 		f.description nil
 		companytype
-		website { Faker::Internet.url }
+		url { Faker::Internet.url }
 	
 		factory :company_with_users do
 

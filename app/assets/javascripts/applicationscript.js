@@ -1,8 +1,8 @@
 var ready = function() {
 
-    /* Highlighting Navbar link as active */
-    var url = window.location.pathname, // in real app this would have to be replaced with window.location.pathname 
-        urlRegExp = new RegExp(url.replace(/\/$/,'')); // create regexp to match current url pathname and remove trailing slash if present as it could collide with the link in navigation in case trailing slash wasn't present there
+    /* Highlighting Navbar link as active 
+    var url = window.location.pathname, 
+        urlRegExp = new RegExp(url.replace(/\/$/,'')); 
     
         // now grab every link from the navigation
         $('.sidebar a').each(function(){
@@ -10,7 +10,7 @@ var ready = function() {
             if(urlRegExp.test(this.href)){
                 $(this).parents('li').addClass('active');
             }
-        });
+        });*/
 
     /* GET companies#index show Print Settings */
     if (urlRegExp.test(/\/companies/)) {

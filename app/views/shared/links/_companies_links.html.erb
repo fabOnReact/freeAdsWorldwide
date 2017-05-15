@@ -4,15 +4,19 @@
 		<div class="row">
 			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
 				<%- if controller_name == 'companies' && action_name == 'index' %>
-				  <%= link_to "New Company", new_company_path, class: "btn btn-primary btn-fill btn-main" %><br />
+				  <%= link_to "New Company", new_company_path, class: "btn btn-primary btn-fill btn-main", method: :get %><br />
 				<% end -%>
-				<%- if controller_name == 'companies' && action_name == 'show' %>
+				<%- if controller_name == 'companies' && action_name == 'show' && @company.campaigns.size == 0 %>
 				  <%= link_to "New Campaign", new_campaign_path(@company),class: "btn btn-primary btn-fill btn-main", method: :get %><br />
 				<% end -%>				
 			</div>
 			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
 				<%- if controller_name == 'companies' && action_name == 'index' %>
-				  <%= link_to "New Campaign", new_campaign_path, method: :get, class: "btn btn-success btn-fill btn-main" %><br />
+					<% current_user.companies.each do |company| %>
+						<% if company.campaigns == 0 %>
+				  		<%= link_to "New Campaign", new_campaign_path(company), method: :get, class: "btn btn-success btn-fill btn-main" %><br />
+				  		<% end %>
+				  	<% end %>
 				<% end -%>
 			</div>		
 		</div>

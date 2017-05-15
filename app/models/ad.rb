@@ -8,34 +8,34 @@ class Ad < ApplicationRecord
 	end
 
 
-	def self.website(ad)
-		website = ad.company.website
+	def self.url(ad)
+		url = ad.company.url
 		
-		if website.start_with?("http://")
-			return website
-		elsif website.start_with?("https://")
-			return website
-		elsif website.start_with?("https://www.")
-			return website
-		elsif website.start_with?("www.")
-			return website = "https://" + website
+		if url.start_with?("http://")
+			return url
+		elsif url.start_with?("https://")
+			return url
+		elsif url.start_with?("https://www.")
+			return url
+		elsif url.start_with?("www.")
+			return url = "https://" + url
 		else 
-			return website = "https://www." + website
+			return url = "https://www." + url
 		end
 	end  
 
 	def self.address(ad)
-		website = ad.company.website
+		url = ad.company.url
 		
-		if website.start_with?("http://")
-			address = website.gsub("http://", "")
-		elsif website.start_with?("https://")
-			address = website.gsub("https://", "")			
-		elsif website.start_with?("https://www.")
-			address = website.gsub("https://www.", "")					
-		elsif website.start_with?("www.")
-			address = website.gsub("www.", "")	
-		else address = website				
+		if url.start_with?("http://")
+			address = url.gsub("http://", "")
+		elsif url.start_with?("https://")
+			address = url.gsub("https://", "")			
+		elsif url.start_with?("https://www.")
+			address = url.gsub("https://www.", "")					
+		elsif url.start_with?("www.")
+			address = url.gsub("www.", "")	
+		else address = url				
 		end
 
 		address << "/" unless address.end_with?("/")
