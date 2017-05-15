@@ -17,15 +17,13 @@ class RunsController < ApplicationController
       format.html
       format.pdf do
         pdf = RunPdf.new(@run, @ads)
-        #pdf.text "Hello World"
         send_data pdf.render, filename: "Print Order N.#{@run.id}.pdf",
                               type: "application/pdf",
                               disposition: "inline"
       end
     end
-    #binding.pry
-    #@run.status = "to distribute"
     @run.update(:status => "to distribute")
+    flash[:warning_run] = "Now remember to check the Print Order as completed after that you gave away all the fliers with the icon"
   end
 
   # GET /runs/new
@@ -42,16 +40,20 @@ class RunsController < ApplicationController
   def create
     @run = Run.new(run_params)
     @run.valid?
-    respond_to do |format|
+    #respond_to do |format|
       if @run.save
         Run.createAds(@run)
-        format.html { redirect_to companies_path, notice: 'The Print Order was successfully created, you can click on the download icon to open the file or download it.' }
-        format.json { render companies_path, status: :created, location: @run }
+        flash[:warning_run] = 'The Print Order was successfully created, you can click on the download icon to open the file or download it. REMEMBER: If using MOZILLA open the file with Adobe outside the browser, as Mozilla give some problems when printing. You can open the file and dowload it with the following icon: ' 
+        redirect_to companies_path
+        #format.html { redirect_to companies_path, warning_run_download: 'The Print Order was successfully created, you can click on the download icon to open the file or download it.' }
+        #format.json { render companies_path, status: :created, location: @run }
       else
-        format.html { render :new }
-        format.json { render json: @run.errors, status: :unprocessable_entity }
+        flash[:error] = "The run was not saved"
+        render "new"
+        #format.html { render :new }
+        #format.json { render json: @run.errors, status: :unprocessable_entity }
       end
-    end
+    #end
   end
 
   # PATCH/PUT /runs/1
