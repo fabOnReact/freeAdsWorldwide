@@ -48,6 +48,10 @@ label .field_with_errors {
 	height: 31px;
 }
 
+.messageIcon {
+	margin-left: 25px;
+}
+
 /* GET campaigns#new */
 
 .new_campaign .checkbox {
@@ -55,10 +59,16 @@ label .field_with_errors {
 }
 
 
-/* GET run#show */
+/* GET runs#show */
 
 .numeric {
 	text-align: right;
+}
+
+/* GET runs#new */
+
+.error {
+	color: red;
 }
 
 /* POST qrcodes#create */

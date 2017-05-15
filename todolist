@@ -3,32 +3,34 @@
 ---------------- Task Done--------------------------------------
 ---------------- Task To Do-------------------------------------
 
-Sugli alberi e sui pali, non funziona il codice a barre... ma magari
-devi fare tanti piccoli ad con piccoli codici a barre da stampare e
-ritagliare perche cosi non fuziona
-testa tutto con il cellulare e con lo scotch considerando ti avere 
-anche superfici non piatte
+message if the browser is mozzilla the user will have to open the 
+file with a separate session of adobe ..
 
-instructions on the first page
-
-options are : small qr, 2 qr for page and 1 page with many info
-and a small qr.. Smaller the qr easier to scan.
+messages needs to show in different places
 
 Think about the next project. Do some rating and maybe build quickly
 some landing pages.. think about it and work on it.. you have 2 days
 
+hide the print bottom after the first print .. 
+
+the run should include the city and description of what he will do plus
+other staff
+
+links include the print download view link, set as completed etc...
+
+Include in the run the location and and additional infos about where they are 
+going to make the runn
+
+solve tooltips
+
 Contact those from betalist..
 
-dashboard
-create new branch dashboard
-generate there a devise users controller 
-in the users#index you will show:
-1. that user startups and where they got the maximum number of visits 
-2. The first 3 ads that got the maximum number of visits
+one print order at the time
 
-3. Other startups ordered by number of visits
+button to create run, it just selects the only campaign
+create staging server
 
-4. startups that are giving the maximum number of visits
+create new branch 
 
 Video Animation - something fast try with some sass easy softare
 
@@ -73,13 +75,28 @@ Hear the user can configure Marketing Campaign Settings and Preferences
 	- run settings, how many ads they want to print in their own city and how many they want to send globally
 	- print run botton, settings will come up and the user need to choose how many ads to print in this run
 ---------------- Later-------------------------------------
+generate there a devise users controller 
+in the users#index you will show:
+1. that user startups and where they got the maximum number of visits 
+2. The first 3 ads that got the maximum number of visits
+
+3. Other startups ordered by number of visits
+
+4. startups that are giving the maximum number of visits
+
+
+dashboard
 
 maybe a video
 twitter, facebook page etc... email
 
-landing page
-fix the parallax on mobile 
+options are : small qr, 2 qr for page and 1 page with many info
+and a small qr.. Smaller the qr easier to scan.
+
 ---------------- Bugs--------------------------------------
+
+landings#index takes 15 ms just to redirect the user to another page
+
 when you click the print botton set the effect to have jquery
 ui toggle effect
 

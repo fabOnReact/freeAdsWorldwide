@@ -8,6 +8,8 @@
       <%= f.association :campaign %>
       <%= f.input :runprintnumber %>
       <%= f.input :ownads %>
+      <%= f.input :city, label: "City" %>
+      <%= f.input :location, label: "Description of the locations" %>      
       <%= link_to "Back", companies_path, class: "btn btn-primary btn-fill pull-left btn-main", method: :get %>
       <%= f.button :submit, class: "btn btn-info btn-fill pull-right btn-main" %>
       <div class="clearfix"></div>

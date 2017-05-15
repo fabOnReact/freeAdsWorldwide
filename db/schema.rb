@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511165833) do
+ActiveRecord::Schema.define(version: 20170515080559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,6 +110,8 @@ ActiveRecord::Schema.define(version: 20170511165833) do
     t.integer  "runprintnumber"
     t.integer  "ownads"
     t.string   "status",         default: "to print"
+    t.string   "city"
+    t.string   "location"
     t.index ["campaign_id"], name: "index_runs_on_campaign_id", using: :btree
   end
 

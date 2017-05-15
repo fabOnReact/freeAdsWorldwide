@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
-	def index
+	def index	
+		flash[:warning_campaign] = "Click on the print icon to create your first print order." if current_user.runs.empty?
 		@companies = current_user.companies
 		@campaigns = current_user.campaigns
 		@runs = current_user.runs

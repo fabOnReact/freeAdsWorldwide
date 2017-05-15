@@ -37,12 +37,20 @@
                         <% end %>
                     <% end %>
                 </li>                
-                <li class="">
-                    <%= link_to campaigns_path, method: :get do %>
+                <!--li class="">
+                    <%#= link_to campaigns_path, method: :get do %>
                         <i class="pe-7s-news-paper"></i>
                         <p>Campaigns</p>
+                    <%# end %>
+                </li-->
+                <li class="">
+                    <%= link_to companies_path(Campaign.last), { id: "printButton"},  method: :get do %>
+                        <i class="fa fa-print" aria-hidden="true"></i>
+                        <p>Create Print</p>
                     <% end %>
                 </li>
+
+
                 <!--li>
                     <%#= link_to campaign_runs_path, method: :get do %>
                         <i class="pe-7s-copy-file"></i>
