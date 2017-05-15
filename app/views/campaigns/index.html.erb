@@ -1,3 +1,9 @@
+<% if flash[:warning_campaign] %>
+    <div class="alert alert-warning">
+      <strong>Great!</strong> <%= flash[:warning_campaign] %><i class="fa fa-print fa-2x messageIcon" aria-hidden="true"></i>
+    </div>               
+<% end %>  
+
 <% if @campaigns.length > 0 %>
 <% header("campaigns","Your Campaigns") %>
 <%= render "shared/partials/formsubheader" %>
@@ -45,7 +51,9 @@
                      <%= link_to campaign_path(campaign.id), class: "btn btn-primary", method: :get do %><i class="fa fa-arrow-right" aria-hidden="true"></i><% end %>
                      <%= link_to edit_campaign_path(campaign.id), class: "btn btn-success", id: "display", method: :get do %><i class="fa fa-pencil" aria-hidden="true"></i><% end %>
                      <%= link_to delete_campaign_path(campaign.id), class: "btn btn-danger", method: :get do %><i class="fa fa-trash-o" aria-hidden="true"></i><% end %>
-                     <%= link_to companies_path(campaign.id), { class: "btn btn-primary", id: "printButton"}, data: {toggle: "tooltip", placement: "right"} do %><i class="fa fa-print" aria-hidden="true"></i><% end %>                     
+                     <% if campaign.runs.where.not(:status => "completed").size == 0 %>
+                        <%= link_to companies_path(campaign.id), { class: "btn btn-primary", id: "printButton"}, data: {toggle: "tooltip", placement: "right"} do %><i class="fa fa-print" aria-hidden="true"></i><% end %>                     
+                    <% end %>
                     </div>
                 </td>
             </tr>

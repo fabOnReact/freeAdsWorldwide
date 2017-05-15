@@ -1,3 +1,9 @@
+<% if flash[:warning_run] %>
+    <div class="alert alert-warning">
+      <strong>Oh snap!</strong> <%= flash[:warning_run] %>
+    </div>               
+<% end %>  
+
 <% if @runs.length > 0 %>
 <% header("runs#index","Print List") %>
 <%= render "shared/partials/formheader" %>

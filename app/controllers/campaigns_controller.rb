@@ -1,6 +1,6 @@
 class CampaignsController < ApplicationController
 
-	def index
+	def index	
 		@campaigns = current_user.campaigns
 	end
 

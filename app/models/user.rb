@@ -10,7 +10,7 @@ class User < ApplicationRecord
  	has_many :runs, through: :campaigns, :dependent => :destroy
 
  	# validations
- 	validates_presence_of :country
+ 	validates_presence_of :country, :city, :email
 
  	def country_name
     	country = ISO3166::Country[country_code]

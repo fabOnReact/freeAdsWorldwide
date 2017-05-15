@@ -112,6 +112,6 @@ class RunsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def run_params
-      params.require(:run).permit(:campaign_id, :runprintnumber, :ownads)
+      params.require(:run).permit(:campaign_id, :runprintnumber, :ownads, :city, :location)
     end
 end

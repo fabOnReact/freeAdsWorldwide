@@ -3,8 +3,12 @@
 <div class="header">
     <h4 class="title"><%= yield(:runs_new) %></h4>
 </div>            
+
 <div class="content">
     <%= simple_form_for [@campaign, @run] do |f| %>
+      <% if @run.errors['base'].present? %>
+        <span class="help-block error"><%= @run.errors['base'][0] %></span>
+      <% end %>
       <% if @campaign.present? %>
         <%= f.association :campaign, {:selected => @campaign.id } %>
       <% else %>
@@ -12,7 +16,8 @@
       <% end %>
       <%= f.input :runprintnumber, label: "Number of Ads to print" %>
       <%= f.input :ownads, label: "Number of your own ads" %>
-
+      <%= f.input :city, input_html: {:value => current_user.city}, label: "City" %>
+      <%= f.input :location, label: "Description of the locations" %>
       <% if controller_name == "companies" %>
       <%= link_to "Hide", companies_path, class: "btn btn-primary btn-fill pull-left btn-main", method: :get %>      
       <% else %>
