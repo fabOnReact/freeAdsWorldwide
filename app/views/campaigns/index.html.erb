@@ -48,11 +48,11 @@
                 <td class="hidden-xs hidden-sm col-md-2"><%= campaign.campaigntype.name %></td>
                 <td class="options  col-xs-5 col-sm-3 col-md-2">
                     <div class="btn-group" id="btn-group">
-                     <%= link_to campaign_path(campaign.id), { class: "btn btn-primary", 'rel' => 'tooltip', 'data-placement' => 'left', 'title'=>"Display Campaign"}, method: :get do %><i class="fa fa-arrow-right" aria-hidden="true"></i><% end %>
-                     <%= link_to edit_campaign_path(campaign.id), {class: "btn btn-success",'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Edit Campaign"}, id: "display", method: :get do %><i class="fa fa-pencil" aria-hidden="true"></i><% end %>
-                     <%= link_to delete_campaign_path(campaign.id), {class: "btn btn-danger",'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Delete Campaign"}, method: :get do %><i class="fa fa-trash-o" aria-hidden="true"></i><% end %>
+                     <%= link_to campaign_path(campaign.id), { class: "btn btn-primary", 'rel' => 'tooltip', 'data-placement' => 'left', 'title'=>"Display Campaign", 'data-method'=>'get'}, method: :get do %><i class="fa fa-arrow-right" aria-hidden="true"></i><% end %>
+                     <%= link_to edit_campaign_path(campaign.id), {class: "btn btn-success",id: "display", 'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Edit Campaign", 'data-method'=>'get'}, method: :get do %><i class="fa fa-pencil" aria-hidden="true"></i><% end %>
+                     <%= link_to delete_campaign_path(campaign.id), {class: "btn btn-danger",'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Delete Campaign", 'data-method'=>'get'}, method: :get do %><i class="fa fa-trash-o" aria-hidden="true"></i><% end %>
                      <% if campaign.runs.where.not(:status => "completed").size == 0 %>
-                        <%= link_to companies_path(campaign.id), { class: "btn btn-primary", id: "printButton",'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Create Print Order"}, data: {toggle: "tooltip", placement: "right"} do %><i class="fa fa-print" aria-hidden="true"></i><% end %>                     
+                        <%= link_to companies_path(campaign.id), { class: "btn btn-primary", id: "printButton",'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Create Print Order", 'data-method'=>'get'},method: :get do %><i class="fa fa-print" aria-hidden="true"></i><% end %>                     
                     <% end %>
                     </div>
                 </td>
