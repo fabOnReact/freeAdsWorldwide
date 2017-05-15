@@ -6,14 +6,14 @@ class Run < ApplicationRecord
 	
 
 	validates_presence_of :runprintnumber, :ownads, :campaign_id, :city, :location
-	validates :ownads, numericality: { greater_than: 0}
-	validates :runprintnumber, numericality: { greater_than: 0}
+	validates :ownads, numericality: { greater_than: 0, less_than: 75}
+	validates :runprintnumber, numericality: { greater_than: 0, less_than: 80}
 	#validates_with RunValidator, fields: [:current_user, :campaign_id, :status]
 
 	def self.nextStatus(run)
 		case run.status
 		when "to distribute"
-			return "finished"
+			return "completed"
 		end
 	end
 
@@ -34,7 +34,7 @@ class Run < ApplicationRecord
 		    # calculating first and second group
 		    firstgroup = (otherads*0.70).ceil
 		    secondgroup = otherads - firstgroup 
-		    
+		    #binding.pry
 
 		    # I filter out the company of the owner and filter by campaign type
 		    campaigns = Campaign.where.not(:company_id => run.campaign.company.id).rewhere(:campaigntype_id => run.campaign.campaigntype_id).order(:created_at)
@@ -45,10 +45,10 @@ class Run < ApplicationRecord
 		    campaigns.order(visitratio: :desc, ads_received: :asc, created_at: :asc)   
 
 		    # In case no campaigns are selected I go random
-		    campaigns = Campaign.all if campaigns.size == 0
+		    #campaigns = Campaign.all if campaigns.size == 0
 			# I filter the first group from campaigns
 		    numberofcompanies = (firstgroup/2).to_i
-		    	
+			#binding.pry		    	
 			# If fewer companies as available ads are selected, I will change the number of ads printed	
 		    if firstgroup > campaigns.size
 		    	campaigns = Campaign.where(:campaigntype_id => run.campaign.campaigntype_id)
@@ -77,20 +77,22 @@ class Run < ApplicationRecord
 		      campaigns[0].save
 		    end
 
+		    #binding.pry
 		    # Creating 1 Ad for each company in the secondgroup
 		    campaigns = campaigns.order(:ads_received)
 		    
 			campaigns = campaigns.limit(secondgroup) if campaigns.size > secondgroup 
-		    ads = (secondgroup / campaigns.size).to_i
-
-		    campaigns.each do |campaign|
-		      ads.times do
-		      	Ad.create(:company_id => campaign.company.id, :run_id => run.id, :selfpromotion => false, :visits => 0)
-		      end
-		      # add field for taking count of this number of adds in the campaing.adsreceived
-		      campaign.ads_received += 1
-		      campaign.save
-		    end
+		    ads = (secondgroup / campaigns.size).to_i unless secondgroup == 0
+		    unless secondgroup == 0
+			    campaigns.each do |campaign|
+			      ads.times do
+			      	Ad.create(:company_id => campaign.company.id, :run_id => run.id, :selfpromotion => false, :visits => 0)
+			      end
+			      # add field for taking count of this number of adds in the campaing.adsreceived
+			      campaign.ads_received += 1
+			      campaign.save
+			    end
+			end
 		end
  	end
 end
