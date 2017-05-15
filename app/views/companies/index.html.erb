@@ -24,13 +24,13 @@
                 </td>
                 <td class="options col-xs-5 col-sm-3 col-md-2">
                     <div class="btn-group" id="btn-group">
-                     <%= link_to company_path(company.id), class: "btn btn-primary", method: :get  do %>
+                     <%= link_to company_path(company.id), {class: "btn btn-primary", 'rel' => 'tooltip', 'data-placement' => 'left', 'title'=>"Display Company"},method: :get  do %>
                      <i class="fa fa-arrow-right" aria-hidden="true"></i>
                      <% end %>
-                     <%= link_to edit_company_path(company.id), class: "btn btn-success", method: :get  do %>
+                     <%= link_to edit_company_path(company.id), {class: "btn btn-success", 'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Edit Company"}, method: :get  do %>
                      <i class="fa fa-pencil" aria-hidden="true"></i>
                      <% end %>
-                     <%= link_to delete_company_path(company.id), class: "btn btn-danger", method: :get  do %>
+                     <%= link_to delete_company_path(company.id), {class: "btn btn-danger", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Delete Company"}, method: :get  do %>
                      <i class="fa fa-trash-o" aria-hidden="true"></i>
                      <% end %>
                     </div>
