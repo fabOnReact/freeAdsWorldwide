@@ -23,7 +23,7 @@ class RunsController < ApplicationController
       end
     end
     @run.update(:status => "to distribute")
-    flash[:warning_run] = "Now remember to check the Print Order as completed after that you gave away all the fliers with the icon"
+    flash[:warning_run] = "Now remember to check the Print Order as completed after giving away all the fliers with the icon"
   end
 
   # GET /runs/new
@@ -97,7 +97,8 @@ class RunsController < ApplicationController
 
     respond_to do |format|
       if @run.save
-        format.html { redirect_to companies_path, notice: "The status was changed to #{@run.status}" }
+        format.html { redirect_to companies_path, notice: "The status was changed to #{@run.status}." }
+        flash[:warning_campaign] = "If you want to give away more fliers you should create a new print order by clicking on the print icon"
       else
         format.html { render :newstatus, error: 'The status was not changed, the application had an error' }
       end

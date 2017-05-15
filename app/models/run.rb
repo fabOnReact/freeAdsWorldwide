@@ -6,7 +6,7 @@ class Run < ApplicationRecord
 	
 
 	validates_presence_of :runprintnumber, :ownads, :campaign_id, :city, :location
-	validates :ownads, numericality: { greater_than: 0, less_than: 75}
+	validates :ownads, numericality: { greater_than_or_equal_to: 0, less_than: 75}
 	validates :runprintnumber, numericality: { greater_than: 0, less_than: 80}
 	#validates_with RunValidator, fields: [:current_user, :campaign_id, :status]
 
