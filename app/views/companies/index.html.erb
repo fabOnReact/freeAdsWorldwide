@@ -18,7 +18,7 @@
             	<td><%= company.name %></td>
             	<td class="hidden-xs"><%= company.companytype.name %></td>
             	<td>
-                    <%= link_to company.url do %>
+                    <%= link_to Company.url(company) do %>
                     <i class="pe-7s-link"></i>
                     <% end %>
                 </td>
