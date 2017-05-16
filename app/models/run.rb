@@ -18,9 +18,12 @@ class Run < ApplicationRecord
 	end
 
   	def self.createAds(run)
+
+	    campaign = run.campaign
+	    company = campaign.company  		
 	    # creating your own ads for that run
 	    run.ownads.times do
-	      Ad.create(:company_id => run.campaign.company.id, :run_id => run.id, :selfpromotion => true, :visits => 0)
+	      Ad.create(:company_id => company.id, :run_id => run.id, :selfpromotion => true, :visits => 0)
 	    end
 
 	    # creating other people ads for that run
@@ -37,7 +40,7 @@ class Run < ApplicationRecord
 		    #binding.pry
 
 		    # I filter out the company of the owner and filter by campaign type
-		    campaigns = Campaign.where.not(:company_id => run.campaign.company.id).rewhere(:campaigntype_id => run.campaign.campaigntype_id).order(:created_at)
+		    campaigns = Campaign.where.not(:company_id => company.id).rewhere(:campaigntype_id => campaign.campaigntype_id).order(:created_at)
 		    # I filter only campaigns that already have a run with status completed
 		    campaigns = campaigns.joins(:runs).where('runs.status' => "completed")
 		    # I calculated the visitsratio every time an Ad is visited at ads#show
@@ -60,14 +63,14 @@ class Run < ApplicationRecord
 
 		    # Creating 2 Ads for each company in the firstgroup
 
-		    campaigns.each do |campaign|
+		    campaigns.each do |c|
 		      # Now I create 2 ads for everyone of those campaigns
 		      ads.times do
-		        Ad.create(:company_id => campaign.company.id, :run_id => run.id, :selfpromotion => false, :visits => 0)
+		        Ad.create(:company_id => c.company.id, :run_id => run.id, :selfpromotion => false, :visits => 0)
 		      end
 		      # add field for taking count of this number of adds in the campaing.adsreceived
-		      campaign.ads_received += 2
-		      campaign.save
+		      c.ads_received += 2
+		      c.save
 		    end
 
 		    # remaining 1 Ad if firstgroup is an odd number
@@ -84,13 +87,13 @@ class Run < ApplicationRecord
 			campaigns = campaigns.limit(secondgroup) if campaigns.size > secondgroup 
 		    ads = (secondgroup / campaigns.size).to_i unless secondgroup == 0
 		    unless secondgroup == 0
-			    campaigns.each do |campaign|
+			    campaigns.each do |c|
 			      ads.times do
-			      	Ad.create(:company_id => campaign.company.id, :run_id => run.id, :selfpromotion => false, :visits => 0)
+			      	Ad.create(:company_id => c.company.id, :run_id => run.id, :selfpromotion => false, :visits => 0)
 			      end
 			      # add field for taking count of this number of adds in the campaing.adsreceived
-			      campaign.ads_received += 1
-			      campaign.save
+			      c.ads_received += 1
+			      c.save
 			    end
 			end
 		end

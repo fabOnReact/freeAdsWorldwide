@@ -52,7 +52,10 @@
                      <%= link_to edit_campaign_path(campaign.id), {class: "btn btn-success",id: "display tooltip", 'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Edit Campaign" } do %><i class="fa fa-pencil" aria-hidden="true"></i><% end %>
                      <%= link_to delete_campaign_path(campaign.id), {class: "btn btn-danger", id: 'tooltip', 'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Delete Campaign" } do %><i class="fa fa-trash-o" aria-hidden="true"></i><% end %>
                      <% if campaign.runs.where.not(:status => "completed").size == 0 %>
-                        <%= link_to companies_path(campaign.id), { class: "btn btn-primary", id: "printButton tooltip",'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Create Print Order" } do %><i class="fa fa-print" aria-hidden="true"></i><% end %>                     
+                        <%= link_to new_campaign_run_path(campaign.id), { class: "btn btn-primary hidden-md hidden-lg", id: "tooltip",'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Create Print Order" } do %><i class="fa fa-print" aria-hidden="true"></i>
+                        <% end %>                     
+                        <%= link_to companies_path(campaign.id), { class: "btn btn-primary hidden-xs hidden-sm", id: "printButton tooltip",'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Create Print Order" } do %><i class="fa fa-print" aria-hidden="true"></i>
+                        <% end %>                                         
                     <% end %>
                     </div>
                 </td>
