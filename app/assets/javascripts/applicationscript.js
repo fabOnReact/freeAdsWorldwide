@@ -1,11 +1,11 @@
 var ready = function() {
 
-    /* Highlighting Navbar link as active 
+    /* Highlighting Navbar link as active */
     var url = window.location.pathname, 
         urlRegExp = new RegExp(url.replace(/\/$/,'')); 
     
-        // now grab every link from the navigation
-        $('.sidebar a').each(function(){
+    // now grab every link from the navigation
+    /*    $('.sidebar a').each(function(){
             // and test its href against the url pathname regexp
             if(urlRegExp.test(this.href)){
                 $(this).parents('li').addClass('active');
@@ -52,6 +52,8 @@ var ready = function() {
     /* GET campaigns#index mobile 360px changing the buttons and removing group div*/
 
     /*if ($(window).width() < 390) { $("#btn-group").removeClass("btn-group"); }*/
+
+    $('.options a').tooltip();
 
 }
 
