@@ -17,10 +17,6 @@ var ready = function() {
         $('#runForm').hide();
     }
 
-    $('#printButton').click(function(){
-        $('#runForm').show("slow");
-    });
-
     /* GET companies#index tooltip*/
     $('.options a').tooltip();
 
@@ -64,9 +60,18 @@ var ready = function() {
              setTimeout(function(){
                 $toggle.removeClass('toggled');
              }, 400);
+
+            $('#printButton').click(function(){
+                $('#runForm').show("slow");
+            });             
+
         });
 
     }    
+
+    $('#printButton').click(function(){
+        $('#runForm').show("slow");
+    });
 
     /* GET campaigns#index mobile 360px changing the buttons and removing group div*/
 

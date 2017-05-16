@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515102434) do
+ActiveRecord::Schema.define(version: 20170516154104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20170515102434) do
     t.boolean  "selfpromotion"
     t.index ["company_id"], name: "index_ads_on_company_id", using: :btree
     t.index ["run_id"], name: "index_ads_on_run_id", using: :btree
+    t.index ["visits"], name: "index_ads_on_visits", using: :btree
   end
 
   create_table "campaigns", force: :cascade do |t|
@@ -42,8 +43,11 @@ ActiveRecord::Schema.define(version: 20170515102434) do
     t.integer  "obtainedvisits",  default: 1
     t.integer  "visitratio",      default: 1
     t.integer  "ads_received",    default: 0
+    t.index ["ads_received"], name: "index_campaigns_on_ads_received", using: :btree
     t.index ["campaigntype_id"], name: "index_campaigns_on_campaigntype_id", using: :btree
     t.index ["company_id"], name: "index_campaigns_on_company_id", using: :btree
+    t.index ["created_at"], name: "index_campaigns_on_created_at", using: :btree
+    t.index ["visitratio"], name: "index_campaigns_on_visitratio", using: :btree
   end
 
   create_table "campaigntypes", force: :cascade do |t|
@@ -80,6 +84,7 @@ ActiveRecord::Schema.define(version: 20170515102434) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_companytypes_on_name", using: :btree
   end
 
   create_table "messages", force: :cascade do |t|
@@ -113,6 +118,7 @@ ActiveRecord::Schema.define(version: 20170515102434) do
     t.string   "city"
     t.string   "location"
     t.index ["campaign_id"], name: "index_runs_on_campaign_id", using: :btree
+    t.index ["status"], name: "index_runs_on_status", using: :btree
   end
 
   create_table "subscriptions", force: :cascade do |t|
