@@ -22,7 +22,7 @@ var ready = function() {
 
 
     /* GET campaigns#new Managing Checkboxes Effects*/
-    $('.checkboxes').hide();
+    /*$('.checkboxes').hide();*/
 
     if($('#campaign_worldwide_false').is(':checked')) {
         $('.checkboxes').show();
