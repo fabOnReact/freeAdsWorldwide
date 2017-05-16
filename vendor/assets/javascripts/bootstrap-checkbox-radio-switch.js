@@ -97,7 +97,8 @@
     }
   });
   
-  $(function () {
+  /*$(function () {*/
+  $(document).on('turbolinks:load', function (){  
     $('[data-toggle="checkbox"]').each(function () {
       var $checkbox = $(this);
       $checkbox.checkbox();
@@ -239,7 +240,8 @@
     $radio.find(':radio').radio('toggle');
   });
   
-  $(function () {
+  /*$(function () {*/
+  $(document).on('turbolinks:load', function(){
     $('[data-toggle="radio"]').each(function () {
       var $radio = $(this);
       $radio.radio();

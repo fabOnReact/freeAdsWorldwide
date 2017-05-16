@@ -3,18 +3,14 @@
 ---------------- Task Done--------------------------------------
 ---------------- Task To Do-------------------------------------
 
+create new branch 
+
 Testing with multiple companies and pdf generation
 review of the pdf generated and the ratings
-
-Should i save the pdf to the database?
-
-Check performances in production
 
 Video Animation - something fast try with some sass easy softare
 
 create staging server
-
-create new branch 
 
 Think about the next project. Do some rating and maybe build quickly
 some landing pages.. think about it and work on it.. you have 2 days
@@ -56,6 +52,11 @@ Hear the user can configure Marketing Campaign Settings and Preferences
 	- run settings, how many ads they want to print in their own city and how many they want to send globally
 	- print run botton, settings will come up and the user need to choose how many ads to print in this run
 ---------------- Later-------------------------------------
+
+Should i save the pdf to the database?
+
+turbolinks fix links to improve performance
+
 generate there a devise users controller 
 in the users#index you will show:
 1. that user startups and where they got the maximum number of visits 
