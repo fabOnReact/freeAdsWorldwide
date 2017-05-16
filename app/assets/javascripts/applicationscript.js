@@ -20,8 +20,12 @@ var ready = function() {
     $('#printButton').click(function(){
         $('#runForm').show("slow");
     });
-    /* GET campaigns#new Managing Checkboxes Effects*/
 
+    /* GET companies#index tooltip*/
+    $('.options a').tooltip();
+
+
+    /* GET campaigns#new Managing Checkboxes Effects*/
     $('.checkboxes').hide();
 
     if($('#campaign_worldwide_false').is(':checked')) {
@@ -48,12 +52,26 @@ var ready = function() {
             $('.checkboxes').show();
     });
 
+    /* MEDIA QUERIES */
+
+    /* GET companies#index */
+
+    if ($(window).width() <= 991) { 
+        $('.navbarLinks').click(function(){
+            $('html').removeClass('nav-open');
+            lbd.misc.navbar_menu_visible = 0;
+            $('#bodyClick').remove();
+             setTimeout(function(){
+                $toggle.removeClass('toggled');
+             }, 400);
+        });
+
+    }    
 
     /* GET campaigns#index mobile 360px changing the buttons and removing group div*/
 
     /*if ($(window).width() < 390) { $("#btn-group").removeClass("btn-group"); }*/
 
-    $('.options a').tooltip();
 
 }
 
