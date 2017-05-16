@@ -22,7 +22,13 @@ var fixedTop = false;
 
 var navbar_initialized = false;
 
-$(document).ready(function(){
+/*$(document).ready(function(){*/
+$(document).on('turbolinks:load', function(){ 
+    
+    /* Edited to fix turbolikns bug with row 83 and 137  problem with Navbar click */
+    navbar_initialized = false;
+    /* Edited to fix turbolikns bug with row 83 and 137 */
+
     window_width = $(window).width();
 
     // check if there is an image set for the sidebar's background

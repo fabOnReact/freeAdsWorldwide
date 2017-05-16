@@ -25,20 +25,20 @@
                 </li-->
                 <li class="" id="company">
                     <% if current_user != nil && current_user.companies.length > 0 %>
-                        <%= link_to companies_path, method: :get, id: "Companies" do %>
+                        <%= link_to companies_path, id: "Companies" do %>
                             <i class="fa fa-home"></i>
                             <!--i class="pe-7s-culture"></i-->
                             <p>Home</p>
                         <% end %>
                     <% else %>
-                        <%= link_to new_company_path, method: :get, id: "Account" do %>
+                        <%= link_to new_company_path, id: "Account" do %>
                             <i class="pe-7s-culture"></i>
                             <p>New Company</p>
                         <% end %>
                     <% end %>
                 </li>                
                 <!--li class="">
-                    <%#= link_to campaigns_path, method: :get do %>
+                    <%#= link_to campaigns_path do %>
                         <i class="pe-7s-news-paper"></i>
                         <p>Campaigns</p>
                     <%# end %>
@@ -47,7 +47,7 @@
                 <% if last_campaign.present? %>
                     <% if last_campaign.runs.where.not(:status => "completed").size == 0 %>
                         <li class="">
-                            <%= link_to companies_path(last_campaign), { id: "printButton"},  method: :get do %>
+                            <%= link_to companies_path(last_campaign), { id: "printButton"} do %>
                                 <i class="fa fa-print" aria-hidden="true"></i>
                                 <p>Create Print</p>
                             <% end %>
@@ -58,7 +58,7 @@
                     <% if last_run.present? %>
                         <% if last_run != "completed" %>
                             <li class="">
-                                <%= link_to campaign_run_path(last_run.campaign, last_run, format: "pdf"),  method: :get do %>
+                                <%= link_to campaign_run_path(last_run.campaign, last_run, format: "pdf") do %>
                                     <i class="fa fa-download" aria-hidden="true"></i>
                                     <p>Fliers Pdf</p>
                                 <% end %>
@@ -67,7 +67,7 @@
 
                         <% if Run.last.status == "to distribute" %>
                             <li class="">
-                                <%= link_to  newstatus_run_path(last_run), method: :get do %>
+                                <%= link_to  newstatus_run_path(last_run) do %>
                                     <i class="fa fa-check" aria-hidden="true"></i>
                                     <p>Fliers Distributed</p>
                                 <% end %>
@@ -101,7 +101,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <%= link_to edit_user_registration_path, method: :get, id: "Account" do %>
+                            <%= link_to edit_user_registration_path, id: "Account" do %>
                                 Account
                             <% end %>
                         </li>
