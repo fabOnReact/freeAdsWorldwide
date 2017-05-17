@@ -26,20 +26,20 @@
 <div class="content table-responsive table-full-width">
     <table class="table table-hover table-striped">
         <thead class="row">
-          <th class="halfwidth col-xs-7 col-md-1">Status</th>
+          <th class="halfwidth col-xs-7 col-sm-4 col-md-1">Status</th>
           <th class="hidden-xs hidden-sm">Company</th>
-          <th class="hidden-xs">Campaign</th>
-          <th class="hidden-xs numeric">Number of Ads</th>
+          <th class="hidden-xs col-sm-4">Campaign</th>
+          <th class="hidden-xs col-sm-1 numeric">Number of Ads</th>
           <th class="halfwidth options col-xs-5 col-sm-3 col-md-2">Options</th>
         </thead>
         <tbody class="row">
             <% @runs.each do |run| %>
             <% if run.status != "completed" %>
               <tr>
-                <td class="halfwidth col-xs-7 col-md-1"><%= run.status %></td>
+                <td class="halfwidth col-xs-7 col-sm-4 col-md-1"><%= run.status %></td>
                 <td class="hidden-xs hidden-sm"><%= run.campaign.company.name %></td>
-                <td class="hidden-xs"><%= run.campaign.name %></td>
-                <td class="hidden-xs numeric"><%= run.runprintnumber %></td>  
+                <td class="hidden-xs col-sm-4"><%= run.campaign.name %></td>
+                <td class="hidden-xs col-sm-1 numeric"><%= run.runprintnumber %></td>  
                 <td class="halfwidth options col-xs-5 col-sm-3 col-md-2">
                     <div class="btn-group" id="btn-group">
                     <% if run.status != "to print" && run.status != "completed" %>

@@ -5,10 +5,11 @@
 
 create new branch 
 
+think about the image on the front page and maybe use cdn if it is
+better for performances
+
 Testing with multiple companies and pdf generation
 review of the pdf generated and the ratings
-
-create staging server
 
 Think about the next project. Do some rating and maybe build quickly
 some landing pages.. think about it and work on it.. you have 2 days
@@ -23,7 +24,7 @@ companies fields will be translated in different languages
 		  website translated in qr code.
 translation of ads globalize
 login with facebook
-reputation points system with merit
+reputation points system 	with merit
 geolocation on mobile
 
 make an effect with js to highlight the different thing that 
