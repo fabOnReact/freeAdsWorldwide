@@ -5,7 +5,10 @@
 </div>            
 <div class="content">
     <%= simple_form_for [@campaign, @run] do |f| %>
-      <%= f.association :campaign %>
+      <% if @run.errors['base'].present? %>
+        <span class="help-block error"><%= @run.errors['base'][0] %></span>
+      <% end %>
+      <%= f.select(:campaign_id, current_user.campaigns.collect {|p| [ p.name, p.id ]}, {},  {:class => "form-control"}) %>  
       <%= f.input :runprintnumber %>
       <%= f.input :ownads %>
       <%= f.input :city, label: "City" %>

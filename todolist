@@ -5,16 +5,13 @@
 
 create new branch 
 
-think about the image on the front page and maybe use cdn if it is
-better for performances
-
-Testing with multiple companies and pdf generation
-review of the pdf generated and the ratings
-
 Think about the next project. Do some rating and maybe build quickly
 some landing pages.. think about it and work on it.. you have 2 days
 
 ---------------- Next Task --------------------------------
+think about the image on the front page and maybe use cdn if it is
+better for performances
+
 Add transition to the jquery effect for the navbarLinks
 class added in the application script
 
