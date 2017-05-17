@@ -24,13 +24,13 @@
                     </a>
                 </li-->
                 <li class="" id="company">
-                    <% if current_user != nil && current_user.companies.length > 0 %>
+                    <% if current_user.present? && current_user.companies.length > 0 %>
                         <%= link_to companies_path, {class: "navbarLinks", id: "Companies" }  do %>
                             <i class="pe-7s-home"></i>
                             <!--i class="pe-7s-culture"></i-->
                             <p>Home</p>
                         <% end %>
-                    <% else %>
+                    <% elsif current_user.present? %>
                         <%= link_to new_company_path, {class: "navbarLinks", id: "Account" } do %>
                             <i class="pe-7s-culture"></i>
                             <p>New Company</p>
