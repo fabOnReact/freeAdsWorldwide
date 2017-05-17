@@ -3,7 +3,7 @@ class RunPdf < Prawn::Document
 		super(top_margin: 70)
 		@run = run
 		@ads = ads
-		@company = @run.campaign.company
+		#@company = @run.campaign.company
 		instructions
 		run_title
 	end
@@ -34,7 +34,7 @@ class RunPdf < Prawn::Document
 		i = 0
 		@ads.each do |ad|
 			start_new_page #if i == 1		
-			company = ad.run.campaign.company
+			company = ad.company
 			text company.name, :align => :center,
 			:size => 70
 			#move_down 10

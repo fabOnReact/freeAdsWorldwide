@@ -18,10 +18,10 @@ class Run < ApplicationRecord
 	end
 
   	def self.createAds(run)
-
 	    campaign = run.campaign
 	    company = campaign.company  		
 	    # creating your own ads for that run
+	    #binding.pry
 	    run.ownads.times do
 	      Ad.create(:company_id => company.id, :run_id => run.id, :selfpromotion => true, :visits => 0)
 	    end
@@ -37,24 +37,23 @@ class Run < ApplicationRecord
 		    # calculating first and second group
 		    firstgroup = (otherads*0.70).ceil
 		    secondgroup = otherads - firstgroup 
-		    #binding.pry
 
 		    # I filter out the company of the owner and filter by campaign type
-		    campaigns = Campaign.where.not(:company_id => company.id).rewhere(:campaigntype_id => campaign.campaigntype_id).order(:created_at)
+		    #companies = current_user.companies
+		    campaigns = Campaign.where.not(:company_id => company.id).rewhere(:campaigntype_id => campaign.campaigntype_id)
 		    # I filter only campaigns that already have a run with status completed
-		    campaigns = campaigns.joins(:runs).where('runs.status' => "completed")
+		    campaigns = campaigns.joins(:runs).where('runs.status' => "completed").distinct
 		    # I calculated the visitsratio every time an Ad is visited at ads#show
 		    # I order based on the visit ration, created at and also ads received
-		    campaigns.order(visitratio: :desc, ads_received: :asc, created_at: :asc)   
+		    campaigns = campaigns.order(visitratio: :desc, ads_received: :asc, created_at: :asc)   
 
 		    # In case no campaigns are selected I go random
 		    #campaigns = Campaign.all if campaigns.size == 0
 			# I filter the first group from campaigns
 		    numberofcompanies = (firstgroup/2).to_i
-			#binding.pry		    	
 			# If fewer companies as available ads are selected, I will change the number of ads printed	
 		    if firstgroup > campaigns.size
-		    	campaigns = Campaign.where(:campaigntype_id => run.campaign.campaigntype_id)
+		    	campaigns = Campaign.where.not(:company_id => company.id).where(:campaigntype_id => run.campaign.campaigntype_id)
 		    	ads = (firstgroup/campaigns.size).to_i
 		    else
 		    	campaigns = campaigns.limit(numberofcompanies)
@@ -69,7 +68,7 @@ class Run < ApplicationRecord
 		        Ad.create(:company_id => c.company.id, :run_id => run.id, :selfpromotion => false, :visits => 0)
 		      end
 		      # add field for taking count of this number of adds in the campaing.adsreceived
-		      c.ads_received += 2
+		      c.ads_received += ads
 		      c.save
 		    end
 
@@ -80,9 +79,8 @@ class Run < ApplicationRecord
 		      campaigns[0].save
 		    end
 
-		    #binding.pry
 		    # Creating 1 Ad for each company in the secondgroup
-		    campaigns = campaigns.order(:ads_received)
+		    campaigns = Campaign.where.not(:company_id => company.id).rewhere(:campaigntype_id => campaign.campaigntype_id).order(:ads_received)
 		    
 			campaigns = campaigns.limit(secondgroup) if campaigns.size > secondgroup 
 		    ads = (secondgroup / campaigns.size).to_i unless secondgroup == 0
