@@ -49,14 +49,14 @@
                         <p>Campaigns</p>
                     <% end %>
                 </li>
-                <% campaign = current_user.campaigns.last if current_user.present? &&current_user.campaigns.present? %>
+                <% last_campaign = current_user.campaigns.last if current_user.present? && current_user.campaigns.present? %>
                 <!--li class="">
                     <%#= link_to campaign_runs_path(campaign), {class: "navbarLinks"} do %>
                         <i class="pe-7s-print"></i>
                         <p>Print Orders</p>
                     <%# end %>
                 </li-->
-                <% last_campaign = current_user.campaigns.last %>
+                <%# last_campaign = current_user.campaigns.last %>
                 <% if last_campaign.present? %>
                     <% if last_campaign.runs.where.not(:status => "completed").size == 0 %>
                         <li class="hidden-md hidden-lg">
