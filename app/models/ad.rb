@@ -24,21 +24,16 @@ class Ad < ApplicationRecord
 		end
 	end  
 
-	def self.address(ad)
-		url = ad.company.url
-		
-		if url.start_with?("http://")
-			address = url.gsub("http://", "")
-		elsif url.start_with?("https://")
-			address = url.gsub("https://", "")			
-		elsif url.start_with?("https://www.")
-			address = url.gsub("https://www.", "")					
-		elsif url.start_with?("www.")
-			address = url.gsub("www.", "")	
-		else address = url				
+	def self.postMultiple(campaigns, ads, run)
+		unless ads == nil
+		    campaigns.each do |c|
+		      ads.times do
+		      	Ad.create(:company_id => c.company.id, :run_id => run.id, :selfpromotion => false, :visits => 0)
+		      end
+		      # add field for taking count of this number of adds in the campaing.adsreceived
+		      c.ads_received += ads
+		      c.save
+		    end	
 		end
-
-		address << "/" unless address.end_with?("/")
-		return address = address + "ads/" + ad.id.to_s	
-	end
+	end	
 end

@@ -11,6 +11,24 @@ class Company < ApplicationRecord
 	validates :description, length: {minimum: 15, maximum: 295}
 	#accepts_nested_attributes_for :campaigns
 
+	def self.address(company, ad)
+		url = company.url
+		
+		if url.start_with?("http://")
+			address = url.gsub("http://", "")
+		elsif url.start_with?("https://")
+			address = url.gsub("https://", "")			
+		elsif url.start_with?("https://www.")
+			address = url.gsub("https://www.", "")					
+		elsif url.start_with?("www.")
+			address = url.gsub("www.", "")	
+		else address = url				
+		end
+
+		address << "/" unless address.end_with?("/")
+		return address = address + "ads/" + ad.id.to_s	
+	end
+
 	def self.url(company)
 		url = company.url
 		
