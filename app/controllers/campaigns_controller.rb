@@ -13,6 +13,7 @@ class CampaignsController < ApplicationController
 		@campaign = Campaign.new(input_params)
 		if @campaign.save
 			flash[:notice] = "Your Campaign was saved, now you can print your fliers by selecting the print button"
+			flash[:warning_campaign] = "Click on the print icon to create your first print order." if current_user.runs.empty?						
 			redirect_to companies_path
 		else
 			flash[:error] = "An error occurred, the Campaign was not saved"

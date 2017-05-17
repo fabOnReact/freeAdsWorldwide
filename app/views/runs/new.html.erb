@@ -10,9 +10,9 @@
         <span class="help-block error"><%= @run.errors['base'][0] %></span>
       <% end %>
       <% if @campaign.present? %>
-        <%= f.association :campaign, {:selected => @campaign.id } %>
+        <%= f.select(:campaign_id, current_user.campaigns.collect {|p| [ p.name, p.id ]}, {:selected => @campaign.id }, {:class => "form-control"}) %> 
       <% else %>
-        <%= f.association :campaign %>
+        <%= f.select(:campaign_id, current_user.campaigns.collect {|p| [ p.name, p.id ]}, {:prompt => "select a campaign" }, {:class => "form-control"}) %> 
       <% end %>
       <%= f.input :runprintnumber, label: "Number of Ads to print" %>
       <%= f.input :ownads, label: "Number of your own ads" %>

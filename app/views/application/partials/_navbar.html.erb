@@ -41,7 +41,7 @@
                     <%#= link_to companies_path, {class: "navbarLinks" } do %>
                         <i class="pe-7s-culture"></i>
                         <p>Companies</p>
-                    <%# end %>  
+                    <%# end %> 
                 </li-->                  
                 <li class="">
                     <%= link_to campaigns_path, {class: "navbarLinks hidden-md hidden-lg" } do %>
@@ -56,7 +56,7 @@
                         <p>Print Orders</p>
                     <%# end %>
                 </li-->
-                <% last_campaign = Campaign.last %>
+                <% last_campaign = current_user.campaigns.last %>
                 <% if last_campaign.present? %>
                     <% if last_campaign.runs.where.not(:status => "completed").size == 0 %>
                         <li class="hidden-md hidden-lg">
@@ -73,7 +73,7 @@
                         </li>
 
                     <% end %>
-                    <% last_run = Run.where.not(:status => "completed").order(created_at: :desc).last %>
+                    <% last_run = current_user.runs.where.not(:status => "completed").order(created_at: :desc).last %>
                     <% if last_run.present? %>
                         <li class="">
                             <%= link_to campaign_run_path(last_run.campaign, last_run, format: "pdf"), {class: "navbarLinks"} do %>
@@ -82,7 +82,7 @@
                             <% end %>
                         </li>
 
-                        <% if Run.last.status == "to distribute" %>
+                        <% if current_user.runs.last.status == "to distribute" %>
                             <li class="">
                                 <%= link_to  newstatus_run_path(last_run), {class: "navbarLinks"} do %>
                                     <i class="pe-7s-check" aria-hidden="true"></i>
