@@ -5,11 +5,14 @@ class Campaign < ApplicationRecord
 
 	validates_presence_of :name, :company_id, :campaigntype_id
 	validates_uniqueness_of :company_id, scope: [:campaigntype_id], :message => "you can create only one type of Campaign for each company"
-
+	
+	def self.filtered(run)
+	    campaigns = Campaign.where.not(:company_id => run.campaign.company.id).rewhere(:campaigntype_id => run.campaign.campaigntype_id)
+	    return campaigns
+	end	
 
 	def self.visits(ad)
 		campaign = ad.run.campaign
-		# check if the Ad is selfpromotion
 		if ad.selfpromotion  
 			campaign.obtainedvisits += 1
 		else
@@ -20,5 +23,4 @@ class Campaign < ApplicationRecord
 		campaign.visitratio = campaign.givenvisits / campaign.obtainedvisits 
 		campaign.save
 	end	
-
 end

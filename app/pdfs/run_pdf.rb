@@ -38,19 +38,19 @@ class RunPdf < Prawn::Document
 			text company.name, :align => :center,
 			:size => 70
 			#move_down 10
-			qrcode(ad, :center)
+			qrcode(company, ad, :center)
 			move_down 20
 			text company.description, :align => :center,
 			:size => 30
 			move_down 20
-			qrcode(ad, :right) 
+			qrcode(company, ad, :right) 
 			move_up 97
-			qrcode(ad, :left)
+			qrcode(company, ad, :left)
 			i = 1
 		end
 	end
 
-	def qrcode(ad, position)	
-		print_qr_code(Ad.address(ad), :extent=>100, :align => position)
+	def qrcode(company, ad, position)	
+		print_qr_code(Company.address(company, ad), :extent=>100, :align => position)
 	end
 end
