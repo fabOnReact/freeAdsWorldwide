@@ -15,6 +15,12 @@ label .field_with_errors {
 	border: none;
 }
 
+/* GET registrations#new */
+
+#error_explanation {
+	color: red;
+}
+
 /* GET companies#index */ 
 	/* Options column style for icons buttons */
 
