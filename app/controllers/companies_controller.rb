@@ -5,6 +5,7 @@ class CompaniesController < ApplicationController
 		@runs = current_user.runs.where.not(:status => "completed")
 		@campaign = Campaign.find(params[:format]) if params[:format].present?
 		@run = Run.new
+		flash[:warning_campaign] = "Click on the print icon to create your print order." if current_user.runs.where.not(:status=>"completed").empty?						if current_user.runs.where.not(:status => "completed").empty?
 	end
 
 	def new
@@ -22,6 +23,7 @@ class CompaniesController < ApplicationController
 			if params[:company].has_key?(:campaign) &&  campaign_params.present? 
 				@campaign.company_id = @company.id 
 				@campaign.save 
+				flash[:warning_campaign] = "Click on the print icon to create your first print order." if current_user.runs.empty?						
 			end
 			flash[:notice] = "Your Company was saved"
 			redirect_to action: "index"
