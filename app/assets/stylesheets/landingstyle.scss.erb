@@ -22,6 +22,31 @@
 	background-position: center -630px;	
 }
 
+.parallax-button {
+	display: none;
+	position: absolute;
+	left: 47%;
+	top: 27%;
+	width: 193px;
+	height: 80px;
+	border-radius: 9px;
+	z-index: 4;
+	font-size: 29px;
+}
+
+.btn-info.btn-fill.parallax-button {
+	background-color: #0066ff;
+}
+
+.btn-info.parallax-button {
+	border-color: #0066ff;
+}
+
+.btn-info.parallax-button:hover, .btn-info.parallax-button:focus, .btn-info.parallax-button:active, .btn-info.parallax-button.active, .open > .btn-info.parallax-button.dropdown-toggle {
+	border-color: red;
+	color: red;
+}
+
 /* Clients */
 
 li img {
@@ -161,6 +186,11 @@ li img {
 	}
 }
 
+@media (max-width: 966px) {
+	.parallax-button {
+		display: initial;
+	}
+}
 
 @media (max-width: 680px) {
 	/* Parallax */ 

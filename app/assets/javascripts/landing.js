@@ -4,4 +4,5 @@
 //= require bootstrap-sprockets
 //= require awesome-landing-page
 //= require olark
+//= require landingscript
 //= require turbolinks
