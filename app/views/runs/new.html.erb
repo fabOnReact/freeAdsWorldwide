@@ -9,11 +9,14 @@
       <% if @run.errors['base'].present? %>
         <span class="help-block error"><%= @run.errors['base'][0] %></span>
       <% end %>
-      <% if @campaign.present? %>
-        <%= f.select(:campaign_id, current_user.campaigns.collect {|p| [ p.name, p.id ]}, {:selected => @campaign.id }, {:class => "form-control"}) %> 
-      <% else %>
-        <%= f.select(:campaign_id, current_user.campaigns.collect {|p| [ p.name, p.id ]}, {:prompt => "select a campaign" }, {:class => "form-control"}) %> 
-      <% end %>
+      <div class="form-group select required">
+        <%= f.label :company_id %>
+        <% if @campaign.present? %>
+          <%= f.select(:campaign_id, current_user.campaigns.collect {|p| [ p.name, p.id ]}, {:selected => @campaign.id }, {:class => "form-control"}) %> 
+        <% else %>
+          <%= f.select(:campaign_id, current_user.campaigns.collect {|p| [ p.name, p.id ]}, {:prompt => "select a campaign" }, {:class => "form-control"}) %> 
+        <% end %>
+      </div>      
       <%= f.input :runprintnumber, label: "Number of Ads to print" %>
       <%= f.input :ownads, label: "Number of your own ads" %>
       <%= f.input :city, input_html: {:value => current_user.city}, label: "City" %>
