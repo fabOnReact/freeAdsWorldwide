@@ -21,8 +21,8 @@ campaigntype = Campaigntype.last
 
 company = Company.create(:name => "StartupAds", :title => "Free Advertisement Worldwide distribution", :description => "Free Advertisement Worldwide distribution", :url => "growstartups.xyz", :companytype_id => companytype.id)
 user.companies << company
-campaign = Campaign.create(:name => "Paper Advertisement Campaign", :targetcountries => "Italy", :campaigntype_id => campaigntype.id, :company_id => company.id)
-
+campaign = Campaign.create(:name => "Paper Advertisement Campaign", :campaigntype_id => campaigntype.id, :company_id => company.id)
+=begin
 run = Run.create(:campaign_id => campaign.id, :runprintnumber => 50, :ownads => 10,:city => "Turin", :location => "around the city testing the app", :status => "to print")
 Run.createAds(run)
 run.status = "completed"
@@ -46,13 +46,13 @@ run = Run.create(:campaign_id => campaign.id, :runprintnumber => 70, :ownads => 
 Run.createAds(run)
 run.status = "completed"
 run.save
-
+=end
 
 # Ending creating a User - Company - Campaign - Run
 
 
 # Starting creating a User - Company - Campaign - Run
-
+=begin
 user = User.create(:email => "ezio.bertoglio@gmail.com", :firstname => "Fabrizio", :lastname => "Bertoglio", :country => "IT", :city => "Torino",:password => "fabrizioowner", :password_confirmation => "fabrizioowner")
 
 companytype = Companytype.first
@@ -126,5 +126,5 @@ run = Run.create(:campaign_id => campaign.id, :runprintnumber => 70, :ownads => 
 Run.createAds(run)
 run.status = "completed"
 run.save
-
+=end
 # Ending creating a User - Company - Campaign - Run
