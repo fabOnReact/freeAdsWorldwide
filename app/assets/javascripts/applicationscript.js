@@ -80,10 +80,4 @@ var ready = function() {
 
 }
 
-/*$(document).ready(ready);*/
 $(document).on('turbolinks:load', ready);
-
-/*
-$( document ).on('turbolinks:load', function() {
-  console.log("It works on each visit inside script!")
-})*/
