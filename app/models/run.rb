@@ -39,6 +39,7 @@ class Run < ApplicationRecord
 
 		    campaigns = Campaign.filtered(run)
 		    campaigns = campaigns.joins(:runs).where('runs.status' => "completed").distinct
+		    
 		    campaigns = campaigns.order(visitratio: :desc, ads_received: :asc, created_at: :asc) 
 
 		    campaigns = Campaign.filtered(run) if campaigns.size == 0 || firstgroup > campaigns.size
