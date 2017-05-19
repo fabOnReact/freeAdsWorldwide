@@ -29,11 +29,11 @@ class RunsController < ApplicationController
   # GET /runs/new
   def new
     @run = Run.new
-    #@companies = Company.all
+    @fields = ["first", "second", "third"]
+    @printnumber = Hash.new{}
     3.times do 
-      @run.company_runs.build
+      @run.ads.build
     end
-    #binding.pry
   end
 
   # GET /runs/1/edit
@@ -43,20 +43,22 @@ class RunsController < ApplicationController
   # POST /runs
   # POST /runs.json
   def create
-    #binding.pry
     @run = Run.new(run_params)
     @companies = Company.all
     #@run.valid?
+    binding.pry
       if @run.save
+        binding.pry
         #Run.createAds(@run)
-        i = 0
+        #i = 0      
         run_params[:company_runs_attributes].each do |attributes|
+
           attributes[printnumber].to_i.times do
             company = @companies[i]    
             Ad.postSimple(company, @run)
             i += 1
           end
-        end
+        end      
         flash[:warning_run] = 'The Print Order was successfully created, you can click on the download icon to open the file or download it. REMEMBER: If using MOZILLA open the file with Adobe outside the browser, as Mozilla give some problems when printing. You can open the file and dowload it with the following icon: ' 
         redirect_to companies_path
       else
@@ -126,6 +128,10 @@ class RunsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def run_params
-      params.require(:run).permit(:campaign_id, :runprintnumber, :ownads, :city, :location, :language_id, company_runs_attributes: [:run_id, :company_id, :printnumber]) 
+      params.require(:run).permit(:campaign_id, :runprintnumber, :ownads, :city, :location, :language_id) #company_runs_attributes: [:run_id, :company_id, :printnumber]
+    end
+
+    def other_params
+      params.permit(:printnumber).require(:run).require(:ads_attributes).permit!
     end
 end

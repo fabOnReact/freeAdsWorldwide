@@ -22,17 +22,17 @@
       <div class="form-group form-group-fix">
       <%# @companies.each do |company| %>
       <%# binding.pry %>
+      <%# 3.times do %>
       <% i = 0 %>
-      <%= f.fields_for :company_runs do |company_run| %>
-          <%# binding.pry %>
-          <%= company_run.association :company, label: "Select a Company", prompt: "Choose a Company", class: "col-sm-3" %>
-          <%#= company_run.label :printnumber, @string[i], class: "control-label labels" %>
-          <div class="col-sm-3">
-              <%= company_run.input :printnumber, { class: "form-control", value: 0 } %>
-          </div>
-          <% i += 1 %>
-      <% end %>
-      <%# end %>
+        <%= f.fields_for :ads do |ad| %>
+            <%# binding.pry %>
+            <%= ad.association :company, label: "Select a Company", prompt: "Choose a Company" %>
+            <%#= company_run.label :printnumber, @string[i], class: "control-label labels" %>
+            <div class="labels">
+                <%= number_field :printnumber, :fields[i], { class: "form-control", value: 0 } %>
+            </div>            
+            <% i += 1 %>
+        <% end %>
       </div>     
       <div class="form-group form-group-fix">
         <%= f.label :city, "* City", class: "col-sm-12 control-label labels" %>  

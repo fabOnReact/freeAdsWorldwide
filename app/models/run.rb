@@ -4,13 +4,12 @@ class Run < ApplicationRecord
 	belongs_to :campaign
 	belongs_to :language
 	has_many :ads, :dependent => :destroy
-	has_and_belongs_to_many :company_runs
 
-	accepts_nested_attributes_for :company_runs
+	accepts_nested_attributes_for :ads
 
-	validates_presence_of :runprintnumber, :ownads, :campaign_id, :city, :location
-	validates :ownads, numericality: { greater_than_or_equal_to: 0, less_than: 75}
-	validates :runprintnumber, numericality: { greater_than: 0, less_than: 80}
+	validates_presence_of :campaign_id, :city, :location
+	#validates :ownads, numericality: { greater_than_or_equal_to: 0, less_than: 75}
+	#validates :runprintnumber, numericality: { greater_than: 0, less_than: 80}
 	#validates_with RunValidator, fields: [:current_user, :campaign_id, :status]
 
 	def self.nextStatus(run)
