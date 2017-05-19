@@ -10,6 +10,7 @@ add click event to script funciton on the button click
 selection of companies
 
 1 form for selecting companies
+run --> firstpartner:integer secondpartner:integer thirpartner:integer
 2 rails g model company_run run_id:integer company_id:integer printnumber:integer
   run has_and_belongs_to_many companies_runs
   column with company name (it will include also your company)
