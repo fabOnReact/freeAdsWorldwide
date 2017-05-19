@@ -29,6 +29,11 @@ class RunsController < ApplicationController
   # GET /runs/new
   def new
     @run = Run.new
+    #@companies = Company.all
+    3.times do 
+      @run.company_runs.build
+    end
+    #binding.pry
   end
 
   # GET /runs/1/edit
@@ -38,22 +43,26 @@ class RunsController < ApplicationController
   # POST /runs
   # POST /runs.json
   def create
+    #binding.pry
     @run = Run.new(run_params)
-    @run.valid?
-    #respond_to do |format|
+    @companies = Company.all
+    #@run.valid?
       if @run.save
-        Run.createAds(@run)
+        #Run.createAds(@run)
+        i = 0
+        run_params[:company_runs_attributes].each do |attributes|
+          attributes[printnumber].to_i.times do
+            company = @companies[i]    
+            Ad.postSimple(company, @run)
+            i += 1
+          end
+        end
         flash[:warning_run] = 'The Print Order was successfully created, you can click on the download icon to open the file or download it. REMEMBER: If using MOZILLA open the file with Adobe outside the browser, as Mozilla give some problems when printing. You can open the file and dowload it with the following icon: ' 
         redirect_to companies_path
-        #format.html { redirect_to companies_path, warning_run_download: 'The Print Order was successfully created, you can click on the download icon to open the file or download it.' }
-        #format.json { render companies_path, status: :created, location: @run }
       else
         flash[:error] = "The run was not saved"
         render "new"
-        #format.html { render :new }
-        #format.json { render json: @run.errors, status: :unprocessable_entity }
-      end
-    #end
+       end
   end
 
   # PATCH/PUT /runs/1
@@ -117,6 +126,6 @@ class RunsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def run_params
-      params.require(:run).permit(:campaign_id, :runprintnumber, :ownads, :city, :location)
+      params.require(:run).permit(:campaign_id, :runprintnumber, :ownads, :city, :location, :language_id, company_runs_attributes: [:run_id, :company_id, :printnumber]) 
     end
 end

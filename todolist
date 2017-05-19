@@ -5,7 +5,65 @@
 
 create new branch
 
+add click event to script funciton on the button click
+
+selection of companies
+
+1 form for selecting companies
+2 rails g model company_run run_id:integer company_id:integer printnumber:integer
+  run has_and_belongs_to_many companies_runs
+  column with company name (it will include also your company)
+  column with number of copies
+4 city 
+5 location
+6 LANGUAGE OF THE ADS - Standard preselected English
+  iso:string name:string 
+
+  The user selects the language he want to print the fliers 
+	run will have a belongs_to language
+	run new will have a select for the language field
+	EN IT TL SV
+  
+  Language has_many :runs
+	
+
+6 submit to runs#create with all the other values, no need for ownads and run print number
+
+7 in runs#create I call Run.manualAds(run)
+8 manualAds(run) selects those performs and each loop for everyone of those companies
+9 Run is saved and Ads are saved
+10 If statement to redirect correctly the user `unless @run.language == "EN"' the redirect to new_translation
+
 translation of the ads - additional field for the description translation
+
+1 translation model
+	fields: language_id:integer translation:string
+
+	translation belongs_to :language
+	translation belongs_to :company
+	language has_many :translations
+	company has_many :translations
+
+	ad.company.translations.where(:language.iso => @run.languge.iso)
+
+2 new_translation form
+	select the @run = current_user.runs.last
+	@run.ads.each do |ad|
+		ad.description
+	1 column for each desciption - input disabled
+		ad.company.translations.where(:language.iso => @run.languge.iso)
+	1 column for the translation - will display the text translated, the user can edit it - mandatory field, can not be blank
+	1 submit
+
+3 post translations#create
+
+	saves the translations in the table
+
+4 runs#show calls RunPdf.new(@run, @ads)
+5 runpdf will print ad.company.translations.where(:language.iso => @run.languge.iso))
+5 test the app and maybe bring to production
+
+
 selection of the ads to print
 snapcode
 explanation on how to scan the snapcode + translation
@@ -13,6 +71,8 @@ explanation on how to scan the snapcode + translation
 riparare contatore volantini distribuiti
 
 ---------------- Next Task --------------------------------
+maybe in the future build a radio button to let user have automatically the startups selected
+
 Think about the next project. Do some rating and maybe build quickly
 some landing pages.. think about it and work on it.. you have 2 days
 

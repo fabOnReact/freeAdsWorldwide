@@ -28,6 +28,13 @@ class Ad < ApplicationRecord
 		return url = "growstartups.xyz/ads/" + ad.id.to_s
 	end	
 
+	def self.postSimple(company, run)
+		boolean = false
+		user_companies = Company.joins(:users).where('users.id' => current_user.id)
+		boolean = true if companies.where(:id => company.id).present?
+     	Ad.create(:company_id => company.id, :run_id => run.id, :selfpromotion => boolean)
+	end	
+
 	def self.postMultiple(campaigns, ads, run)
 		unless ads == nil
 		    campaigns.each do |c|

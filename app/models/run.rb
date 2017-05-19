@@ -2,8 +2,11 @@ class Run < ApplicationRecord
 	require 'prawn'
 
 	belongs_to :campaign
+	belongs_to :language
 	has_many :ads, :dependent => :destroy
-	
+	has_and_belongs_to_many :company_runs
+
+	accepts_nested_attributes_for :company_runs
 
 	validates_presence_of :runprintnumber, :ownads, :campaign_id, :city, :location
 	validates :ownads, numericality: { greater_than_or_equal_to: 0, less_than: 75}
@@ -67,4 +70,5 @@ class Run < ApplicationRecord
 		    Ad.postMultiple(campaigns, ads, run) unless secondgroup == 0
 		end
  	end
+
 end
