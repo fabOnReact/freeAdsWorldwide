@@ -5,28 +5,22 @@
 
 create new branch
 
-flash errors 
+translation of the ads - additional field for the description translation
+selection of the ads to print
+snapcode
+explanation on how to scan the snapcode + translation
 
-include character count
 riparare contatore volantini distribuiti
 
-method: :get from new_company link on the bottom
-
-put a minimum size for the description
-
-create new branch 
-
-
-globalize
-snap
-
+---------------- Next Task --------------------------------
 Think about the next project. Do some rating and maybe build quickly
 some landing pages.. think about it and work on it.. you have 2 days
 
-Ask Pieter Levels, Beta List, Product Hunt if you can give away 
-their fliers in italy
 
----------------- Next Task --------------------------------
+method: :get from new_company link on the bottom
+
+devise flash error is not very nice
+
 think about the image on the front page and maybe use cdn if it is
 better for performances
 
