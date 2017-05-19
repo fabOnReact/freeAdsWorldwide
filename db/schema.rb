@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516154104) do
+ActiveRecord::Schema.define(version: 20170519101432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,11 +80,26 @@ ActiveRecord::Schema.define(version: 20170516154104) do
     t.index ["user_id"], name: "index_companies_users_on_user_id", using: :btree
   end
 
+  create_table "company_runs", force: :cascade do |t|
+    t.integer  "run_id"
+    t.integer  "company_id"
+    t.integer  "printnumber"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "companytypes", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_companytypes_on_name", using: :btree
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string   "iso"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -117,7 +132,9 @@ ActiveRecord::Schema.define(version: 20170516154104) do
     t.string   "status",         default: "to print"
     t.string   "city"
     t.string   "location"
+    t.integer  "language_id"
     t.index ["campaign_id"], name: "index_runs_on_campaign_id", using: :btree
+    t.index ["language_id"], name: "index_runs_on_language_id", using: :btree
     t.index ["status"], name: "index_runs_on_status", using: :btree
   end
 
@@ -163,4 +180,5 @@ ActiveRecord::Schema.define(version: 20170516154104) do
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "visitors"
   add_foreign_key "runs", "campaigns"
+  add_foreign_key "runs", "languages"
 end

@@ -9,7 +9,7 @@
       <% if @run.errors['base'].present? %>
         <span class="help-block error"><%= @run.errors['base'][0] %></span>
       <% end %>
-      <div class="form-group select required">
+      <div class="form-group select required form-group-fix">
         <%= f.label :company_id %>
         <% if @campaign.present? %>
           <%= f.select(:campaign_id, current_user.campaigns.collect {|p| [ p.name, p.id ]}, {:selected => @campaign.id }, {:class => "form-control"}) %> 
@@ -17,10 +17,30 @@
           <%= f.select(:campaign_id, current_user.campaigns.collect {|p| [ p.name, p.id ]}, {:prompt => "select a campaign" }, {:class => "form-control"}) %> 
         <% end %>
       </div>      
-      <%= f.input :runprintnumber, label: "Number of Ads to print" %>
-      <%= f.input :ownads, label: "Number of your own ads" %>
-      <%= f.input :city, input_html: {:value => current_user.city}, label: "City" %>
+      <%#= f.input :runprintnumber, label: "Number of Ads to print" %>
+      <%#= f.input :ownads, label: "Number of your own ads" %>
+      <div class="form-group form-group-fix">
+      <%# @companies.each do |company| %>
+      <%# binding.pry %>
+      <% i = 0 %>
+      <%= f.fields_for :company_runs do |company_run| %>
+          <%# binding.pry %>
+          <%= company_run.association :company, label: "Select a Company", prompt: "Choose a Company", class: "col-sm-3" %>
+          <%#= company_run.label :printnumber, @string[i], class: "control-label labels" %>
+          <div class="col-sm-3">
+              <%= company_run.input :printnumber, { class: "form-control", value: 0 } %>
+          </div>
+          <% i += 1 %>
+      <% end %>
+      <%# end %>
+      </div>     
+      <div class="form-group form-group-fix">
+        <%= f.label :city, "* City", class: "col-sm-12 control-label labels" %>  
+        <%= f.text_field :city, {class: "form-control", value: current_user.city} %>  
+      </div>
+      <%#= f.input :city, input_html: {:value => current_user.city} %>
       <%= f.input :location, label: "Description of the locations" %>
+      <%= f.association :language, label: "Language for the Fliers", selected: "EN"  %>
       <% if controller_name == "companies" %>
       <%= link_to "Hide", companies_path, class: "btn btn-primary btn-fill pull-left btn-main" %>      
       <% else %>

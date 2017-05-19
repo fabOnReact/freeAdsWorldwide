@@ -1,3 +1,11 @@
-#qr = RQRCode::QRCode.new( address, :level=>:h, size: 10)
-#move_down 100
-#render_qr_code(qr, :dot=> 6, :align => :center, :border => none)
+      <div class="form-group">
+      <% @companies.each do |company| %>
+        <%= f.fields_for :company_runs do |company_run| %>
+            
+            <%= company_run.label :printnumber, company.name, class: "col-sm-2 control-label labels" %>
+            <div class="col-sm-2 labels">
+                <%= company_run.number_field :printnumber, { class: "form-control", value: 0 } %>
+            </div>
+        <% end %>
+      <% end %>
+      </div> 
