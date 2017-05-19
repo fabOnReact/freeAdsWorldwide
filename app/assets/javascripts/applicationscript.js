@@ -80,4 +80,20 @@ var ready = function() {
 
 }
 
+/* GET companies#new Update char count */
+
+function updateCountdown() {
+    // 360 is the max description length
+    var remaining = 360 - $('#company_description').val().length;
+    var total = $('#company_description').val().length
+    jQuery('.countdown').text(total + ' characters, ' + remaining + ' characters remaining.');
+}
+
+
 $(document).on('turbolinks:load', ready);
+
+$(document).on('turbolinks:load', function() {
+    updateCountdown();
+    $('#company_description').on('input', updateCountdown);
+    $('#company_description').keyup(updateCountdown);
+});

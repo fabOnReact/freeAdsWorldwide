@@ -45,6 +45,19 @@ label .field_with_errors {
 	display: none;
 }
 
+.form-group.text.required.company_description {
+	margin-bottom: 11px;
+}
+
+.form-group.url.required.company_url {
+	margin-top: 11px;
+}
+
+.countdown {
+	color: #8c8c8c;
+	font-size: 13px;
+}
+
 /* Sidebar */
 
 .sidebar {
