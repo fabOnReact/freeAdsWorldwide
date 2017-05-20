@@ -93,7 +93,10 @@ function updateCountdown() {
 $(document).on('turbolinks:load', ready);
 
 $(document).on('turbolinks:load', function() {
-    updateCountdown();
-    $('#company_description').on('input', updateCountdown);
-    $('#company_description').keyup(updateCountdown);
+    url = window.location.pathname;
+    if (url == "/companies/new") {
+        updateCountdown();
+        $('#company_description').on('input', updateCountdown);
+        $('#company_description').keyup(updateCountdown);
+    }
 });
