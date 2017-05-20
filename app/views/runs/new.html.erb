@@ -6,9 +6,10 @@
 
 <div class="content">
     <%= simple_form_for [@campaign, @run] do |f| %>
-      <% if @run.errors['base'].present? %>
-        <span class="help-block error"><%= @run.errors['base'][0] %></span>
-      <% end %>
+      <%# if @run.errors['base'].present? %>
+        <!--span class="help-block error"><%#= @run.errors['base'][0] %></span-->
+      <%# end %>
+      <%= render 'partials/error_messages', object: @run %>
       <div class="form-group select required form-group-fix">
         <%= f.label :company_id %>
         <% if @campaign.present? %>

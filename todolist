@@ -9,6 +9,11 @@ add click event to script funciton on the button click
 
 selection of companies
 
+I am thinking of rewriting the runs#create method.. as when rendering
+error messages does not work well.. maybe I just add 6 fields to the run
+first company second company third company
+first number of prints second number of prints third number of prints
+
 1 form for selecting companies
 run --> firstpartner:integer secondpartner:integer thirpartner:integer
 2 rails g model company_run run_id:integer company_id:integer printnumber:integer
