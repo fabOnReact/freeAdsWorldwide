@@ -42,30 +42,45 @@ class RunsController < ApplicationController
   # POST /runs
   # POST /runs.json
   def create
+    #binding.pry
     @run = Run.new(run_params)
+    3.times do 
+      @run.ads.build
+    end    
     @companies = Company.all
-      if @run.save
-        for i in 0..2  
-        company_id = ad_params[i.to_s][:company_id].to_i
-        company = Company.find(company_id)
-          print_number.each do |key, printstring|
-            printnumber = printstring.to_i
-            unless printnumber == 0 || company.present?
-              printnumber.to_i.times do
-                boolean = false
-                user_companies = Company.joins(:users).where('users.id' => current_user.id)
-                boolean = true if user_companies.where(:id => company_id).present?
-                Ad.postSimple(company, @run, boolean) 
+    printnumber = 0
+    print_number.each do |key, printstring|
+      printnumber += printstring.to_i
+    end
+
+    unless printnumber == 0 
+        if @run.save
+          for i in 0..2  
+          company_id = ad_params[i.to_s][:company_id].to_i
+          company = Company.find(company_id)
+            print_number.each do |key, printstring|
+              printnumber = printstring.to_i
+              unless printnumber == 0 || company.present?
+                printnumber.to_i.times do
+                  boolean = false
+                  user_companies = Company.joins(:users).where('users.id' => current_user.id)
+                  boolean = true if user_companies.where(:id => company_id).present?
+                  Ad.postSimple(company, @run, boolean) 
+                end
               end
             end
           end
-        end
-        flash[:warning_run] = 'The Print Order was successfully created, you can click on the download icon to open the file or download it. REMEMBER: If using MOZILLA open the file with Adobe outside the browser, as Mozilla give some problems when printing. You can open the file and dowload it with the following icon: ' 
-        redirect_to companies_path
-      else
-        flash[:error] = "The run was not saved"
-        render "new"
-       end
+          flash[:warning_run] = 'The Print Order was successfully created, you can click on the download icon to open the file or download it. REMEMBER: If using MOZILLA open the file with Adobe outside the browser, as Mozilla give some problems when printing. You can open the file and dowload it with the following icon: ' 
+          redirect_to companies_path
+        else
+          binding.pry
+          flash[:error] = "The run was not saved"
+          redirect_to action: :new
+         end
+    else
+      flash[:error] = "You need to include at least one company and number of copies to print"         
+      render "new"
+    end      
   end
 
   # PATCH/PUT /runs/1
