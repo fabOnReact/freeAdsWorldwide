@@ -23,13 +23,14 @@
       <%# @companies.each do |company| %>
       <%# binding.pry %>
       <%# 3.times do %>
+      <% fields = ["first", "second", "third"] %>
       <% i = 0 %>
         <%= f.fields_for :ads do |ad| %>
             <%# binding.pry %>
             <%= ad.association :company, label: "Select a Company", prompt: "Choose a Company" %>
             <%#= company_run.label :printnumber, @string[i], class: "control-label labels" %>
             <div class="labels">
-                <%= number_field :printnumber, :fields[i], { class: "form-control", value: 0 } %>
+                <%= number_field :printnumber, fields[i], { class: "form-control", value: 0 } %>
             </div>            
             <% i += 1 %>
         <% end %>

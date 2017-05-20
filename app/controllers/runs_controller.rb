@@ -29,7 +29,6 @@ class RunsController < ApplicationController
   # GET /runs/new
   def new
     @run = Run.new
-    @fields = ["first", "second", "third"]
     @printnumber = Hash.new{}
     3.times do 
       @run.ads.build
@@ -45,20 +44,22 @@ class RunsController < ApplicationController
   def create
     @run = Run.new(run_params)
     @companies = Company.all
-    #@run.valid?
-    binding.pry
       if @run.save
-        binding.pry
-        #Run.createAds(@run)
-        #i = 0      
-        run_params[:company_runs_attributes].each do |attributes|
-
-          attributes[printnumber].to_i.times do
-            company = @companies[i]    
-            Ad.postSimple(company, @run)
-            i += 1
+        for i in 0..2  
+        company_id = ad_params[i.to_s][:company_id].to_i
+        company = Company.find(company_id)
+          print_number.each do |key, printstring|
+            printnumber = printstring.to_i
+            unless printnumber == 0 || company.present?
+              printnumber.to_i.times do
+                boolean = false
+                user_companies = Company.joins(:users).where('users.id' => current_user.id)
+                boolean = true if user_companies.where(:id => company_id).present?
+                Ad.postSimple(company, @run, boolean) 
+              end
+            end
           end
-        end      
+        end
         flash[:warning_run] = 'The Print Order was successfully created, you can click on the download icon to open the file or download it. REMEMBER: If using MOZILLA open the file with Adobe outside the browser, as Mozilla give some problems when printing. You can open the file and dowload it with the following icon: ' 
         redirect_to companies_path
       else
@@ -131,7 +132,12 @@ class RunsController < ApplicationController
       params.require(:run).permit(:campaign_id, :runprintnumber, :ownads, :city, :location, :language_id) #company_runs_attributes: [:run_id, :company_id, :printnumber]
     end
 
-    def other_params
-      params.permit(:printnumber).require(:run).require(:ads_attributes).permit!
+    def print_number
+      params.require("printnumber").permit(:first, :second, :third)
     end
+
+    def ad_params
+      params.require(:run).require(:ads_attributes).permit!
+    end
+
 end
