@@ -12,7 +12,19 @@ var ready = function() {
             $(this).effect("bounce", { times: 5 }, 2000);
     });
 
+    /* cookie consent */
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#000"
+        },
+        "button": {
+          "background": "#f1d600"
+        }
+      },
+      "position": "top"
+    })    
+
 }
 
 $(document).on('turbolinks:load', ready);
-
