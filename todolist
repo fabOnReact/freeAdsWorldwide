@@ -9,31 +9,26 @@ add click event to script funciton on the button click
 
 selection of companies
 
-I am thinking of rewriting the runs#create method.. as when rendering
-error messages does not work well.. maybe I just add 6 fields to the run
-first company second company third company
-first number of prints second number of prints third number of prints
+nella new devo un botton per aggiungere una company. 
+botton @run.print.build
 
 1 form for selecting companies
-run --> firstpartner:integer secondpartner:integer thirpartner:integer
-2 rails g model company_run run_id:integer company_id:integer printnumber:integer
-  run has_and_belongs_to_many companies_runs
-  column with company name (it will include also your company)
-  column with number of copies
-4 city 
-5 location
-6 LANGUAGE OF THE ADS - Standard preselected English
-  iso:string name:string 
 
-  The user selects the language he want to print the fliers 
-	run will have a belongs_to language
-	run new will have a select for the language field
-	EN IT TL SV
-  
-  Language has_many :runs
-	
+Run 
 
-6 submit to runs#create with all the other values, no need for ownads and run print number
+Print run_id:integer company_number:integer print:number
+
+print.rb validations
+
+run.prints.each do |print|
+
+
+Ad
+
+
+
+
+
 
 7 in runs#create I call Run.manualAds(run)
 8 manualAds(run) selects those performs and each loop for everyone of those companies
@@ -42,6 +37,7 @@ run --> firstpartner:integer secondpartner:integer thirpartner:integer
 
 translation of the ads - additional field for the description translation
 
+SKIPPED ---------------------------------------------------------------------------------->
 1 translation model
 	fields: language_id:integer translation:string
 
@@ -66,6 +62,7 @@ translation of the ads - additional field for the description translation
 	saves the translations in the table
 
 4 runs#show calls RunPdf.new(@run, @ads)
+SKIPPED ---------------------------------------------------------------------------------->
 5 runpdf will print ad.company.translations.where(:language.iso => @run.languge.iso))
 5 test the app and maybe bring to production
 
