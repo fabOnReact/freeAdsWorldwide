@@ -5,6 +5,9 @@
 
 create new branch
 
+You need to find out which path to use for carrierwave and pdf prawn
+image 
+
 Search images based on the company and the language fields 
 Load image - Image.where(:language => "Italian")
 Generate short link
@@ -14,6 +17,7 @@ Think about how to do this for other users - Upload image file from the company 
 
 creation of the company, option to upload your own psd
 
+include the new env variables in production
 before production migrate down db
 test the app and maybe bring to production
 

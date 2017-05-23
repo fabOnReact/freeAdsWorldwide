@@ -34,7 +34,9 @@ class RunPdf < Prawn::Document
 		i = 0
 		@ads.each do |ad|
 			start_new_page #if i == 1	
-			image "#{Prawn::DATADIR}/Growstartup Italian.png", :width => 616
+			#image "#{Prawn::DATADIR}/Growstartup Italian.png", :width => 616
+			# include url shortened
+			text Ad.urlShortner(ad)
 			qrcode(ad)
 =begin			
 			company = ad.company
