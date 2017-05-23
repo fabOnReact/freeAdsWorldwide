@@ -2,13 +2,16 @@ class Company < ApplicationRecord
 	has_and_belongs_to_many :users
 	has_many :campaigns, :dependent => :destroy
 	has_many :ads, :dependent => :destroy
+	has_many :flyers, inverse_of: :company, :dependent => :destroy
 	belongs_to :companytype
+
+	accepts_nested_attributes_for :flyers
 
 	validates_presence_of :name, :companytype, :description, :url
 	#validates_associated :users
 	#validates_presence_of :users
 	validates :name, length: {minimim: 2, maximum: 24}
-	validates :description, length: {minimum: 200, maximum: 360}
+	#validates :description, length: {minimum: 200, maximum: 360}
 
 
 	def self.url(company)

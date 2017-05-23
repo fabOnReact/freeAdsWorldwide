@@ -3,9 +3,10 @@ class Run < ApplicationRecord
 
 	belongs_to :campaign
 	belongs_to :language
+	has_many :prints, inverse_of: :run, :dependent => :destroy
 	has_many :ads, :dependent => :destroy
 
-	accepts_nested_attributes_for :ads
+	accepts_nested_attributes_for :ads, :prints
 
 	validates_presence_of :campaign_id, :city, :location
 	#validates :ownads, numericality: { greater_than_or_equal_to: 0, less_than: 75}

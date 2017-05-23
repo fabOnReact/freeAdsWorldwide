@@ -11,31 +11,19 @@
       <%# end %>
       <%= render 'partials/error_messages', object: @run %>
       <div class="form-group select required form-group-fix">
-        <%= f.label :company_id %>
+        <%= f.label :campaign_id %>
         <% if @campaign.present? %>
           <%= f.select(:campaign_id, current_user.campaigns.collect {|p| [ p.name, p.id ]}, {:selected => @campaign.id }, {:class => "form-control"}) %> 
         <% else %>
           <%= f.select(:campaign_id, current_user.campaigns.collect {|p| [ p.name, p.id ]}, {:prompt => "select a campaign" }, {:class => "form-control"}) %> 
         <% end %>
       </div>      
-      <%#= f.input :runprintnumber, label: "Number of Ads to print" %>
-      <%#= f.input :ownads, label: "Number of your own ads" %>
-      <div class="form-group form-group-fix">
-      <%# @companies.each do |company| %>
-      <%# binding.pry %>
-      <%# 3.times do %>
-      <% fields = ["first", "second", "third"] %>
-      <% i = 0 %>
-        <%= f.fields_for :ads do |ad| %>
-            <%# binding.pry %>
-            <%= ad.association :company, label: "Select a Company", prompt: "Choose a Company" %>
-            <%#= company_run.label :printnumber, @string[i], class: "control-label labels" %>
-            <div class="labels">
-                <%= number_field :printnumber, fields[i], { class: "form-control", value: 0 } %>
-            </div>            
-            <% i += 1 %>
-        <% end %>
-      </div>     
+
+      <%= f.fields_for :prints do |print| %>
+        <%= print.label :company_number, "Select a company for the fliers" %>
+        <%= print.select(:company_number, Company.all.collect {|p| [ p.name, p.id ]}, {:prompt => "Please Select a company or leave blank" }, {:class => "form-control"}) %>
+        <%= print.input :print, label: "Number of Fliers" %>
+      <% end %>
       <div class="form-group form-group-fix">
         <%= f.label :city, "* City", class: "col-sm-12 control-label labels" %>  
         <%= f.text_field :city, {class: "form-control", value: current_user.city} %>  

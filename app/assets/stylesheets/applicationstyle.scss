@@ -58,6 +58,15 @@ label .field_with_errors {
 	font-size: 13px;
 }
 
+/* GET companies#show */
+
+.flyer_image {
+	width: 80%;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
 /* Sidebar */
 
 .sidebar {
