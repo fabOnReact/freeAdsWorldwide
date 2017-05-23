@@ -1,47 +1,19 @@
-SKIPPED ---------------------------------------------------------------------------------->
-1 translation model
-  fields: language_id:integer translation:string
-
-  translation belongs_to :language
-  translation belongs_to :company
-  language has_many :translations
-  company has_many :translations
-
-  ad.company.translations.where(:language.iso => @run.languge.iso)
-
-2 new_translation form
-  select the @run = current_user.runs.last
-  @run.ads.each do |ad|
-    ad.description
-  1 column for each desciption - input disabled
-    ad.company.translations.where(:language.iso => @run.languge.iso)
-  1 column for the translation - will display the text translated, the user can edit it - mandatory field, can not be blank
-  1 submit
-
-3 post translations#create
-
-  saves the translations in the table
-
-4 runs#show calls RunPdf.new(@run, @ads)
-SKIPPED 
-
-
-
-      <%#= f.input :runprintnumber, label: "Number of Ads to print" %>
-      <%#= f.input :ownads, label: "Number of your own ads" %>
-      <%# @companies.each do |company| %>
-      <%# binding.pry %>
-      <%# 3.times do %>
-      <%# fields = ["first", "second", "third"] %>
-      <%# i = 0 %>
-        <%#= f.fields_for :ads do |ad| %>
-            <%# binding.pry %>
-            <%#= ad.association :company, label: "Select a Company", prompt: "Choose a Company" %>
-            <%#= company_run.label :printnumber, @string[i], class: "control-label labels" %>
-            <!--div class="labels">
-                <%#= number_field :printnumber, fields[i], { class: "form-control", value: 0 } %>
-            </div>            
-            <%# i += 1 %>
-        <%# end %>
-      </div>     
-      <div class="form-group form-group-fix"-->
+<% header("companies","Edit Company") %>
+<%= render "shared/partials/formheader" %>
+<div class="header">
+    <h4 class="title"><%= yield(:companies) %></h4>
+</div>  
+        <div class="content">
+            <%= simple_form_for @company do |f| %>
+              <%= f.input :name %>
+              <%= f.association :companytype, prompt: "Choose a type", class: "form-control btn-group bootstrap-select show-tick" %>
+              <%#= f.input :title %>
+              <%= f.input :description, as: :text %>
+              <span class="countdown"></span>
+              <%= f.input :url, ad: :url %>
+              <%= link_to "Back", companies_path, class: "btn btn-primary btn-fill pull-left btn-main" %>
+              <%= f.button :submit, class: "btn btn-info btn-fill pull-right btn-main" %>
+              <div class="clearfix"></div>
+            <% end %>
+        </div>
+<%= render partial: "shared/partials/formfooter" %>
