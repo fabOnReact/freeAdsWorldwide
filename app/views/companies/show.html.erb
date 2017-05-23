@@ -17,3 +17,5 @@
 </div>
 <%= render partial: "shared/partials/formfooter" %>
 <%= render partial: "shared/links/companies_links" %>
+
+<%= image_tag(@company.flyers[0].image.url, alt: 'Image', class: 'flyer_image') unless @company.flyers.empty? || @company.flyers[0].image.nil? %>

@@ -21,7 +21,23 @@ var ready = function() {
     $('.options a').tooltip();
 
 
-    /* GET campaigns#new Managing Checkboxes Effects*/
+    /* GET companies#new Managing Checkboxes Effects*/
+    if($('company_own_style_true').is(':checked')){
+        $('.flyer_fields').show();
+    } else {
+        $('.flyer_fields').hide();
+    }
+
+    $("label[for=company_own_style_true] span.second-icon").click(function () {
+            $('.flyer_fields').show();
+    });
+
+    $("label[for=company_own_style_false] span.second-icon").click(function () {
+            $('.flyer_fields').hide();
+    });
+
+
+    /* GET companies#new Managing Checkboxes Effects*/
     /*$('.checkboxes').hide();*/
 
     if($('#campaign_worldwide_false').is(':checked')) {
@@ -76,7 +92,6 @@ var ready = function() {
     /* GET campaigns#index mobile 360px changing the buttons and removing group div*/
 
     /*if ($(window).width() < 390) { $("#btn-group").removeClass("btn-group"); }*/
-
 
 }
 

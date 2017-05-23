@@ -5,73 +5,28 @@
 
 create new branch
 
-add click event to script funciton on the button click
+Search images based on the company and the language fields 
+Load image - Image.where(:language => "Italian")
+Generate short link
+Print pdf with the correct image
+Add QR Code and short link to the pdf on the correct place
+Think about how to do this for other users - Upload image file from the company new or company index
 
-selection of companies
+creation of the company, option to upload your own psd
 
-nella new devo un botton per aggiungere una company. 
-botton @run.print.build
+before production migrate down db
+test the app and maybe bring to production
 
-1 form for selecting companies
-
-Run 
-
-Print run_id:integer company_number:integer print:number
-
-print.rb validations
-
-run.prints.each do |print|
-
-
-Ad
-
-
-
-
-
-
-7 in runs#create I call Run.manualAds(run)
-8 manualAds(run) selects those performs and each loop for everyone of those companies
-9 Run is saved and Ads are saved
-10 If statement to redirect correctly the user `unless @run.language == "EN"' the redirect to new_translation
-
-translation of the ads - additional field for the description translation
-
-SKIPPED ---------------------------------------------------------------------------------->
-1 translation model
-	fields: language_id:integer translation:string
-
-	translation belongs_to :language
-	translation belongs_to :company
-	language has_many :translations
-	company has_many :translations
-
-	ad.company.translations.where(:language.iso => @run.languge.iso)
-
-2 new_translation form
-	select the @run = current_user.runs.last
-	@run.ads.each do |ad|
-		ad.description
-	1 column for each desciption - input disabled
-		ad.company.translations.where(:language.iso => @run.languge.iso)
-	1 column for the translation - will display the text translated, the user can edit it - mandatory field, can not be blank
-	1 submit
-
-3 post translations#create
-
-	saves the translations in the table
-
-4 runs#show calls RunPdf.new(@run, @ads)
-SKIPPED ---------------------------------------------------------------------------------->
-5 runpdf will print ad.company.translations.where(:language.iso => @run.languge.iso))
-5 test the app and maybe bring to production
-
-
-selection of the ads to print
+add click event to script function on the button click
+clearing campaign.ads_received
+confirmation of the psd
 snapcode
-explanation on how to scan the snapcode + translation
-
+get email every time a new user subscribes
 riparare contatore volantini distribuiti
+
+pensare se vale la pena riabilitare la validazione
+
+you need to be able to see them easily in a screen or get a notification
 
 ---------------- Next Task --------------------------------
 maybe in the future build a radio button to let user have automatically the startups selected
@@ -123,6 +78,9 @@ maybe a video
 twitter, facebook page etc... email
 
 ---------------- Bugs--------------------------------------
+
+companies links if your remove from new company the method: get
+then the submit will not work
 
 on mobile if you click a link then the tollbar does not hide
 after reloading

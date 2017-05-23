@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   	devise_for :users
 
   	get "ads/:id", to: 'application#show'
-	resources :companies, :companytypes, :ads # :campaigns, :runs
+	resources :companytypes, :ads
+
+	resources :companies do 
+		resources :flyers
+	end
 
 	resources :campaigns do 
 		resources :runs

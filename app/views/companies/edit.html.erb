@@ -1,19 +1,37 @@
-<% header("companies","Edit Company") %>
+<% header("companies","Create Company") %>
 <%= render "shared/partials/formheader" %>
 <div class="header">
     <h4 class="title"><%= yield(:companies) %></h4>
 </div>  
-        <div class="content">
-            <%= simple_form_for @company do |f| %>
-              <%= f.input :name %>
-              <%= f.association :companytype, prompt: "Choose a type", class: "form-control btn-group bootstrap-select show-tick" %>
-              <%#= f.input :title %>
-              <%= f.input :description, as: :text %>
-              <span class="countdown"></span>
-              <%= f.input :url, ad: :url %>
-              <%= link_to "Back", companies_path, class: "btn btn-primary btn-fill pull-left btn-main" %>
-              <%= f.button :submit, class: "btn btn-info btn-fill pull-right btn-main" %>
-              <div class="clearfix"></div>
-            <% end %>
+<div class="content">
+    <%= simple_form_for @company do |f| %>
+      <% if @company.errors['base'].present? %>
+        <span class="help-block error"><%= @company.errors['base'][0] %></span>
+      <% end %>     
+      <%= render 'partials/error_messages', object: @company %>
+      <%= f.input :name %>
+      <%= f.association :companytype, prompt: "Choose a type", class: "form-control" %>
+      <%#= f.input :title %>
+      <%= f.input :description, label: "Description 200-360 Characters", as: :text, class: "description" %>
+      <span class="countdown"></span>
+      <%= f.input :url %>
+
+      <!-- flyers#new -->
+
+      <%= f.input :own_style, label: "Upload own flyer design?", as: :radio_buttons, :input_html => { 'data-toggle' => "radio" }, :checked => false %>
+      <%#= f.input :worldwide, as: :radio_buttons,:input_html => { 'data-toggle' => "radio" }, wrapper_html: {id: 'worldwide'} %>
+      <%= f.fields_for :flyers do |flyer| %>
+        <%#= flyer.select(:company_id, current_user.companies.collect {|p| [ p.name, p.id ]}, {:selected => @company.id}) %>
+        <div class="flyer_fields">
+          <%= flyer.label :language_id, "Select the Language of the Flyer"%>
+          <%= flyer.select(:language_id, Language.all.collect{|l| [l.name, l.id]}, {:selected => "EN"}, {:class => "form-control"}) %>
+          <%= flyer.label :image, "add your flier image..." %>
+          <%= flyer.file_field :image, class: "form-control" %>
         </div>
+      <% end %>      
+
+      <%= f.button :submit, class: "btn btn-info btn-fill pull-right btn-main" %>
+      <div class="clearfix"></div>
+    <% end %>
+</div>
 <%= render partial: "shared/partials/formfooter" %>

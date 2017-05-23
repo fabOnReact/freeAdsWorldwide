@@ -1,11 +1,47 @@
-      <div class="form-group">
-      <% @companies.each do |company| %>
-        <%= f.fields_for :company_runs do |company_run| %>
-            
-            <%= company_run.label :printnumber, company.name, class: "col-sm-2 control-label labels" %>
-            <div class="col-sm-2 labels">
-                <%= company_run.number_field :printnumber, { class: "form-control", value: 0 } %>
-            </div>
-        <% end %>
-      <% end %>
-      </div> 
+SKIPPED ---------------------------------------------------------------------------------->
+1 translation model
+  fields: language_id:integer translation:string
+
+  translation belongs_to :language
+  translation belongs_to :company
+  language has_many :translations
+  company has_many :translations
+
+  ad.company.translations.where(:language.iso => @run.languge.iso)
+
+2 new_translation form
+  select the @run = current_user.runs.last
+  @run.ads.each do |ad|
+    ad.description
+  1 column for each desciption - input disabled
+    ad.company.translations.where(:language.iso => @run.languge.iso)
+  1 column for the translation - will display the text translated, the user can edit it - mandatory field, can not be blank
+  1 submit
+
+3 post translations#create
+
+  saves the translations in the table
+
+4 runs#show calls RunPdf.new(@run, @ads)
+SKIPPED 
+
+
+
+      <%#= f.input :runprintnumber, label: "Number of Ads to print" %>
+      <%#= f.input :ownads, label: "Number of your own ads" %>
+      <%# @companies.each do |company| %>
+      <%# binding.pry %>
+      <%# 3.times do %>
+      <%# fields = ["first", "second", "third"] %>
+      <%# i = 0 %>
+        <%#= f.fields_for :ads do |ad| %>
+            <%# binding.pry %>
+            <%#= ad.association :company, label: "Select a Company", prompt: "Choose a Company" %>
+            <%#= company_run.label :printnumber, @string[i], class: "control-label labels" %>
+            <!--div class="labels">
+                <%#= number_field :printnumber, fields[i], { class: "form-control", value: 0 } %>
+            </div>            
+            <%# i += 1 %>
+        <%# end %>
+      </div>     
+      <div class="form-group form-group-fix"-->
