@@ -18,4 +18,9 @@
 <%= render partial: "shared/partials/formfooter" %>
 <%= render partial: "shared/links/companies_links" %>
 
-<%= image_tag(@company.flyers[0].image.url, alt: 'Image', class: 'flyer_image') unless @company.flyers.empty? || @company.flyers[0].image.nil? %>
+<% flyer_url = nil %>
+<% @company.flyers.each do |flyer| %>
+  <% flyer_url = flyer.image.url if flyer.image.url.present? %>
+<% end %>
+
+<%= image_tag(flyer_url, alt: 'Image', class: 'flyer_image') if flyer_url.present? %>

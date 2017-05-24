@@ -22,7 +22,7 @@ var ready = function() {
 
 
     /* GET companies#new Managing Checkboxes Effects*/
-    if($('company_own_style_true').is(':checked')){
+    if($('#company_own_style_true').is(':checked')){
         $('.flyer_fields').show();
     } else {
         $('.flyer_fields').hide();
