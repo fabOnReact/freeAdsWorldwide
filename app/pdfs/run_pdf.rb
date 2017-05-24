@@ -1,4 +1,6 @@
 class RunPdf < Prawn::Document
+	require "open-uri"
+
 	def initialize(run, ads)
 		super(left_margin: 0, right_margin: 0, bottom_margin: 0, top_margin: 0)	
 		@run = run
@@ -32,12 +34,27 @@ class RunPdf < Prawn::Document
 
 	def run_title
 		i = 0
+
+=begin
 		@ads.each do |ad|
-			start_new_page #if i == 1	
-			#image "#{Prawn::DATADIR}/Growstartup Italian.png", :width => 616
-			# include url shortened
+			company = ad.company
+			image_url = company.flyers.where(language_id: 1).first.image.url
+		end
+=end
+
+		@ads.each do |ad|
+			#start_new_page #if i == 1	
+			#image File.open("https://s3.eu-central-1.amazonaws.com//freeads/uploads/flyer/image/6/Growstartup_Italian_BW.png"), :width => 616
+			image open("https://s3.eu-central-1.amazonaws.com//freeads/uploads/flyer/image/6/Growstartup_Italian_BW.png"), :width => 616
+			move_up 900
 			text Ad.urlShortner(ad)
+			move_up 900			
 			qrcode(ad)
+			#image "https://s3.eu-central-1.amazonaws.com//freeads/uploads/flyer/image/6/Growstartup_Italian_BW.png", :width => 616 
+			#{Prawn::DATADIR}/Growstartup Italian.png",
+			# include url shortened			
+		end
+
 =begin			
 			company = ad.company
 			text company.name, :align => :center,
@@ -52,8 +69,7 @@ class RunPdf < Prawn::Document
 			move_up 97
 			qrcode(ad, :left)
 			i = 1
-=end			
-		end
+=end		
 	end
 
 	def qrcode(ad)	

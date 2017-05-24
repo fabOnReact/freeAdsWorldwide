@@ -52,7 +52,7 @@ class CompaniesController < ApplicationController
   
 	def edit 
 		@company = Company.find(params[:id])
-		@company.flyers.build		
+		@company.flyers.build
 	end
 
 	def update

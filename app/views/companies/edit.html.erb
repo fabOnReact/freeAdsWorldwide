@@ -23,10 +23,21 @@
       <%= f.fields_for :flyers do |flyer| %>
         <%#= flyer.select(:company_id, current_user.companies.collect {|p| [ p.name, p.id ]}, {:selected => @company.id}) %>
         <div class="flyer_fields">
-          <%= flyer.label :language_id, "Select the Language of the Flyer"%>
-          <%= flyer.select(:language_id, Language.all.collect{|l| [l.name, l.id]}, {:selected => "EN"}, {:class => "form-control"}) %>
-          <%= flyer.label :image, "add your flier image..." %>
-          <%= flyer.file_field :image, class: "form-control" %>
+          <% if flyer.object.id.present? %>
+            <% var_bool = true %>
+          <% else %>
+            <% var_bool = false %>
+          <% end %>
+          <% unless var_bool %>
+            <%= flyer.label :language_id, "Select the Language of the Flyer" %>
+          <% else %>
+            <%= flyer.label :language_id, "Uploaded Languages" %>
+          <% end %>
+          <%= flyer.select(:language_id, Language.all.collect{|l| [l.name, l.id]}, {defualt: "EN",:selected => flyer.object.language_id}, {:class => "form-control", disabled: var_bool }) %>
+          <% unless var_bool %>
+            <%= flyer.label :image, "add your flier image..." %>
+            <%= flyer.file_field :image, class: "form-control" %>
+          <% end %>
         </div>
       <% end %>      
 
