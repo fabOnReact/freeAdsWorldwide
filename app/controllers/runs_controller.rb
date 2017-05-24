@@ -52,17 +52,17 @@ class RunsController < ApplicationController
       printamount += print.print unless print.print.nil?
     end
 
-    unless printamount == 0 || company_id == nil
+    unless company_id == nil # printamount == 0 ||
       if @run.save
         boolean = false
         user_companies = Company.joins(:users).where('users.id' => current_user.id)
         @run.prints.each do |print|
-          if print.company_number.present? && print.print.present?
+          if print.company_number.present? #&& print.print.present?
             company = Company.find(print.company_number) 
             boolean = true if user_companies.where(:id => print.company_number).present?
-            print.print.times do 
-              Ad.postSimple(company, @run, boolean)
-            end
+            #print.print.times do 
+            Ad.postSimple(company, @run, boolean)
+            #end
           end
         end
         flash[:warning_run] = 'The Print Order was successfully created, you can click on the download icon to open the file or download it. REMEMBER: If using MOZILLA open the file with Adobe outside the browser, as Mozilla give some problems when printing. You can open the file and dowload it with the following icon: ' 
