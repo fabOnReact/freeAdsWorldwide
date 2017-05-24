@@ -30,7 +30,7 @@
       </div>
       <%#= f.input :city, input_html: {:value => current_user.city} %>
       <%= f.input :location, label: "Description of the locations" %>
-      <%= f.association :language, label: "Language for the Fliers", selected: "EN"  %>
+      <%= f.association :language, label: "Language for the Fliers", selected: @run.language, default:"EN"  %>
       <% if controller_name == "companies" %>
       <%= link_to "Hide", companies_path, class: "btn btn-primary btn-fill pull-left btn-main" %>      
       <% else %>

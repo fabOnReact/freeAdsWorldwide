@@ -5,6 +5,10 @@
 
 create new branch
 
+you need to check that the company already has a fliers
+after the delete you can not see the fliers in the edit
+
+
 You need to find out which path to use for carrierwave and pdf prawn
 image 
 
