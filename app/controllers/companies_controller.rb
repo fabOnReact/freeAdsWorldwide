@@ -56,8 +56,8 @@ class CompaniesController < ApplicationController
 	end
 
 	def update
+		#binding.pry
 		@company = Company.find(params[:id])
-		@company.flyers.build
 		if @company.update_attributes(company_params)
 			flash[:notice] = "Your Company was saved"
 			redirect_to action: "index"
