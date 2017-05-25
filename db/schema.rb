@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523140809) do
+ActiveRecord::Schema.define(version: 20170525084804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 20170523140809) do
   create_table "ads", force: :cascade do |t|
     t.integer  "company_id"
     t.integer  "run_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "visits"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "visits",        default: 0
     t.boolean  "selfpromotion"
     t.index ["company_id"], name: "index_ads_on_company_id", using: :btree
     t.index ["run_id"], name: "index_ads_on_run_id", using: :btree
@@ -30,19 +30,19 @@ ActiveRecord::Schema.define(version: 20170523140809) do
   create_table "campaigns", force: :cascade do |t|
     t.string   "name"
     t.string   "targetcountries"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
     t.integer  "campaigntype_id"
     t.integer  "company_id"
-    t.boolean  "worldwide",       default: true
+    t.boolean  "worldwide",                               default: true
     t.boolean  "america"
     t.boolean  "europe"
     t.boolean  "asia"
     t.boolean  "oceania"
-    t.integer  "givenvisits",     default: 1
-    t.integer  "obtainedvisits",  default: 1
-    t.integer  "visitratio",      default: 1
-    t.integer  "ads_received",    default: 0
+    t.integer  "givenvisits",                             default: 1
+    t.integer  "obtainedvisits",                          default: 1
+    t.decimal  "visitratio",      precision: 5, scale: 4, default: "1.0"
+    t.integer  "ads_received",                            default: 0
     t.index ["ads_received"], name: "index_campaigns_on_ads_received", using: :btree
     t.index ["campaigntype_id"], name: "index_campaigns_on_campaigntype_id", using: :btree
     t.index ["company_id"], name: "index_campaigns_on_company_id", using: :btree
@@ -101,8 +101,10 @@ ActiveRecord::Schema.define(version: 20170523140809) do
     t.integer  "company_id"
     t.integer  "language_id"
     t.string   "image"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "confirmed",   default: false
+    t.index ["confirmed"], name: "index_flyers_on_confirmed", using: :btree
   end
 
   create_table "languages", force: :cascade do |t|

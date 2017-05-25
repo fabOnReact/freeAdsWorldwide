@@ -12,15 +12,20 @@ class Campaign < ApplicationRecord
 	end	
 
 	def self.visits(ad)
-		campaign = ad.run.campaign
-		if ad.selfpromotion  
-			campaign.obtainedvisits += 1
-		else
-			campaign.givenvisits += 1
-		end
-		campaign.save
-		campaign.reload
-		campaign.visitratio = campaign.givenvisits / campaign.obtainedvisits 
-		campaign.save
+		promoter_campaign = ad.run.campaign
+		campaigntype =  ad.run.campaign.campaigntype
+		company_campaign = ad.company.campaigns.where(:campaigntype_id => campaigntype.id).first
+
+		promoter_campaign.givenvisits += 1 unless ad.selfpromotion  
+		company_campaign.obtainedvisits += 1 unless ad.selfpromotion
+
+		promoter_campaign.save
+		company_campaign.save
+		promoter_campaign.reload
+		company_campaign.reload
+		promoter_campaign.visitratio = promoter_campaign.givenvisits / promoter_campaign.obtainedvisits 
+		company_campaign.visitratio = company_campaign.givenvisits / company_campaign.obtainedvisits 
+		promoter_campaign.save
+		company_campaign.save
 	end	
 end

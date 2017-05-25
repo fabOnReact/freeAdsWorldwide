@@ -59,13 +59,13 @@
                 <%# last_campaign = current_user.campaigns.last %>
                 <% if last_campaign.present? %>
                     <% if last_campaign.runs.where.not(:status => "completed").size == 0 %>
-                        <li class="hidden-md hidden-lg">
+                        <li class="">
                             <%= link_to new_campaign_run_path(last_campaign), { class: "navbarLinks" } do %>
                                 <i class="pe-7s-print" aria-hidden="true"></i>
                                 <p>Create Print</p>
                             <% end %>
                         </li>
-                        <li class="hidden-xs hidden-sm">
+                        <li class="hidden-xs hidden-sm hidden-md hidden-lg">
                             <%= link_to companies_path(last_campaign), { class: "navbarLinks", id: "printButton"} do %>
                                 <i class="pe-7s-print" aria-hidden="true"></i>
                                 <p>Create Print</p>
