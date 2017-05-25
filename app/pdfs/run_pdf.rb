@@ -1,7 +1,7 @@
 class RunPdf < Prawn::Document
 	require "open-uri"
 
-	def initialize(run, ads)
+	def initialize(run, ads, options = {})
 		super(left_margin: 0, right_margin: 0, bottom_margin: 0, top_margin: 0)	
 		@run = run
 		@ads = ads
@@ -34,17 +34,20 @@ class RunPdf < Prawn::Document
 	def run_title
 		i = 0
 		@ads.each do |ad|
-			#start_new_page #if i == 1	
 			language = ad.run.language
-			url = ad.company.flyers.where(:language_id => language.id).first.image.url
-			image open(url), :width => 616
-			move_up 144
-			text Ad.urlShortner(ad), :size => 20, :color => "ffffff", :align => :center
-			qrcode(ad)
+			flyers = ad.company.flyers
+			unless flyers.where(:confirmed => true).first == nil || flyers.where(:confirmed => true).first.image.url == nil
+				url = flyers.where(:language_id => language.id, :confirmed => true).first.image.url if flyers.where(:language_id => language.id, :confirmed => true).present?
+				url = flyers.where(:confirmed => true).first.image.url if url.nil?
+				image open(url), :width => 616
+				move_up 144
+				text Ad.urlShortner(ad), :size => 20, :color => "ffffff", :align => :center
+				qrcode(ad)
+			end
 		end
 	end
 
 	def qrcode(ad)	
-		print_qr_code(Ad.adUrl(ad), :extent=>100, pos: [257, 109]) #:align => position)
+		print_qr_code(Ad.adUrl(ad), :extent=>100, pos: [257, 109])
 	end
 end

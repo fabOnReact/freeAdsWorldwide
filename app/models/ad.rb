@@ -38,7 +38,8 @@ class Ad < ApplicationRecord
 	end
 
 	def self.postSimple(company, run, boolean)
-     	company.ads_received += 1 if Ad.create(:company_id => company.id, :run_id => run.id, :selfpromotion => boolean)
+     	#company.ads_received += 1 if 
+     	Ad.create(:company_id => company.id, :run_id => run.id, :selfpromotion => boolean)
 	end	
 
 	def self.postMultiple(campaigns, ads, run)

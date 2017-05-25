@@ -17,6 +17,15 @@
     </div>               
 <% end %>  
 
+<% if flash[:error_run] %>
+    <div class="alert alert-block alert-danger fade in">
+      <button data-dismiss="alert" class="close close-sm" type="button">
+          <i class="icon-remove"></i>
+      </button>
+      <strong>Oh snap!</strong> <%= flash[:error_run] %>
+    </div>               
+<% end %>  
+
 <% if @runs.length > 0 %>
 <% header("runs#index","Print List") %>
 <%= render "shared/partials/formheader" %>
@@ -44,14 +53,12 @@
                     <div class="btn-group" id="btn-group">
                     <% if run.status != "to print" && run.status != "completed" %>
                       <%= link_to newstatus_run_path(run), {class: "btn btn-primary", 'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Confirm Print as distributed or completed"} do %><i class="fa fa-check-circle-o" aria-hidden="true"></i><% end %>
-                    <%# else %>
-                       <%#= link_to campaign_run_path(run.campaign_id, run.id), class: "btn btn-primary" do %><!--i class="fa fa-arrow-right" aria-hidden="true"></i--><%# end %>
                      <% end %>
                      <% if run.status != "completed" %>
                      <%= link_to edit_campaign_run_path(run.campaign, run), {class: "btn btn-success", id: "", 'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Edit Print"} do %><i class="fa fa-pencil" aria-hidden="true"></i><% end %>
 
                      <%= link_to delete_run_path(run.id), {class: "btn btn-danger", 'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Delete Print Settings"} do %><i class="fa fa-trash-o" aria-hidden="true"></i><% end %>
-                    
+                     
                      <%= link_to campaign_run_path(run.campaign, run, format: "pdf"), {class: "btn btn-primary", 'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Open Pdf File"} do %><i class="fa fa-cloud-download" aria-hidden="true"></i><% end %>                   
                     <% end %>
                     </div>

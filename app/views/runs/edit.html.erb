@@ -20,7 +20,7 @@
 
       <%= f.fields_for :prints do |print| %>
         <%= print.label :company_number, "Select a company for the fliers" %>
-        <%= print.select(:company_number, Company.all.collect {|p| [ p.name, p.id ]}, {:prompt => "Please Select a company or leave blank" }, {:class => "form-control"}) %>
+        <%= print.select(:company_number, @companies.collect {|p| [ p.name, p.id ]}, {:prompt => "Please Select a company or leave blank" }, {:class => "form-control"}) %>
         <%#= print.input :print, label: "Number of Fliers" %>
       <% end %>
       <div class="form-group form-group-fix">

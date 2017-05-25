@@ -5,29 +5,11 @@
 
 create new branch
 
-you need to check that the company already has a fliers
-after the delete you can not see the fliers in the edit
-
-
-You need to find out which path to use for carrierwave and pdf prawn
-image 
-
-Search images based on the company and the language fields 
-Load image - Image.where(:language => "Italian")
-Generate short link
-Print pdf with the correct image
-Add QR Code and short link to the pdf on the correct place
-Think about how to do this for other users - Upload image file from the company new or company index
-
-creation of the company, option to upload your own psd
-
-include the new env variables in production
 before production migrate down db
 test the app and maybe bring to production
 
 add click event to script function on the button click
 clearing campaign.ads_received
-confirmation of the psd
 snapcode
 get email every time a new user subscribes
 riparare contatore volantini distribuiti
@@ -40,6 +22,14 @@ pensare se vale la pena riabilitare la validazione
 you need to be able to see them easily in a screen or get a notification
 
 ---------------- Next Task --------------------------------
+
+after the delete you can not see the fliers in the edit
+
+fixing the calculation of the visitratio, it does not include the 
+correct precision
+
+delete column campaign ads received
+
 maybe in the future build a radio button to let user have automatically the startups selected
 
 Think about the next project. Do some rating and maybe build quickly
