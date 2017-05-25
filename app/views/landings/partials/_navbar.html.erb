@@ -22,7 +22,12 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="example" >
             <ul class="nav navbar-nav">
-                <li class=""><%= link_to new_user_registration_path do %><i class="fa fa-user-plus"></i> Signup<% end %></li>
+                <li class="">
+                    <a href="https://twitter.com/fabri_on_rails">
+                    <i class="fa fa-twitter"></i>
+                    Tweet
+                    </a>                    
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <!--li>
@@ -32,10 +37,7 @@
                     </a>
                 </li-->
                 <li>
-                    <a href="https://twitter.com/fabri_on_rails">
-                    <i class="fa fa-twitter"></i>
-                    Tweet
-                    </a>
+                    <%= link_to new_user_registration_path do %><i class="fa fa-user-plus"></i> Signup<% end %>
                 </li>
                 <li>
                     <%= link_to new_user_session_path do %>

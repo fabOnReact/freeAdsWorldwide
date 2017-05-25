@@ -9,20 +9,10 @@ complete the merge to master
 
 create new branch
 
-before production migrate down db
-test the app and maybe bring to production
-
 add click event to script function on the button click
-clearing campaign.ads_received
 snapcode
 get email every time a new user subscribes
-riparare contatore volantini distribuiti
-
-ricontare i caratteri 
-fare un editing del paintshop e mostrarlo agli utenti 
-
 pensare se vale la pena riabilitare la validazione
-
 you need to be able to see them easily in a screen or get a notification
 
 ---------------- Next Task --------------------------------
