@@ -45,6 +45,15 @@ label .field_with_errors {
 	display: none;
 }
 
+.companyPicture {
+	width: 52%;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 .form-group.text.required.company_description {
 	margin-bottom: 11px;
 }
@@ -172,6 +181,12 @@ table.qr-code td.white { background-color: #fff; }
 		margin-bottom: 12px;
 	}
 
+}
+
+@media (max-width: 533px) {
+	.companyPicture {
+		width: 95%;
+	}
 }
 
 @media (max-width: 360px) {

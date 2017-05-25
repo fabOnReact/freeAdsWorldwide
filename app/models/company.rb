@@ -11,7 +11,7 @@ class Company < ApplicationRecord
 	#validates_associated :users
 	#validates_presence_of :users
 	validates :name, length: {minimim: 2, maximum: 24}
-	#validates :description, length: {minimum: 200, maximum: 360}
+	#validates :description, length: {minimum: 70, maximum: 1500}
 
 
 	def self.url(company)

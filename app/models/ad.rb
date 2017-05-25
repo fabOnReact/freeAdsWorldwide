@@ -28,8 +28,18 @@ class Ad < ApplicationRecord
 		return url = "growstartups.xyz/ads/" + ad.id.to_s
 	end	
 
+	def self.urlShortner(ad)
+		url = "https://" + Ad.adUrl(ad)
+		#url = "https://growstartups.xyz/ads/221"
+		authorize = UrlShortener::Authorize.new ENV['bitlylogin'], ENV['bitly_api_key']
+		client = UrlShortener::Client.new authorize
+		shorten = client.shorten(url)
+		return shorten.urls
+	end
+
 	def self.postSimple(company, run, boolean)
-     	company.ads_received += 1 if Ad.create(:company_id => company.id, :run_id => run.id, :selfpromotion => boolean)
+     	#company.ads_received += 1 if 
+     	Ad.create(:company_id => company.id, :run_id => run.id, :selfpromotion => boolean)
 	end	
 
 	def self.postMultiple(campaigns, ads, run)

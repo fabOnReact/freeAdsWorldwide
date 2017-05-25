@@ -21,8 +21,8 @@
 
       <%= f.fields_for :prints do |print| %>
         <%= print.label :company_number, "Select a company for the fliers" %>
-        <%= print.select(:company_number, Company.all.collect {|p| [ p.name, p.id ]}, {:prompt => "Please Select a company or leave blank" }, {:class => "form-control"}) %>
-        <%= print.input :print, label: "Number of Fliers" %>
+        <%= print.select(:company_number, @companies.collect {|p| [ p.name, p.id ]}, {:prompt => "Please Select a company or leave blank" }, {:class => "form-control"}) %>
+        <%#= print.input :print, label: "Number of Fliers" %>
       <% end %>
       <div class="form-group form-group-fix">
         <%= f.label :city, "* City", class: "col-sm-12 control-label labels" %>  
@@ -30,7 +30,7 @@
       </div>
       <%#= f.input :city, input_html: {:value => current_user.city} %>
       <%= f.input :location, label: "Description of the locations" %>
-      <%= f.association :language, label: "Language for the Fliers", selected: "EN"  %>
+      <%= f.association :language, label: "Language for the Fliers", default:"EN"  %>
       <% if controller_name == "companies" %>
       <%= link_to "Hide", companies_path, class: "btn btn-primary btn-fill pull-left btn-main" %>      
       <% else %>
