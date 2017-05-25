@@ -8,13 +8,3 @@ class ChangeVisitratioFormatInCampaigns < ActiveRecord::Migration[5.0]
   	end
   end
 end
-=begin  
-  def up
-    change_column :campaigns, :visitratio, :decimal, :precision => 5, :scale => 4
-  end
-
-  def down
-    change_column :campaigns, :visitratio, :integer
-  end
-end
-=end
