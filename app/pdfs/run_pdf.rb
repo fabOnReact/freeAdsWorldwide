@@ -1,19 +1,19 @@
 class RunPdf < Prawn::Document
 	def initialize(run, ads)
-		super(top_margin: 70)
+		super(left_margin: 0, right_margin: 0, bottom_margin: 0, top_margin: 0)	
 		@run = run
 		@ads = ads
 		#@company = @run.campaign.company
-		instructions
+		instructions	
 		run_title
 	end
 
 	def instructions
-		#start_new_page
-		text "Instructions", :size => 70
-		text "Please follow this instructions", :size => 40
-		move_down 10
-		text "1. If you are using Mozilla you will need to open the PDF with Adobe otherwise Mozilla will change the layout while printing.", :size => 20
+		draw_text "Please follow this instructions", :size => 40, :at => [50, 750]
+		move_down 100
+		text "THIS PAGE WILL NOT HAVE MARGINS, IT IS NORMAL BEHAVIOUR.", :size => 20
+		move_down 10		
+		text "1. If you are using Mozilla you will need to open the PDF with Adobe otherwise Mozilla will change the layout while printing. The pages are supposed to be full screen flyers images", :size => 20
 		move_down 10
 		text "2. Print the pages and distribute them around your city. You can post them on walls, trees, light poles, give them to shops..etc.. ", :size => 20
 		move_down 10
@@ -33,12 +33,15 @@ class RunPdf < Prawn::Document
 	def run_title
 		i = 0
 		@ads.each do |ad|
-			start_new_page #if i == 1		
+			start_new_page #if i == 1	
+			image "#{Prawn::DATADIR}/Growstartup Italian.png", :width => 616
+			qrcode(ad)
+=begin			
 			company = ad.company
 			text company.name, :align => :center,
 			:size => 70
 			#move_down 10
-			qrcode(ad, :center)
+			
 			move_down 20
 			text company.description, :align => :center,
 			:size => 30
@@ -47,10 +50,11 @@ class RunPdf < Prawn::Document
 			move_up 97
 			qrcode(ad, :left)
 			i = 1
+=end			
 		end
 	end
 
-	def qrcode(ad, position)	
-		print_qr_code(Ad.adUrl(ad), :extent=>100, :align => position)
+	def qrcode(ad)	
+		print_qr_code(Ad.adUrl(ad), :extent=>100, pos: [258, 113]) #:align => position)
 	end
 end

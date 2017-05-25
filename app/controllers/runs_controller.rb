@@ -28,7 +28,11 @@ class RunsController < ApplicationController
 
   # GET /runs/new
   def new
+    #binding.pry
     @run = Run.new
+    3.times do 
+      @run.prints.build
+    end
   end
 
   # GET /runs/1/edit
@@ -38,22 +42,39 @@ class RunsController < ApplicationController
   # POST /runs
   # POST /runs.json
   def create
-    @run = Run.new(run_params)
-    @run.valid?
-    #respond_to do |format|
+    #binding.pry
+    @run = Run.new(run_params)  
+
+    printamount = 0
+    company_id = nil
+    @run.prints.each do |print|
+      company_id = print.company_number unless print[:company_number] == nil
+      printamount += print.print unless print.print.nil?
+    end
+
+    unless printamount == 0 || company_id == nil
       if @run.save
-        Run.createAds(@run)
+        boolean = false
+        user_companies = Company.joins(:users).where('users.id' => current_user.id)
+        @run.prints.each do |print|
+          if print.company_number.present? && print.print.present?
+            company = Company.find(print.company_number) 
+            boolean = true if user_companies.where(:id => print.company_number).present?
+            print.print.times do 
+              Ad.postSimple(company, @run, boolean)
+            end
+          end
+        end
         flash[:warning_run] = 'The Print Order was successfully created, you can click on the download icon to open the file or download it. REMEMBER: If using MOZILLA open the file with Adobe outside the browser, as Mozilla give some problems when printing. You can open the file and dowload it with the following icon: ' 
         redirect_to companies_path
-        #format.html { redirect_to companies_path, warning_run_download: 'The Print Order was successfully created, you can click on the download icon to open the file or download it.' }
-        #format.json { render companies_path, status: :created, location: @run }
       else
         flash[:error] = "The run was not saved"
         render "new"
-        #format.html { render :new }
-        #format.json { render json: @run.errors, status: :unprocessable_entity }
       end
-    #end
+    else
+      flash[:error] = "You need to include at least one company and number of copies to print"         
+      render "new"
+    end
   end
 
   # PATCH/PUT /runs/1
@@ -117,6 +138,23 @@ class RunsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def run_params
-      params.require(:run).permit(:campaign_id, :runprintnumber, :ownads, :city, :location)
+      params.require(:run).permit(:campaign_id, :runprintnumber, :ownads, :city, :location, :language_id, prints_attributes: [:id, :company_number, :print]) #company_runs_attributes: [:run_id, :company_id, :printnumber]
     end
+
+    def print_number
+      params.require("printnumber").permit(:first, :second, :third)
+    end
+
+    def ad_params
+      params.require(:run).require(:ads_attributes).permit!
+    end
+
+    def clean_params
+      binding.pry
+      _params = run_params.delete_if { |k, v| 
+        binding.pry
+        v.empty? if k == "print_attributes" || k == "print"}
+      binding.pry
+    end
+
 end

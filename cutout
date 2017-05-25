@@ -1,3 +1,19 @@
-#qr = RQRCode::QRCode.new( address, :level=>:h, size: 10)
-#move_down 100
-#render_qr_code(qr, :dot=> 6, :align => :center, :border => none)
+<% header("companies","Edit Company") %>
+<%= render "shared/partials/formheader" %>
+<div class="header">
+    <h4 class="title"><%= yield(:companies) %></h4>
+</div>  
+        <div class="content">
+            <%= simple_form_for @company do |f| %>
+              <%= f.input :name %>
+              <%= f.association :companytype, prompt: "Choose a type", class: "form-control btn-group bootstrap-select show-tick" %>
+              <%#= f.input :title %>
+              <%= f.input :description, as: :text %>
+              <span class="countdown"></span>
+              <%= f.input :url, ad: :url %>
+              <%= link_to "Back", companies_path, class: "btn btn-primary btn-fill pull-left btn-main" %>
+              <%= f.button :submit, class: "btn btn-info btn-fill pull-right btn-main" %>
+              <div class="clearfix"></div>
+            <% end %>
+        </div>
+<%= render partial: "shared/partials/formfooter" %>

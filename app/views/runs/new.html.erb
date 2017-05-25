@@ -6,21 +6,31 @@
 
 <div class="content">
     <%= simple_form_for [@campaign, @run] do |f| %>
-      <% if @run.errors['base'].present? %>
-        <span class="help-block error"><%= @run.errors['base'][0] %></span>
-      <% end %>
-      <div class="form-group select required">
-        <%= f.label :company_id %>
+      <%# if @run.errors['base'].present? %>
+        <!--span class="help-block error"><%#= @run.errors['base'][0] %></span-->
+      <%# end %>
+      <%= render 'partials/error_messages', object: @run %>
+      <div class="form-group select required form-group-fix">
+        <%= f.label :campaign_id %>
         <% if @campaign.present? %>
           <%= f.select(:campaign_id, current_user.campaigns.collect {|p| [ p.name, p.id ]}, {:selected => @campaign.id }, {:class => "form-control"}) %> 
         <% else %>
           <%= f.select(:campaign_id, current_user.campaigns.collect {|p| [ p.name, p.id ]}, {:prompt => "select a campaign" }, {:class => "form-control"}) %> 
         <% end %>
       </div>      
-      <%= f.input :runprintnumber, label: "Number of Ads to print" %>
-      <%= f.input :ownads, label: "Number of your own ads" %>
-      <%= f.input :city, input_html: {:value => current_user.city}, label: "City" %>
+
+      <%= f.fields_for :prints do |print| %>
+        <%= print.label :company_number, "Select a company for the fliers" %>
+        <%= print.select(:company_number, Company.all.collect {|p| [ p.name, p.id ]}, {:prompt => "Please Select a company or leave blank" }, {:class => "form-control"}) %>
+        <%= print.input :print, label: "Number of Fliers" %>
+      <% end %>
+      <div class="form-group form-group-fix">
+        <%= f.label :city, "* City", class: "col-sm-12 control-label labels" %>  
+        <%= f.text_field :city, {class: "form-control", value: current_user.city} %>  
+      </div>
+      <%#= f.input :city, input_html: {:value => current_user.city} %>
       <%= f.input :location, label: "Description of the locations" %>
+      <%= f.association :language, label: "Language for the Fliers", selected: "EN"  %>
       <% if controller_name == "companies" %>
       <%= link_to "Hide", companies_path, class: "btn btn-primary btn-fill pull-left btn-main" %>      
       <% else %>
