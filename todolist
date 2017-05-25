@@ -5,16 +5,36 @@
 
 cookies e private policy
 
+complete the merge to master
+
 create new branch
 
-translation of the ads - additional field for the description translation
-selection of the ads to print
-snapcode
-explanation on how to scan the snapcode + translation
+Search images based on the company and the language fields 
+Load image - Image.where(:language => "Italian")
+Generate short link
+Print pdf with the correct image
+Add QR Code and short link to the pdf on the correct place
+Think about how to do this for other users - Upload image file from the company new or company index
 
+creation of the company, option to upload your own psd
+
+before production migrate down db
+test the app and maybe bring to production
+
+add click event to script function on the button click
+clearing campaign.ads_received
+confirmation of the psd
+snapcode
+get email every time a new user subscribes
 riparare contatore volantini distribuiti
 
+pensare se vale la pena riabilitare la validazione
+
+you need to be able to see them easily in a screen or get a notification
+
 ---------------- Next Task --------------------------------
+maybe in the future build a radio button to let user have automatically the startups selected
+
 Think about the next project. Do some rating and maybe build quickly
 some landing pages.. think about it and work on it.. you have 2 days
 
@@ -62,6 +82,9 @@ maybe a video
 twitter, facebook page etc... email
 
 ---------------- Bugs--------------------------------------
+
+companies links if your remove from new company the method: get
+then the submit will not work
 
 on mobile if you click a link then the tollbar does not hide
 after reloading

@@ -46,6 +46,7 @@ group :development, :test do
   gem "binding_of_caller"
   gem "pry-rails"
   gem "pry-byebug"
+  #gem "better_errors"
 end
 
 group :test do
@@ -83,3 +84,5 @@ gem 'svg-flags-rails', '>= 1.0.0-beta'
 gem 'jquery-turbolinks', '~> 2.1'
 gem 'prawn', '~> 2.2', '>= 2.2.2'
 gem 'prawn-qrcode'
+gem 'fog'
+gem 'carrierwave', '~> 1.1'

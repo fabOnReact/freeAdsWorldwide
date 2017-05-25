@@ -8,6 +8,7 @@
               <% if @campaign.errors['base'].present? %>
                 <span class="help-block error"><%= @campaign.errors['base'][0] %></span>
               <% end %>            
+              <%= render 'partials/error_messages', object: @campaign %>
               <%= f.input :name %>
               <%= f.input :worldwide, as: :radio_buttons,:input_html => { 'data-toggle' => "radio" }, wrapper_html: {id: 'worldwide'} %>
               <div class="checkboxes">
