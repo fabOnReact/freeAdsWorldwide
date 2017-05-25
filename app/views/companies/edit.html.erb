@@ -37,7 +37,7 @@
             <%= flyer.label :language_id, "Uploaded Languages" %>
             <%= link_to "Delete Flyer", { :controller => "flyers", :action => "destroy", :company_id => flyer.object.company_id, :id => flyer.object.id}, method: :delete %> 
           <% end %>
-          <%= flyer.select(:language_id, Language.all.collect{|l| [l.name, l.id]}, {defualt: "EN",:selected => flyer.object.language_id}, {:class => "form-control", disabled: var_bool }) %>
+          <%= flyer.select(:language_id, Language.all.collect{|l| [l.name, l.id]}, {defualt: "EN", selected: flyer.object.language_id}, {:class => "form-control", disabled: var_bool }) %>
           <% unless var_bool %>
             <%= flyer.label :image, "add your flier image..." %>
             <%= flyer.file_field :image, class: "form-control" %>
