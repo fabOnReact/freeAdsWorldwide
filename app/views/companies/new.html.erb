@@ -5,20 +5,25 @@
 </div>  
 <div class="content">
     <%= simple_form_for @company do |f| %>
+      
+      <div class="card">
+          <%= image_tag "Growstartup English Description", class:"companyPicture" %>
+      </div>
+
       <% if @company.errors['base'].present? %>
         <span class="help-block error"><%= @company.errors['base'][0] %></span>
       <% end %>     
       <%= render 'partials/error_messages', object: @company %>
       <%= f.input :name %>
       <%= f.association :companytype, prompt: "Choose a type", class: "form-control" %>
-      <%#= f.input :title %>
-      <%= f.input :description, label: "Description 200-360 Characters", as: :text, class: "description" %>
+      <%= f.input :title %>
+      <%= f.input :description, label: "Description - Include up to 6 Best Features", as: :text, class: "description" %>
       <span class="countdown"></span>
       <%= f.input :url %>
 
       <!-- flyers#new -->
 
-      <%= f.input :own_style, label: "Upload own flyer design?", as: :radio_buttons, :input_html => { 'data-toggle' => "radio" }, :checked => false %>
+      <%= f.input :own_style, label: "Upload your own flyer design?", as: :radio_buttons, :input_html => { 'data-toggle' => "radio" }, :checked => false %>
       <%#= f.input :worldwide, as: :radio_buttons,:input_html => { 'data-toggle' => "radio" }, wrapper_html: {id: 'worldwide'} %>
       <%= f.fields_for :flyers do |flyer| %>
         <%#= flyer.select(:company_id, current_user.companies.collect {|p| [ p.name, p.id ]}, {:selected => @company.id}) %>
