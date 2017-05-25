@@ -16,13 +16,13 @@ class CompaniesController < ApplicationController
 	end
 
 	def create
-		#binding.pry
 		@company = Company.new(company_params)
 		#@company.flyers.first.company_id = @company.id
 		@campaign = Campaign.new(campaign_params)
 		if @company.validate(company_params) #&& @campaign.validate(campaign_params)
 			@company.save
 			current_user.companies << @company
+			# create the campaign for the company
 			if params[:company].has_key?(:campaign) &&  campaign_params.present? 
 				@campaign.company_id = @company.id 
 				@campaign.save 
@@ -57,6 +57,7 @@ class CompaniesController < ApplicationController
 
 	def update
 		@company = Company.find(params[:id])
+		@company.flyers.build
 		if @company.update_attributes(company_params)
 			flash[:notice] = "Your Company was saved"
 			redirect_to action: "index"
