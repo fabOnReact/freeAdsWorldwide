@@ -23,7 +23,7 @@
 
       <!-- flyers#new -->
 
-      <%= f.input :own_style, label: "Upload your own flyer design?", as: :radio_buttons, :input_html => { 'data-toggle' => "radio" }, :checked => false %>
+      <%= f.input :own_style, label: "Upload your own flyer design? We use A4 paper size (210 x 297 cm)", as: :radio_buttons, :input_html => { 'data-toggle' => "radio" }, :checked => false %>
       <%#= f.input :worldwide, as: :radio_buttons,:input_html => { 'data-toggle' => "radio" }, wrapper_html: {id: 'worldwide'} %>
       <%= f.fields_for :flyers do |flyer| %>
         <%#= flyer.select(:company_id, current_user.companies.collect {|p| [ p.name, p.id ]}, {:selected => @company.id}) %>
