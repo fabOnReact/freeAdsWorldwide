@@ -135,7 +135,7 @@ class RunsController < ApplicationController
     end
 
     def set_companies
-      @companies = Company.all.joins(:flyers).where.not("flyers.image" => nil).where("flyers.confirmed" => true)    
+      @companies = Company.all.joins(:flyers).where.not("flyers.image" => nil).where("flyers.confirmed" => true).distinct    
     end
 
     def set_campaign
