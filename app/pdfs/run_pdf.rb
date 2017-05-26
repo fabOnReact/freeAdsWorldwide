@@ -37,16 +37,18 @@ class RunPdf < Prawn::Document
 			language = ad.run.language
 			flyers = ad.company.flyers
 			unless flyers.where(:confirmed => true).first == nil || flyers.where(:confirmed => true).first.image.url == nil
-				url = flyers.where(:language_id => language.id, :confirmed => true).first.image.url if flyers.where(:language_id => language.id, :confirmed => true).present?
-				url = flyers.where(:confirmed => true).first.image.url if url.nil?
-				image open(url), :width => 616
-				move_up 144
-				if language.iso == "WH"
-					text Ad.urlShortner(ad), :size => 20, :color => "000000", :align => :center
-				else
-					text Ad.urlShortner(ad), :size => 20, :color => "ffffff", :align => :center
+				flyer = flyers.where(:language_id => language.id, :confirmed => true).first if flyers.where(:language_id => language.id, :confirmed => true).present?
+				flyer = flyers.where(:confirmed => true).first if flyer.image.url.nil?
+				unless flyer.image.url?
+					image open(flyer.url), :width => 616
+					move_up 144
+					if flyer.language.iso == "WH"
+						text Ad.urlShortner(ad), :size => 20, :color => "000000", :align => :center
+					else
+						text Ad.urlShortner(ad), :size => 20, :color => "ffffff", :align => :center
+					end
+					qrcode(ad)
 				end
-				qrcode(ad)
 			end
 		end
 	end
