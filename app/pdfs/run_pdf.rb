@@ -41,7 +41,11 @@ class RunPdf < Prawn::Document
 				url = flyers.where(:confirmed => true).first.image.url if url.nil?
 				image open(url), :width => 616
 				move_up 144
-				text Ad.urlShortner(ad), :size => 20, :color => "ffffff", :align => :center
+				if language.iso == "WH"
+					text Ad.urlShortner(ad), :size => 20, :color => "000000", :align => :center
+				else
+					text Ad.urlShortner(ad), :size => 20, :color => "ffffff", :align => :center
+				end
 				qrcode(ad)
 			end
 		end

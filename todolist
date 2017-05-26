@@ -8,6 +8,8 @@ mobile
 
 create new branch
 
+print a black link if the language selected is English White Background
+
 add click event to script function on the button click
 snapcode
 get email every time a new user subscribes
