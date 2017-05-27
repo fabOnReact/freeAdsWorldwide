@@ -5,7 +5,28 @@
 
 create new branch
 
+if run has survey:boolean true then do not redirect, show the survey
+you need to edit the logic in the application#show
+
+run survey:boolean 
+	has_many :surveys
+survey company_id:integer
+	has_many :questions
+	belongs_to :run
+question survey_id:integer
+	belongs_to :survey
+
+runs controller new and create
+	display the fields
+	create a survey with nested attributes
+
+runs new.html.erb checkbox survey:boolean
+	show fields if checkbox is selected
+	
+
+
 build a page about "FantaCalcio"
+ask questions
 
 ---------------- Next Task --------------------------------
 add click event to script function on the button click

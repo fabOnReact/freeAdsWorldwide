@@ -6,11 +6,10 @@ class ApplicationController < ActionController::Base
   # GET /ads/1
   # GET /ads/1.json
   def show
-    #binding.pry
     @ad = Ad.find(params[:id])
     Ad.visits(@ad)
     Campaign.visits(@ad)
-    redirect_to Ad.url(@ad) # "https://www.facebook.com"
+    redirect_to Ad.url(@ad) unless @ad.run.survey          
   end
 
   protected
