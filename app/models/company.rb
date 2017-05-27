@@ -7,7 +7,7 @@ class Company < ApplicationRecord
 
 	accepts_nested_attributes_for :flyers, reject_if: lambda {|attributes|
 	#binding.pry
-	attributes['language_id'].blank?}
+	attributes['image'].blank?} #'language_id', 
 
 	validates_presence_of :name, :companytype, :description, :url
 	#validates_associated :users

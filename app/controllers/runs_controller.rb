@@ -35,7 +35,7 @@ class RunsController < ApplicationController
     3.times do 
       @run.prints.build
     end
-  end
+  endw
 
   # GET /runs/1/edit
   def edit  
