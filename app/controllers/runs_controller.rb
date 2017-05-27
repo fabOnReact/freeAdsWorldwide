@@ -35,7 +35,7 @@ class RunsController < ApplicationController
     3.times do 
       @run.prints.build
     end
-  endw
+  end
 
   # GET /runs/1/edit
   def edit  
@@ -156,11 +156,8 @@ class RunsController < ApplicationController
     end
 
     def clean_params
-      binding.pry
       _params = run_params.delete_if { |k, v| 
-        binding.pry
         v.empty? if k == "print_attributes" || k == "print"}
-      binding.pry
     end
 
 end
