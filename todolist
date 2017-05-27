@@ -5,25 +5,67 @@
 
 create new branch
 
-if run has survey:boolean true then do not redirect, show the survey
+user field pro:boolean
+
+campaigntype pro:boolean
+
+campaigns#new
+	if user.pro == true
+	select all campaigntype
+	else 
+	select only where.not pro = false
+
+	if campaigntype = survey
+		show all the fields for the survey
+
+
+	user create a survey campaign
+	1 creates a first survey 
+	2 creates a number of questions
+	3 survey#new and create
+		later he can come back and create a new survey with new questions
+	4 run#new 
+		if run.campaign.campaigntype == "survey"
+			run 
+
+campaigntype survey
+
+applications controller show 
+if campaigntype == survey then do not redirect, show the survey
 you need to edit the logic in the application#show
 
-run survey:boolean 
-	has_many :surveys
-survey company_id:integer
+runs controller
+
+runs new.html.erb
+	if campaigntype == survey
+		f.fields_for @survey
+		f.fields_for @questions
+
+campaign
+	has_many :runs
+	has_many :questionaries
+	belongs_to :campaigntype
+
+run 
+	has_many :ads
+	has_many :questionaries
+	belongs_to :campaign
+
+questionary 
 	has_many :questions
 	belongs_to :run
-question survey_id:integer
-	belongs_to :survey
+	belongs_to :company
+	selfpromotion: 
+
+question questionary_id:integer
+	belongs_to :questionary
 
 runs controller new and create
 	display the fields
-	create a survey with nested attributes
+	create a survey with nested attributes	
 
-runs new.html.erb checkbox survey:boolean
-	show fields if checkbox is selected
-	
-
+ads show.html.erb
+	show the page, ask question, save them to db
 
 build a page about "FantaCalcio"
 ask questions

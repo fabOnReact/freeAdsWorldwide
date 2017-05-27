@@ -29,7 +29,10 @@
                   <%= f.check_box :oceania, { value: "0", 'data-toggle' => "checkbox"} %>
                 </div>                                                                  
               </div>
-              <%= f.association :campaigntype, prompt: "Choose a Campaign type", class: "form-control" %>
+              <% if current_user.pro %>
+                <%= f.association :campaigntype, prompt: "Choose a Campaign type", class: "form-control" %>
+              <% else %>
+                <%= f.association :campaigntype, collection: Campaign.where.not(pro: true), prompt: "Choose a Campaign type", class: "form-control" %>
               <div class="form-group select required">
                 <%= f.label :company_id %>
                 <% if @company.present? %>
