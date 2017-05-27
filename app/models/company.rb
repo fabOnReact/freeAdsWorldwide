@@ -5,9 +5,7 @@ class Company < ApplicationRecord
 	has_many :flyers, inverse_of: :company, :dependent => :destroy
 	belongs_to :companytype
 
-	accepts_nested_attributes_for :flyers, reject_if: lambda {|attributes|
-	#binding.pry
-	attributes['image'].blank?} #'language_id', 
+	accepts_nested_attributes_for :flyers, reject_if: lambda {|attributes|	attributes['image'].blank?} 
 
 	validates_presence_of :name, :companytype, :description, :url
 	#validates_associated :users
