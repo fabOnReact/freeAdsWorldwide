@@ -5,18 +5,14 @@
 
 create new branch
 
-make sure that when editing and creating a nil enlish flyer is not 
-saved modify that check that you do
+build a page about "FantaCalcio"
 
-print a black link if the language selected is English White Background
-
+---------------- Next Task --------------------------------
 add click event to script function on the button click
 snapcode
 get email every time a new user subscribes
 pensare se vale la pena riabilitare la validazione
 you need to be able to see them easily in a screen or get a notification
-
----------------- Next Task --------------------------------
 
 after the delete you can not see the fliers in the edit
 
