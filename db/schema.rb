@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528165354) do
+ActiveRecord::Schema.define(version: 20170527123943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 20170528165354) do
   create_table "ads", force: :cascade do |t|
     t.integer  "company_id"
     t.integer  "run_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "visits",        default: 0
-    t.boolean  "selfpromotion", default: false
+    t.boolean  "selfpromotion"
     t.index ["company_id"], name: "index_ads_on_company_id", using: :btree
     t.index ["run_id"], name: "index_ads_on_run_id", using: :btree
     t.index ["visits"], name: "index_ads_on_visits", using: :btree
