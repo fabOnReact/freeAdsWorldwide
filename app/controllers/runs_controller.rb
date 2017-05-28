@@ -44,7 +44,6 @@ class RunsController < ApplicationController
   # POST /runs
   # POST /runs.json
   def create
-    #binding.pry
     @run = Run.new(run_params)  
 
     printamount = 0
@@ -59,7 +58,6 @@ class RunsController < ApplicationController
         user_companies = Company.joins(:users).where('users.id' => current_user.id)
         @run.prints.each do |print|
           boolean = false
-          binding.pry
           if print.company_number.present? #&& print.print.present?
             company = Company.find(print.company_number) 
             boolean = true if user_companies.where(:id => print.company_number).present?
