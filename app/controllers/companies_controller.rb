@@ -1,4 +1,7 @@
 class CompaniesController < ApplicationController
+	def home	
+	end
+
 	def index	
 		@companies = current_user.companies
 		@campaigns = current_user.campaigns

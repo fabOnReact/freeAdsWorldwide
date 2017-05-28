@@ -16,8 +16,10 @@ Rails.application.routes.draw do
 	
 	# companies 
 	get "companies/:id/delete", to: 'companies#delete', as: 'delete_company'
+	get "companieshome", to: 'companies#home', as: 'home_companies'
+
+	#campaigns
 	get "campaigns/:id/delete", to: 'campaigns#delete', as: 'delete_campaign'
-	#get "runs/:id/download", to: 'companies#download', as: 'download_run'
 
 	# runs
 	get "runs/:id/delete", to: 'runs#delete', as: 'delete_run'

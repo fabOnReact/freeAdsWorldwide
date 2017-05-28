@@ -20,5 +20,7 @@
 //= require bootstrap-notify
 //= require light-bootstrap-dashboard
 //= require olark
+//= require loader
+//= require google-charts
 //= require applicationscript
 //= require turbolinks

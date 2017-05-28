@@ -25,10 +25,24 @@
                 </li-->
                 <li class="" id="company">
                     <% if current_user.present? && current_user.companies.length > 0 %>
-                        <%= link_to companies_path, {class: "navbarLinks", id: "Companies" }  do %>
+                        <%= link_to home_companies_path, {class: "navbarLinks", id: "Companies" }  do %>
                             <i class="pe-7s-home"></i>
                             <!--i class="pe-7s-culture"></i-->
                             <p>Home</p>
+                        <% end %>
+                    <% elsif current_user.present? %>
+                        <%= link_to new_company_path, {class: "navbarLinks", id: "Account" } do %>
+                            <i class="pe-7s-culture"></i>
+                            <p>New Company</p>
+                        <% end %>
+                    <% end %>
+                </li>                 
+                <li class="" id="company">
+                    <% if current_user.present? && current_user.companies.length > 0 %>
+                        <%= link_to companies_path, {class: "navbarLinks", id: "Companies" }  do %>
+                            <i class="pe-7s-culture"></i>
+                            <!--i class="pe-7s-portfolio"></i-->
+                            <p>Companies</p>
                         <% end %>
                     <% elsif current_user.present? %>
                         <%= link_to new_company_path, {class: "navbarLinks", id: "Account" } do %>
