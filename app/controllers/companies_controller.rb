@@ -4,6 +4,12 @@ class CompaniesController < ApplicationController
 		@campaigns = current_user.campaigns
 		@runs = current_user.runs.where.not(:status => "completed")
 		@campaign = Campaign.find(params[:format]) if params[:format].present?
+		@all_companies = Company.all
+
+		@style = ["skills first", "skills second", "skills third", "skills fourth"]
+
+		@total_visits = Ad.all.sum(:visits)
+		@partial_visits = Ad.all.group(:company_id).sum(:visits)		
 		@run = Run.new
 		flash[:warning_campaign] = "Click on the print icon to create your print order." if current_user.runs.where.not(:status=>"completed").empty?						if current_user.runs.where.not(:status => "completed").empty?
 	end
