@@ -25,6 +25,8 @@ module ApplicationHelper
 				content_for(:runs_status) { text }	
 			when "flyers#index"
 				content_for(:flyer) { text }							
+			when "statistics"
+				content_for(:statistics) { text }					
 		end
 	end
 end
