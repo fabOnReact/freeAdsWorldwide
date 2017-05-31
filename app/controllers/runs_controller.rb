@@ -58,6 +58,10 @@ class RunsController < ApplicationController
         user_companies = Company.joins(:users).where('users.id' => current_user.id)
         @run.prints.each do |print|
           boolean = false
+<<<<<<< HEAD
+=======
+          #binding.pry
+>>>>>>> skillbar
           if print.company_number.present? #&& print.print.present?
             company = Company.find(print.company_number) 
             boolean = true if user_companies.where(:id => print.company_number).present?

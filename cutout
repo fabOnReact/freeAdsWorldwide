@@ -1,3 +1,27 @@
+ok 
+
+You pass from the new action to the create action your parameters
+
+     {"utf8"=>"✓", "authenticity_token"=>"wFf3EbDhQjJwttjnE+nbQxinH508coHBctC+hi4M4sNAyhe6fisDhGWscVDxppS9NJ3/fcjCGQKiNFy1thAXOA==", "video_upload"=>{"file"=>#, @original_filename="IMG_0673.MOV", @content_type="video/quicktime", @headers="Content-Disposition: form-data; name=\"video_upload[file]\"; filename=\"IMG_0673.MOV\"\r\nContent-Type: video/quicktime\r\n">, "upload_thumbnail"=>#, @original_filename="protest_3.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"video_upload[upload_thumbnail]\"; filename=\"protest_3.png\"\r\nContent-Type: image/png\r\n">, "title"=>"o iuiou goiug oiug piu gpiugpiu ", "description"=>"yg ouyg ouyg piu gpugpiu piuhpiuhpiuh [ io hio h; ['o ih[oi [oih [' oih "}, "commit"=>"Upload"}
+
+
+Then the create action will do 2 things:
+1. Create an instace of Video Upload with those params:
+
+    @video_upload = VideoUpload.new(
+2. Save the instance `video_upload`
+
+    @video_upload.save
+
+So you need to stop with the debugger or print to the server with the `put` ruby syntax the following fields:
+
+    puts @video_upload.errors.full_messages
+
+Or check those out with the debug and tell us if you have any error message, as probably you are not saving it.. or maybe 
+
+
+
+
 # Now I post ads to the runs
 =begin
 run = Run.create(:campaign_id => campaign.id, :city => "Turin", :location => "around the city testing the app", :status => "to print", :language_id => 1)

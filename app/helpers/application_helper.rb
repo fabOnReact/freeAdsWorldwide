@@ -22,7 +22,11 @@ module ApplicationHelper
 			when "runs#new"
 				content_for(:runs_new) { text }								
 			when "runs#status"
-				content_for(:runs_status) { text }								
+				content_for(:runs_status) { text }	
+			when "flyers#index"
+				content_for(:flyer) { text }							
+			when "statistics"
+				content_for(:statistics) { text }					
 		end
 	end
 end

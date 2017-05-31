@@ -38,6 +38,33 @@ label .field_with_errors {
 	text-align: center;
 }
 
+/* Statistics Bar*/
+
+/* Make sure that padding behaves as expected */
+* {box-sizing:border-box}
+
+/* Container for skill bars */
+.container {
+    width: 100%; /* Full width */
+    background-color: #ddd; /* Grey background */
+    padding: 0px;
+}
+
+.skills {
+    text-align: right; /* Right-align text */
+    padding-right: 20px; /* Add so: ;me right padding */
+    line-height: 40px; /* Set the line-height to center the text inside the skill bar, and to expand the height of the container */
+    color: white; /* White text color */
+}
+
+.first {width: 90%; background-color: #4CAF50;} /* Green */
+.second {width: 80%; background-color: #2196F3;} /* Blue */
+.third {width: 65%; background-color: #f44336;} /* Red */
+.fourth {width: 60%; background-color: #808080;} /* Dark Grey */
+
+.statistics {
+	margin-top: 10px;
+}
 
 /* GET companies#new */
 
