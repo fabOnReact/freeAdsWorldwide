@@ -9,6 +9,9 @@ class CompaniesController < ApplicationController
 		@statistics = []
 		@total = 0
 		@style = ["skills first", "skills second", "skills third", "skills fourth"]
+
+		total_visits = Ad.all.group(:visits).count
+
 		@all_companies.each do |company|
 			partial = 0
 			Ad.where(company_id: company.id).where("visits > ?", 0).each do |ad|

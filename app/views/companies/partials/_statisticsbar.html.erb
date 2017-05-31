@@ -2,7 +2,7 @@
 <%= @statistics.each do |statbar| %>
 	<p><%= statbar[0] %></p>
 	<div class="container">
-	  <div class="<%= @style[i] %>"><%= statbar[1]/@total * 100 %></div>
+	  <div class="<%= @style[i] %>"><%#= statbar[1]/@total * 100 %></div>
 	</div>
 	<% i += 1 %>
 <% end %>

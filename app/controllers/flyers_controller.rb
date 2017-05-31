@@ -1,6 +1,24 @@
 class FlyersController < ApplicationController
   def index
+    if current_user.role == "administrator"
+      @flyers = Flyer.all
+    else
+      redirect_to companies_path
+    end
   end
+
+  def confirm
+    @flyer = Flyer.find(params[:id])
+    #@flyer.confirmed = true
+    if @flyer.update_attributes(confirmed: true)
+      flash[:notice] = "The Flyer was confirmed"
+      redirect_to action: "index"
+    else
+      flash[:error] = "An error occurred, the flyer was not saved"
+      render "index"
+    end
+  end
+
 
   def new
   	@flyer = Flyer.new
