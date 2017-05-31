@@ -6,12 +6,14 @@ class CompaniesController < ApplicationController
 		@campaign = Campaign.find(params[:format]) if params[:format].present?
 		@all_companies = Company.all
 
-		@statistics = []
-		@total = 0
+#		@statistics = []
+#		@total = 0
 		@style = ["skills first", "skills second", "skills third", "skills fourth"]
 
-		total_visits = Ad.all.group(:visits).count
+		@total_visits = Ad.all.sum(:visits)
+		@partial_visits = Ad.all.group(:company_id).sum(:visits)
 
+=begin
 		@all_companies.each do |company|
 			partial = 0
 			Ad.where(company_id: company.id).where("visits > ?", 0).each do |ad|
@@ -20,7 +22,7 @@ class CompaniesController < ApplicationController
 			@statistics << [company.name, partial]
 			@total += partial
 		end
-
+=end
 		#binding.pry
 		
 		@run = Run.new
