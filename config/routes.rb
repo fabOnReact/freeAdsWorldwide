@@ -24,6 +24,11 @@ Rails.application.routes.draw do
 	get "runs/:id/newstatus", to: 'runs#newstatus', as: 'newstatus_run'
 	post "/runs/:id/newstatus", to: 'runs#changestatus', as: 'changestatus_run'
 
+	# flyers
+	get "flyers", to: 'flyers#index', as: "flyers"
+	post "flyers/:id/confirm", to: 'flyers#confirm', as: "confirm_flyer"
+	delete "flyers/:id", to: 'flyers#destroy', as: "destroy_flyer"
+
 	# landing page
 	post "landings", to: 'landings#createSubscription'
 	
