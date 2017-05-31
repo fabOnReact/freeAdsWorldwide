@@ -1,8 +1,15 @@
 <% i = 0 %>
-<%= @statistics.each do |statbar| %>
-	<p><%= statbar[0] %></p>
-	<div class="container">
-	  <div class="<%= @style[i] %>"><%#= statbar[1]/@total * 100 %></div>
-	</div>
-	<% i += 1 %>
+
+<%= @partial_visits.each_pair do |company_id, visits| %>
+	<% unless visits == 0 %>
+		<p><%= Company.find(company_id).name %></p>
+		<div class="container">
+		  <% visits_perc = (visits/@total_visits)*100 %>
+		  <div class="<%= @style[i] %>" style="width:<%= visits_perc %>%;">
+		  	<%= visits %>	
+		  </div>
+		  <% binding.pry %>
+		</div>
+		<% i += 1 %>
+	<% end %>
 <% end %>
