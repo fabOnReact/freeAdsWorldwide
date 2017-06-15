@@ -1,7 +1,7 @@
 class RunsController < ApplicationController
   before_action :set_run, only: [:show, :edit, :update, :destroy, :delete]
   before_action :set_campaign, only: [:new, :create, :show, :edit, :update]
-  before_action :set_companies, only: [:new, :edit]
+  before_action :set_companies, only: [:new, :edit, :create]
 
   # GET /runs
   # GET /runs.json
