@@ -1,6 +1,7 @@
 class CompanytypesController < ApplicationController
 
 	def index
+		binding.pry
 		@companytypes = Companytype.all
 	end
 
