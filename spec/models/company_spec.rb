@@ -17,7 +17,7 @@ RSpec.describe Company, type: :model do
 
   end
 
-  it "should be an intance of Company" do
+  it "should be an instance of Company" do
   	expect(subject).to be_an_instance_of(Company)
   end
 
