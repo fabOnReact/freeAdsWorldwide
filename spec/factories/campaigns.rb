@@ -8,7 +8,7 @@ FactoryGirl.define do
     obtainedvisits { Faker::Number.positive(3)}
     visitratio 1
     ads_received { Faker::Number.positive(3)}
-
+    
     factory :campaign_with_runs do
 
       transient do 

@@ -56,12 +56,6 @@ ActiveRecord::Schema.define(version: 20170531070554) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "chatrooms", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "companies", force: :cascade do |t|
     t.integer  "companytype_id"
     t.string   "name"
@@ -114,41 +108,12 @@ ActiveRecord::Schema.define(version: 20170531070554) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.string   "text"
-    t.integer  "chatroom_id"
-    t.integer  "visitor_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id", using: :btree
-    t.index ["visitor_id"], name: "index_messages_on_visitor_id", using: :btree
-  end
-
   create_table "prints", force: :cascade do |t|
     t.integer  "run_id"
     t.integer  "company_number"
     t.integer  "print"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-  end
-
-  create_table "promotions", force: :cascade do |t|
-    t.integer  "campaigntype_id"
-    t.integer  "campaign_id"
-    t.integer  "company_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["campaign_id"], name: "index_promotions_on_campaign_id", using: :btree
-    t.index ["campaigntype_id"], name: "index_promotions_on_campaigntype_id", using: :btree
-    t.index ["company_id"], name: "index_promotions_on_company_id", using: :btree
-  end
-
-  create_table "questions", force: :cascade do |t|
-    t.integer  "survey_id"
-    t.string   "test"
-    t.boolean  "result"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "runs", force: :cascade do |t|
@@ -168,13 +133,6 @@ ActiveRecord::Schema.define(version: 20170531070554) do
 
   create_table "subscriptions", force: :cascade do |t|
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "surveys", force: :cascade do |t|
-    t.integer  "company_id"
-    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -201,20 +159,11 @@ ActiveRecord::Schema.define(version: 20170531070554) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "visitors", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   add_foreign_key "ads", "companies"
   add_foreign_key "ads", "runs"
   add_foreign_key "campaigns", "campaigntypes"
   add_foreign_key "campaigns", "companies"
   add_foreign_key "companies", "companytypes"
-  add_foreign_key "messages", "chatrooms"
-  add_foreign_key "messages", "visitors"
   add_foreign_key "runs", "campaigns"
   add_foreign_key "runs", "languages"
 end
